@@ -1,0 +1,38 @@
+<ion-view view-title="User {{user.username}}">
+  <ion-content>
+    <div class="item item-avatar">
+        <img ng-src="img/avatars/{{user.avatar}}.png" />
+        <h2>{{user.username}}</h2>
+    </div>
+    <div class="item item-body">
+        <p class="o-bold">{{user.description}}</p>
+        <p>{{user.mail}}</p>
+        <p>
+            <img class='o-imgMenu' src="img/telegram.png" /> {{user.telegram}}
+        </p>
+    </div>
+    <div class="item item-body">
+        history of {{user.username}}:
+        <div class="positive">{{travels.length}} publications</div>
+
+        <a ng-repeat="travel in travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">
+          <img ng-src="img/{{travel.modality}}.png">
+          <h2>{{travel.title}}
+              <div class="item-note">
+                  <div class="positive">{{travel.date | date:"dd/MM HH:mm a"}}</div>
+              </div>
+          </h2>
+
+          <div class="item-note">
+              <p class="" ng-show="travel.modality=='offering'">nºseats: {{travel.seats}}</p>
+              <p class="" ng-show="travel.modality=='asking'">nºpeople: {{travel.seats}}</p>
+          </div>
+          <p>
+              {{travel.description}}
+          </p>
+
+
+        </a>
+    </div>
+  </ion-content>
+</ion-view>

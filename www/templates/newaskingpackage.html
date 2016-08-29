@@ -1,0 +1,54 @@
+<ion-modal-view view-title="Travel">
+  <ion-content>
+
+    <h4>
+        <img class='o-imgTitle' src="img/package.png" />
+        New Asking Package {{newtravel.title}}
+    </h4>
+    <form class="list">
+        <label class="item item-input">
+            <span class="input-label"t>Title</span>
+            <input ng-model="newtravel.title" class="positive" type="text" placeholder="">
+        </label>
+
+        <label class="item item-input">
+            <img class='o-imgMenu' src="img/localization.png" />
+            <span class="input-label">From</span>
+            <input ng-model="newtravel.from" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+            <img class='o-imgMenu' src="img/localization.png" />
+            <span class="input-label">To</span>
+            <input ng-model="newtravel.to" type="text" placeholder="">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">Date</span>
+            <input ng-model="newtravel.date" type="date" placeholder="">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">hour</span>
+            <input ng-model="newtravel.date" type="time" placeholder="">
+        </label>
+        <label class="item item-input">
+            <span class="input-label"><i class="icon ion-iphone"></i> phone contact</span>
+            <input ng-model="newtravel.phone" type="number" placeholder="">
+        </label>
+        <label class="item item-input">
+            <span class="input-label">telegram user</span>
+            <input ng-model="newtravel.telegram" type="text" placeholder="">
+        </label>
+
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Description</span>
+            <input ng-model="newtravel.description" type="text" placeholder="Description">
+        </label>
+        <button ng-click="closeNewAskingPackage()" class="button button-assertive">
+           Cancel
+        </button>
+        <button ng-click="doNewAskingPackage()" class="button button-calm">
+           Create asking package
+        </button>
+    </form>
+
+  </ion-content>
+</ion-modal-view>

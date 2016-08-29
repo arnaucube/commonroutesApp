@@ -1,0 +1,16 @@
+<ion-view view-title="Travels">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
+        {{playlist.title}}
+      </ion-item>
+    </ion-list>
+    <div class="list">
+        <a  ng-repeat="playlist in playlists" class="item item-avatar" href="#/app/playlists/{{playlist.id}}">
+          <img src="img/carimg/bike.jpg">
+          <h2>Venkman</h2>
+          <p>Back off, man. I'm a scientist.</p>
+        </a>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,42 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Signup</h1>
+    <div class="buttons">
+      <button class="button button-dark" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doSignup()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Username</span>
+          <input type="text" ng-model="signupData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Password</span>
+          <input type="password" ng-model="signupData.password">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Mail</span>
+          <input type="email" ng-model="signupData.mail">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Phone</span>
+          <input type="number" ng-model="signupData.phone">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Telegram</span>
+          <input type="text" ng-model="signupData.telegram">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Avatar</span>
+          <input type="text" ng-model="signupData.avatar">
+        </label>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Sign up</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

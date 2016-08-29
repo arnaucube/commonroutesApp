@@ -1,0 +1,22 @@
+/* Empty. Add your own CSS if you like */
+.o-imgMenu{
+    width: 25px!important;
+    height: 25px!important;
+}
+.o-imgTitle{
+    width: 40px!important;
+    height: 40px!important;
+}
+.o-bold{
+    font-weight: bold!important;
+}
+.o-float-right{
+    float: right;
+}
+.o-text-right{
+    text-align: right;
+}
+.o-mini-text{
+    font-size: 12px;
+    display: inline-block;
+}
