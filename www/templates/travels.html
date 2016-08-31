@@ -5,13 +5,18 @@
         on-refresh="doRefresh()">
       </ion-refresher>
     <div class="list">
-        <div class="o-float-right" ng-show="storageusername">
-            <a ng-click="showNewAskingPackage()" class="button icon ion-email"></a>
-            <a ng-click="showNewAskingTravel()" class="button icon ion-help"></a>
-            <a ng-click="showNewOfferingTravel()" class="button icon ion-plus"></a>
+        <div>
+            <div class="o-float-right" ng-show="storageusername">
+                <a ng-click="showNewAskingPackage()" class="button icon ion-email"></a>
+                <a ng-click="showNewAskingTravel()" class="button icon ion-help"></a>
+                <a ng-click="showNewOfferingTravel()" class="button icon ion-plus"></a>
+            </div>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="search" placeholder="search by destination" ng-model="search">
+            </label>
         </div>
-
-        <a ng-repeat="travel in travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">
+        <a ng-repeat="travel in travels | orderBy: 'date' | filter: search" class="item item-avatar" href="#/app/travels/{{travel._id}}">
           <img ng-src="img/{{travel.modality}}.png">
           <h2>{{travel.title}}</h2>
           <div class="item-note">
