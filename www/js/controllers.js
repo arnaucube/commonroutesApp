@@ -1,6 +1,8 @@
 
 var urlapi="http://localhost:3000/api/";
-//var urlapi="http://192.168.1.40:3000/api/";
+//var urlapi="https://collectivecar.paas.primustech.io/api/";
+
+
 //localStorage.setItem("c_username", "user2");
 //localStorage.setItem("c_token", "");
 
@@ -112,6 +114,17 @@ angular.module('starter.controllers', [])
 
 
 .controller('TravelsCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading) {
+    if(localStorage.getItem('c_token')){// adding token to the headers
+        //console.log("token added to headers in run module");
+        //console.log($http.defaults);
+        $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem('c_token');
+        //$http.defaults.headers.post['Content-Type'] = "application/x-www-form-urlencoded; charset=UTF-8";
+        //console.log($http.defaults.headers);
+    }
+    /*if(localStorage.getItem('c_token')){// adding token to the headers
+        $http.defaults.headers.token = localStorage.getItem('c_token');
+    }*/
+
     $scope.travels="";
 
     $scope.travels=JSON.parse(localStorage.getItem('c_travels'));
@@ -134,8 +147,17 @@ angular.module('starter.controllers', [])
             $ionicLoading.show({ template: 'Travels actualized from server!', noBackdrop: true, duration: 2000 });
         });
     };
-
     $scope.newtravel={};
+    /*$scope.newtravel={
+        title: "prova",
+        from: "prova",
+        to: "prova",
+        seats: 3,
+        package: true,
+        phone: 123,
+        telegram: "telusr",
+        description: "this is the description of prova"
+    };*/
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/newofferingtravel.html', {
@@ -189,6 +211,7 @@ angular.module('starter.controllers', [])
     $scope.newtravel.owner=localStorage.getItem("c_username");
 
     $scope.newtravel.modality="offering";
+    //$scope.newtravel.token=localStorage.getItem("c_token");
     console.log($scope.newtravel);
     $http({
         url: urlapi + 'travels',
