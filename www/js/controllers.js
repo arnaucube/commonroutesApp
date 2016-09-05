@@ -68,6 +68,7 @@ angular.module('starter.controllers', [])
                 console.log("login successful");
                 localStorage.setItem("c_username", $scope.loginData.username);
                 localStorage.setItem("c_token", response.data.token);
+                localStorage.setItem("c_userid", response.data.userid);
             }else{
                 console.log("login failed");
             }
@@ -330,8 +331,21 @@ angular.module('starter.controllers', [])
             console.log('data error');
         })
         .then(function(result){
-            travels = result.data;
+            travel = result.data;
     });
+    $http.get(urlapi + 'travels/join/'+$stateParams.travelId)
+        .success(function(data, status, headers,config){
+            console.log('data success');
+            console.log(data); // for browser console
+            $scope.joins = data; // for UI
+        })
+        .error(function(data, status, headers,config){
+            console.log('data error');
+        })
+        .then(function(result){
+            joins = result.data;
+    });
+
     $scope.deleteTravel = function(){
         console.log("delete travel: " + $stateParams.travelId);
         $http({
@@ -346,7 +360,25 @@ angular.module('starter.controllers', [])
         });
     };
     $scope.joinTravel = function(){
+        $scope.newjoin={
+            travelId: $stateParams.travelId,
+            joinedUserId: localStorage.getItem("c_userid"),
+            joinedUsername: localStorage.getItem("c_username")
+        };
+        $http({
+            url: urlapi + 'travels/join/' + $stateParams.travelId,
+            method: "POST",
+            data: $scope.newjoin
+        })
+        .then(function(response) {
+                // success
+                console.log("response: ");
+                console.log(response);
 
+        },
+        function(response) { // optional
+                // failed
+        });
     };
 })
 

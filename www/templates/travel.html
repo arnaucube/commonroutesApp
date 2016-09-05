@@ -43,5 +43,11 @@
             </p>
         </div>
     </div>
+    <div class="item item-body">
+        Joined users:<br>
+        <a ng-repeat="join in joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
+            {{join.joinedUsername}}<br>
+        </a>
+    </div>
   </ion-content>
 </ion-view>
