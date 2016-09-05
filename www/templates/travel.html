@@ -43,11 +43,34 @@
             </p>
         </div>
     </div>
-    <div class="item item-body">
+    <div class="item item-body" ng-show="joins[0]">
         Joined users:<br>
         <a ng-repeat="join in joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
             {{join.joinedUsername}}<br>
         </a>
+    </div>
+    <div class="item item-body">
+        <div ng-show="comments[0]">
+            Comments:<br>
+            <a ng-repeat="comment in comments" ng-href="#/app/users/{{comment.commentUsername}}" class="item">
+                <h3>{{comment.commentUsername}}</h3>
+                <p>{{comment.comment}}</p>
+            </a>
+        </div>
+        <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-calm right">New comment</a>
+        <form class="list" ng-show="doingNewComment">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Comment</span>
+                <input ng-model="newComment.comment" type="text" placeholder="Comment">
+            </label>
+
+            <button ng-click="closeNewComment()" class="button button-assertive">
+               Cancel
+            </button>
+            <button ng-click="doNewComment()" class="button button-calm">
+               Post comment
+            </button>
+        </form>
     </div>
   </ion-content>
 </ion-view>

@@ -314,7 +314,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('TravelCtrl', function($scope, $stateParams, $http) {
+.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal) {
     if(localStorage.getItem('c_token')){// adding token to the headers
         $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
     }
@@ -344,6 +344,17 @@ angular.module('starter.controllers', [])
         })
         .then(function(result){
             joins = result.data;
+    });
+    $http.get(urlapi + 'travels/comment/'+$stateParams.travelId)
+        .success(function(data, status, headers,config){
+            console.log(data); // for browser console
+            $scope.comments = data; // for UI
+        })
+        .error(function(data, status, headers,config){
+            console.log('data error');
+        })
+        .then(function(result){
+            comments = result.data;
     });
 
     $scope.deleteTravel = function(){
@@ -379,6 +390,40 @@ angular.module('starter.controllers', [])
         function(response) { // optional
                 // failed
         });
+    };
+
+    /* adding comment */
+    $scope.doingNewComment=false;
+    $scope.newComment={};
+
+    $scope.showNewComment = function() {
+      $scope.doingNewComment=true;
+    };
+    $scope.closeNewComment = function() {
+        $scope.doingNewComment=false;
+    };
+    $scope.doNewComment = function() {
+        $scope.newComment.commentUserId=localStorage.getItem("c_userid");
+        $scope.newComment.commentUsername=localStorage.getItem("c_username");
+console.log($scope.newComment);
+        $http({
+          url: urlapi + 'travels/comment/' + $stateParams.travelId,
+          method: "POST",
+          data: $scope.newComment
+        })
+        .then(function(response) {
+              // success
+              console.log("newComment added to server: " + response);
+              console.log(response);
+              if(response.data.success==false){
+
+                  $ionicLoading.show({ template: 'failed to generate new asking package', noBackdrop: true, duration: 2000 });
+              }
+        },
+        function(response) { // optional
+              // failed
+        });
+        $scope.closeNewComment();
     };
 })
 
