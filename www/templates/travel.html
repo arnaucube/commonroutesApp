@@ -34,12 +34,12 @@
 
         <div ng-show="storageusername">
             <p class='text-right' ng-show="storageusername!==travel.owner">
-                <a ng-show="travel.modality=='offering'" href="#" class="button button-calm o-pull-right">Ask to join</a>
-                <a ng-show="travel.modality=='asking'" href="#" class="button button-calm o-pull-right">Offer car</a>
-                <a ng-show="travel.modality=='package'" href="#" class="button button-calm o-pull-right">Offer car</a>
+                <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">Ask to join</a>
+                <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">Offer car</a>
+                <a ng-show="travel.modality=='package'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">Offer car</a>
             </p>
             <p ng-show="storageusername==travel.owner" class="text-right">
-                <a href="#" class="button button-assertive o-pull-right">Delete</a>
+                <a href="#" ng-click="deleteTravel()" class="button button-assertive o-pull-right">Delete</a>
             </p>
         </div>
     </div>

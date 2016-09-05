@@ -314,6 +314,9 @@ angular.module('starter.controllers', [])
 })
 
 .controller('TravelCtrl', function($scope, $stateParams, $http) {
+    if(localStorage.getItem('c_token')){// adding token to the headers
+        $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
+    }
     $scope.storageusername=localStorage.getItem("c_username");
     $scope.travel="";
     console.log($stateParams.travelId);
@@ -329,6 +332,22 @@ angular.module('starter.controllers', [])
         .then(function(result){
             travels = result.data;
     });
+    $scope.deleteTravel = function(){
+        console.log("delete travel: " + $stateParams.travelId);
+        $http({
+            url: urlapi + 'travels/' + $stateParams.travelId,
+            method: "DELETE"
+        })
+        .then(function(response) {
+                console.log(response);
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+    $scope.joinTravel = function(){
+
+    };
 })
 
 .controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout) {
