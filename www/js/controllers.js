@@ -69,6 +69,7 @@ angular.module('starter.controllers', [])
                 localStorage.setItem("c_username", $scope.loginData.username);
                 localStorage.setItem("c_token", response.data.token);
                 localStorage.setItem("c_userid", response.data.userid);
+                localStorage.setItem("c_avatar", response.data.avatar);
             }else{
                 console.log("login failed");
             }
@@ -109,6 +110,8 @@ angular.module('starter.controllers', [])
   $scope.logout = function(){
       localStorage.removeItem("c_username");
       localStorage.removeItem("c_token");
+      localStorage.removeItem("c_avatar");
+      localStorage.removeItem("c_userid");
       $window.location.reload(true);
   };
 })
@@ -374,7 +377,8 @@ angular.module('starter.controllers', [])
         $scope.newjoin={
             travelId: $stateParams.travelId,
             joinedUserId: localStorage.getItem("c_userid"),
-            joinedUsername: localStorage.getItem("c_username")
+            joinedUsername: localStorage.getItem("c_username"),
+            joinedAvatar: localStorage.getItem("c_avatar")
         };
         $http({
             url: urlapi + 'travels/join/' + $stateParams.travelId,
@@ -391,6 +395,9 @@ angular.module('starter.controllers', [])
                 // failed
         });
     };
+    $scope.unjoinTravel = function(){
+        console.log("unjoin");
+    };
 
     /* adding comment */
     $scope.doingNewComment=false;
@@ -405,6 +412,7 @@ angular.module('starter.controllers', [])
     $scope.doNewComment = function() {
         $scope.newComment.commentUserId=localStorage.getItem("c_userid");
         $scope.newComment.commentUsername=localStorage.getItem("c_username");
+        $scope.newComment.commentAvatar=localStorage.getItem("c_avatar");
 console.log($scope.newComment);
         $http({
           url: urlapi + 'travels/comment/' + $stateParams.travelId,
@@ -425,6 +433,21 @@ console.log($scope.newComment);
         });
         $scope.closeNewComment();
     };
+
+
+    $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
+        if(myArray)
+        {
+            for(var i = 0, len = myArray.length; i < len; i++) {
+                if (myArray[i][property] === searchTerm){
+                    //console.log("i: " + i);
+                    return i;
+                }
+            }
+        }
+        //console.log("i: -1");
+        return -1;
+    }
 })
 
 .controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout) {

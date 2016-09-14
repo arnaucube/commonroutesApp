@@ -34,9 +34,17 @@
 
         <div ng-show="storageusername">
             <p class='text-right' ng-show="storageusername!==travel.owner">
+              <div ng-show="arrayObjectIndexOf(joins, storageusername, 'joinedUsername')==-1">
                 <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">Ask to join</a>
                 <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">Offer car</a>
                 <a ng-show="travel.modality=='package'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">Offer car</a>
+              </div>
+
+              <div ng-show="arrayObjectIndexOf(joins, storageusername, 'joinedUsername')!=-1">
+                <a ng-show="travel.modality=='offering'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">Unjoin</a>
+                <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">Unoffer car</a>
+                <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">Unoffer car</a>
+              </div>
             </p>
             <p ng-show="storageusername==travel.owner" class="text-right">
                 <a href="#" ng-click="deleteTravel()" class="button button-assertive o-pull-right">Delete</a>
@@ -46,18 +54,20 @@
     <div class="item item-body" ng-show="joins[0]">
         Joined users:<br>
         <a ng-repeat="join in joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
-            {{join.joinedUsername}}<br>
+            <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
         </a>
     </div>
     <div class="item item-body">
         <div ng-show="comments[0]">
             Comments:<br>
             <a ng-repeat="comment in comments" ng-href="#/app/users/{{comment.commentUsername}}" class="item">
-                <h3>{{comment.commentUsername}}</h3>
+                <h3><img ng-src="img/avatars/{{comment.commentAvatar}}.png" class="o-img-joined" />{{comment.commentUsername}}</h3>
                 <p>{{comment.comment}}</p>
             </a>
         </div>
-        <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-calm right">New comment</a>
+        <div ng-show="storageusername">
+          <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-calm right">New comment</a>
+        </div>
         <form class="list" ng-show="doingNewComment">
             <label class="item item-input item-floating-label">
                 <span class="input-label">Comment</span>
