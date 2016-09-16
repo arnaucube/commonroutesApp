@@ -7,17 +7,17 @@
     <div class="list">
         <div>
             <div class="o-float-right" ng-show="storageusername">
-                <a ng-click="showNewAskingPackage()" class="button icon ion-email"></a>
-                <a ng-click="showNewAskingTravel()" class="button icon ion-help"></a>
-                <a ng-click="showNewOfferingTravel()" class="button icon ion-plus"></a>
+                <a ng-click="showNewAskingPackage()" class="button"><img ng-src="img/newpackage.png" class="o-img-new"/></a>
+                <a ng-click="showNewAskingTravel()" class="button"><img ng-src="img/newasking.png" class="o-img-new"/></a>
+                <a ng-click="showNewOfferingTravel()" class="button"><img ng-src="img/newoffering.png" class="o-img-new"/></a>
             </div>
             <label class="item item-input">
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="search by destination" ng-model="search">
+                <input type="search" placeholder="search..." ng-model="search">
             </label>
         </div>
         <a ng-repeat="travel in travels | orderBy: 'date' | filter: search" class="item item-avatar" href="#/app/travels/{{travel._id}}">
-          <img ng-src="img/{{travel.modality}}.png">
+          <img ng-src="img/{{travel.modality}}.png"/>
           <h2>{{travel.title}}</h2>
           <div class="item-note text-right">
               <div class="positive">{{travel.date | date:"dd/MM"}}</div>
