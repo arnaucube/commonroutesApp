@@ -22,6 +22,7 @@ angular.module('starter.controllers', [])
   $scope.signupData= {};
 
   $scope.storageusername=localStorage.getItem("c_username");
+  $scope.storageavatar=localStorage.getItem("c_avatar");
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
@@ -317,7 +318,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal) {
+.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicPopup) {
     if(localStorage.getItem('c_token')){// adding token to the headers
         $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
     }
@@ -361,17 +362,31 @@ angular.module('starter.controllers', [])
     });
 
     $scope.deleteTravel = function(){
-        console.log("delete travel: " + $stateParams.travelId);
-        $http({
-            url: urlapi + 'travels/' + $stateParams.travelId,
-            method: "DELETE"
-        })
-        .then(function(response) {
-                console.log(response);
-        },
-        function(response) { // optional
-                // failed
-        });
+
+       var confirmPopup = $ionicPopup.confirm({
+         title: 'Deleting publication',
+         template: 'Are you sure you want to delete <b>'+ $scope.travel.title+'</b>?'
+       });
+       confirmPopup.then(function(res) {
+       if(res) {
+         console.log('You are sure');
+         console.log("delete travel: " + $stateParams.travelId);
+         $http({
+             url: urlapi + 'travels/' + $stateParams.travelId,
+             method: "DELETE"
+         })
+         .then(function(response) {
+                 console.log(response);
+         },
+         function(response) { // optional
+                 // failed
+         });
+       } else {
+         console.log('You are not sure');
+       }
+     });
+
+
     };
     $scope.joinTravel = function(){
         $scope.newjoin={
@@ -397,6 +412,26 @@ angular.module('starter.controllers', [])
     };
     $scope.unjoinTravel = function(){
         console.log("unjoin");
+        $scope.unjoin={
+            travelId: $stateParams.travelId,
+            joinedUserId: localStorage.getItem("c_userid"),
+            joinedUsername: localStorage.getItem("c_username"),
+            joinedAvatar: localStorage.getItem("c_avatar")
+        };
+        $http({
+            url: urlapi + 'travels/unjoin/' + $stateParams.travelId,
+            method: "POST",
+            data: $scope.unjoin
+        })
+        .then(function(response) {
+                // success
+                console.log("response: ");
+                console.log(response);
+
+        },
+        function(response) { // optional
+                // failed
+        });
     };
 
     /* adding comment */

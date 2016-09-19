@@ -4,33 +4,49 @@
         <img ng-src="img/{{travel.modality}}.png" />
         <div class="item-note o-text-right">
             <a class="badge badge-calm" href="#/app/users/{{travel.owner}}">{{travel.owner}}</a>
+            <br>
+            <p ng-show="storageusername==travel.owner" class="text-right">
+                <a href="#" ng-click="deleteTravel()" class="button button-small button-assertive o-pull-right"><i class="icon ion-trash-a"></i></a>
+            </p>
         </div>
         <h2>{{travel.title}}</h2>
         <div class="">{{travel.date | date:"dd/MM HH:mm a"}}</div>
     </div>
     <div class="item item-body">
-        <div class='o-float-right o-text-right'>
-            <span class="badge badge-balanced" ng-show="travel.collectivized">Collectivized</span>
+      <div class='row'>
 
-            <br>
-            <div class="o-mini-text" ng-show="travel.package">
+          <p class="o-bold">{{travel.description}}</p>
+      </div>
+      <div class='row'>
+        <div class='col'>
+          <p ng-show="travel.phone">
+              <img class='o-imgMenu' src="img/smartphone.png" /> {{travel.phone}}
+          </p>
+          <p ng-show="travel.telegram">
+              <img class='o-imgMenu' src="img/telegram.png" /> {{travel.telegram}}
+          </p>
+
+          <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from}} - {{travel.to}}</p>
+        </div>
+        <div class='col o-text-right'>
+          <p ng-show="travel.collectivized">
+            <span class="o-badgeCollectivized">Collectivized</span>
+          </p>
+          <p ng-show="travel.package">
+            <div class="o-mini-text">
                 <div ng-show="travel.modality=='offering'">can carry package <img src="img/package.png" class="o-imgMenu" /></div>
                 <div ng-show="travel.modality=='asking'">need to carry package <img src="img/package.png" class="o-imgMenu" /></div>
             </div>
+          </p>
+
+            <p>
+                <div ng-show="travel.modality=='offering'">nº car seats: {{travel.seats}}</div>
+                <div ng-show="travel.modality=='asking'">nº people: {{travel.seats}}</div>
+            </p>
         </div>
-        <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from}} - {{travel.to}}</p>
-        <p>
-            <div ng-show="travel.modality=='offering'">nº car seats: {{travel.seats}}</div>
-            <div ng-show="travel.modality=='asking'">nº people: {{travel.seats}}</div>
-        </p>
-        <p class="o-bold">{{travel.description}}</p>
+      </div>
         <br>
-        <p ng-show="travel.phone">
-            <img class='o-imgMenu' src="img/smartphone.png" /> {{travel.phone}}
-        </p>
-        <p ng-show="travel.telegram">
-            <img class='o-imgMenu' src="img/telegram.png" /> {{travel.telegram}}
-        </p>
+
 
         <div ng-show="storageusername">
             <p class='text-right' ng-show="storageusername!==travel.owner">
@@ -45,9 +61,6 @@
                 <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">Unoffer car</a>
                 <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">Unoffer car</a>
               </div>
-            </p>
-            <p ng-show="storageusername==travel.owner" class="text-right">
-                <a href="#" ng-click="deleteTravel()" class="button button-assertive o-pull-right">Delete</a>
             </p>
         </div>
     </div>
@@ -66,18 +79,17 @@
             </a>
         </div>
         <div ng-show="storageusername">
-          <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-calm right">New comment</a>
+          <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-small button-calm right">New comment</a>
         </div>
         <form class="list" ng-show="doingNewComment">
             <label class="item item-input item-floating-label">
-                <span class="input-label">Comment</span>
                 <input ng-model="newComment.comment" type="text" placeholder="Comment">
             </label>
 
-            <button ng-click="closeNewComment()" class="button button-assertive">
+            <button ng-click="closeNewComment()" class="button button-small button-assertive">
                Cancel
             </button>
-            <button ng-click="doNewComment()" class="button button-calm">
+            <button ng-click="doNewComment()" class="button button-small button-calm">
                Post comment
             </button>
         </form>

@@ -28,3 +28,11 @@
     width: 30px!important;
     height: 30px!important;
 }
+.o-badgeCollectivized{
+  background: #33CD5F;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  color: #ffffff;
+  font-weight: bold;
+}

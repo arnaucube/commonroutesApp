@@ -32,7 +32,11 @@
             <img class='o-imgMenu' src="img/users.png" />
           Users
         </ion-item>
-        <ion-item menu-close href="#/app/search">
+        <ion-item menu-close href="#/app/users/{{storageusername}}" ng-show="storageusername">
+            <img class='o-imgMenu' ng-src="img/avatars/{{storageavatar}}.png" />
+          {{storageusername}}
+        </ion-item>
+        <ion-item menu-close href="#/app/settings">
             <img class='o-imgMenu' src="img/settings.png" />
           Settings
         </ion-item>
