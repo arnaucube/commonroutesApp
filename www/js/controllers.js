@@ -7,7 +7,7 @@ var urlapi="http://localhost:3000/api/";
 //localStorage.setItem("c_token", "");
 
 
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['pascalprecht.translate'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $window) {
   // With the new view caching in Ionic, Controllers are only called
@@ -146,6 +146,8 @@ angular.module('starter.controllers', [])
         .error(function(data, status, headers,config){
             console.log('data error');
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
+            $ionicLoading.show({ template: 'Error connecting server', noBackdrop: true, duration: 2000 });
+
         })
         .then(function(result){
             travels = result.data;
@@ -330,6 +332,8 @@ angular.module('starter.controllers', [])
             console.log('data success');
             console.log(data); // for browser console
             $scope.travel = data; // for UI
+            console.log("b");
+            console.log($scope.travel);
         })
         .error(function(data, status, headers,config){
             console.log('data error');
@@ -468,6 +472,9 @@ console.log($scope.newComment);
         });
         $scope.closeNewComment();
     };
+    console.log("a");
+    console.log($scope.storageusername);
+    console.log($scope.travel.owner);
 
 
     $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
@@ -537,4 +544,18 @@ console.log($scope.newComment);
         .then(function(result){
             travels = result.data;
     });
+}).controller('SettingsCtrl', function($scope, $stateParams, $translate) {
+  if(localStorage.getItem('lang'))//initialization
+  {
+    $scope.lang=localStorage.getItem('lang');
+  }else{
+    localStorage.setItem('lang', 'english');
+    $scope.lang=localStorage.getItem('lang');
+  }
+
+  $scope.langChange = function(lang){
+    console.log(lang);
+      window.localStorage.setItem('lang', lang);
+      $translate.use(lang);
+  };
 });

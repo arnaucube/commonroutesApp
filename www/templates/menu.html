@@ -14,23 +14,23 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-positive">
-      <h1 class="title">Menu</h1>
+      <h1 class="title">{{'Menu' | translate }}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
         <ion-item menu-close ng-click="signup()" ng-show="!storageusername">
-            Signup
+            {{'Signup' | translate }}
         </ion-item>
         <ion-item menu-close ng-click="login()" ng-show="!storageusername">
-          Login
+          {{'Login' | translate }}
         </ion-item>
         <ion-item menu-close href="#/app/travels">
             <img class='o-imgMenu' src="img/road.png" />
-          Travels
+          {{'Travels' | translate }}
         </ion-item>
         <ion-item menu-close href="#/app/users">
             <img class='o-imgMenu' src="img/users.png" />
-          Users
+          {{'Users' | translate }}
         </ion-item>
         <ion-item menu-close href="#/app/users/{{storageusername}}" ng-show="storageusername">
             <img class='o-imgMenu' ng-src="img/avatars/{{storageavatar}}.png" />
@@ -38,10 +38,10 @@
         </ion-item>
         <ion-item menu-close href="#/app/settings">
             <img class='o-imgMenu' src="img/settings.png" />
-          Settings
+          {{'Settings' | translate }}
         </ion-item>
         <ion-item menu-close ng-click="logout()" ng-show="storageusername">
-          Logout
+          {{'Logout' | translate }}
         </ion-item>
       </ion-list>
     </ion-content>

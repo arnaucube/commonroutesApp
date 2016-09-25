@@ -1,4 +1,4 @@
-<ion-view view-title="User {{user.username}}">
+<ion-view view-title="{{'User' | translate}} {{user.username}}">
   <ion-content>
     <div class="item item-avatar">
         <img ng-src="img/avatars/{{user.avatar}}.png" />
@@ -12,8 +12,8 @@
         </p>
     </div>
     <div class="item item-body">
-        history of {{user.username}}:
-        <div class="positive">{{travels.length}} publications</div>
+        {{'history_of' | translate}} {{user.username}}:
+        <div class="positive">{{travels.length}} {{'publications' | translate}}</div>
 
         <a ng-repeat="travel in travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">
           <img ng-src="img/{{travel.modality}}.png">
@@ -24,8 +24,8 @@
           </h2>
 
           <div class="item-note">
-              <p class="" ng-show="travel.modality=='offering'">nºseats: {{travel.seats}}</p>
-              <p class="" ng-show="travel.modality=='asking'">nºpeople: {{travel.seats}}</p>
+              <p class="" ng-show="travel.modality=='offering'">{{'n_Seats' | translate}}: {{travel.seats}}</p>
+              <p class="" ng-show="travel.modality=='asking'">{{'n_People' | translate}}: {{travel.seats}}</p>
           </div>
           <p>
               {{travel.description}}

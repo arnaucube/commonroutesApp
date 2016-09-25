@@ -1,7 +1,7 @@
-<ion-view view-title="Travels">
+<ion-view view-title="{{'Travels' | translate}}">
   <ion-content>
       <ion-refresher
-        pulling-text="Pull to refresh..."
+        pulling-text="{{'Pull_to_refresh' | translate}}..."
         on-refresh="doRefresh()">
       </ion-refresher>
     <div class="list">
@@ -13,14 +13,14 @@
             </div>
             <label class="item item-input">
                 <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="search..." ng-model="search">
+                <input type="search" placeholder="{{'search' | translate}}..." ng-model="search">
             </label>
         </div>
 
         <div class="card" ng-show="!travels">
           <div class="item item-text-wrap">
-            No data in memory.<br>
-            Pull from top to refresh
+            {{'No_data_in_memory' | translate}}<br>
+            {{'Pull_from_top_to_refresh' | translate}}
           </div>
         </div>
         <a ng-repeat="travel in travels | orderBy: 'date' | filter: search" class="item item-avatar" href="#/app/travels/{{travel._id}}">

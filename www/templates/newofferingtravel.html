@@ -1,65 +1,67 @@
-<ion-modal-view view-title="Travel">
+<ion-modal-view view-title="{{'Travel' | translate}}">
   <ion-content>
 
-    <h4>
+    <h4 class="padding">
         <img class='o-imgTitle' src="img/offering.png" />
-        New Travel {{newtravel.title}}
+        {{'New_Travel' | translate}} {{newtravel.title}}
     </h4>
     <form class="list">
         <label class="item item-input">
-            <span class="input-label"t>Title</span>
+            <span class="input-label"t>{{'Title' | translate}}</span>
             <input ng-model="newtravel.title" class="positive" type="text" placeholder="">
         </label>
 
         <label class="item item-input">
             <img class='o-imgMenu' src="img/localization.png" />
-            <span class="input-label">From</span>
+            <span class="input-label">{{'From' | translate}}</span>
             <input ng-model="newtravel.from" type="text" placeholder="">
         </label>
         <label class="item item-input">
             <img class='o-imgMenu' src="img/localization.png" />
-            <span class="input-label">To</span>
+            <span class="input-label">{{'To' | translate}}</span>
             <input ng-model="newtravel.to" type="text" placeholder="">
         </label>
 
         <label class="item item-input">
-            <span class="input-label">nºSeats</span>
+            <span class="input-label">{{'n_Seats' | translate}}</span>
             <input ng-model="newtravel.seats" type="number" placeholder="">
         </label>
-        <ion-toggle ng-model="newtravel.package" toggle-class="toggle-calm">
-            <img class='o-imgMenu' src="img/package.png" />
-            Can carry package
-        </ion-toggle>
         <label class="item item-input">
-            <span class="input-label">Date</span>
+            <span class="input-label">{{'Date' | translate}}</span>
             <input ng-model="newtravel.date" type="date" placeholder="">
         </label>
         <label class="item item-input">
-            <span class="input-label">hour</span>
+            <span class="input-label">{{'Hour' | translate}}</span>
             <input ng-model="newtravel.date" type="time" placeholder="">
         </label>
         <label class="item item-input">
-            <span class="input-label"><i class="icon ion-iphone"></i> phone contact</span>
+            <span class="input-label"><i class="icon ion-iphone"></i> {{'Phone_contact' | translate}}</span>
             <input ng-model="newtravel.phone" type="number" placeholder="">
         </label>
         <label class="item item-input">
-            <span class="input-label">telegram user</span>
+            <span class="input-label">{{'Telegram_user' | translate}}</span>
             <input ng-model="newtravel.telegram" type="text" placeholder="">
         </label>
+        <ion-toggle ng-model="newtravel.package" toggle-class="toggle-calm">
+            <img class='o-imgMenu' src="img/package.png" />
+            {{'Can_carry_package' | translate}}
+        </ion-toggle>
         <ion-toggle ng-model="newtravel.collectivized" toggle-class="toggle-calm">
-            Collectivized car
+            {{'Collectivized_car' | translate}}
         </ion-toggle>
 
         <label class="item item-input item-floating-label">
-            <span class="input-label">Description</span>
+            <span class="input-label">{{'Description' | translate}}</span>
             <input ng-model="newtravel.description" type="text" placeholder="Description">
         </label>
-        <button ng-click="closeNewOfferingTravel()" class="button button-assertive">
-           Cancel
-        </button>
-        <button ng-click="doNewOfferingTravel()" class="button button-calm">
-           Create travel
-        </button>
+        <p class="padding">
+          <button ng-click="closeNewOfferingTravel()" class="button button-assertive">
+             {{'Cancel' | translate}}
+          </button>
+          <button ng-click="doNewOfferingTravel()" class="button button-calm">
+             {{'Create_travel' | translate}}
+          </button>
+        </p>
     </form>
 
   </ion-content>
