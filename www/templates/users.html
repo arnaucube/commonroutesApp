@@ -5,6 +5,13 @@
         on-refresh="doRefresh()">
       </ion-refresher>
     <div class="list">
+      <div class="card" ng-show="!users">
+        <div class="item item-text-wrap">
+          {{'No_data_in_memory' | translate}}<br>
+          {{'Pull_from_top_to_refresh' | translate}}
+        </div>
+      </div>
+
         <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" href="#/app/users/{{user.username}}">
           <img ng-src="img/avatars/{{user.avatar}}.png">
           <h2>{{user.username}}</h2>

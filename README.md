@@ -8,6 +8,10 @@ server code: https://github.com/idoctnef/collectivecarServer
 **Frontend:**
 ```
 -translate system                       --> done
+
+-quan el login falla, que avisi de que ha fallat
+
+
 -UX design
 -interface graphic design
 -icons
