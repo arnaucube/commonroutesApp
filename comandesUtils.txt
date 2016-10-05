@@ -3,7 +3,14 @@ export ANDROID_HOME=~/Android/Sdk/
 PATH=$PATH:$ANDROID_HOME/tools
 PATH=$PATH:$ANDROID_HOME/platform-tools
 
+** cal estar amb sudo **
+#current path:
+export ANDROID_HOME=home/nau/sourceProgramsToInstall/android-sdk-linux/
+export PATH=$PATH:$ANDROID_HOME:/home/nau/sourceProgramsToInstall/android-sdk-linux/tools
+export PATH=$PATH:$ANDROID_HOME/home/nau/sourceProgramsToInstall/android-sdk-linux/platform-tools
 
+
+#run android sdk manager tools:
 cd /home/nau/Android/Sdk/tools
 ./android
 

@@ -1,6 +1,6 @@
 
-var urlapi="http://localhost:3000/api/";
-//var urlapi="https://collectivecar.paas.primustech.io/api/";
+//var urlapi="http://localhost:3000/api/";
+var urlapi="https://collectivecar.paas.primustech.io/api/";
 
 
 //localStorage.setItem("c_username", "user2");
@@ -9,7 +9,7 @@ var urlapi="http://localhost:3000/api/";
 
 angular.module('starter.controllers', ['pascalprecht.translate'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $window) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http, $window, $ionicLoading) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -88,25 +88,83 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
   };
   $scope.doSignup = function() {
     console.log('Doing signup', $scope.signupData);
+    if($scope.emptyParams($scope.signupData))
+    {
+      $http({
+          url: urlapi + 'users',
+          method: "POST",
+          data: $scope.signupData
+      })
+      .then(function(response) {
+              // success
+              console.log("response: ");
+              console.log(response.data);
+              $timeout(function() {
+                $scope.closeSignup();
+                $scope.login();
+              }, 1000);
 
-    $http({
-        url: urlapi + 'users',
-        method: "POST",
-        data: $scope.signupData
-    })
-    .then(function(response) {
-            // success
-            console.log("response: ");
-            console.log(response.data);
-            $timeout(function() {
-              $scope.closeSignup();
-            }, 1000);
+      },
+      function(response) { // optional
+              // failed
+      });
+    }else{
+      $ionicLoading.show({ template: 'First complete all parameters', noBackdrop: true, duration: 2000 });
+    }
 
-    },
-    function(response) { // optional
-            // failed
-    });
-
+  };
+  $scope.emptyParams = function(obj){
+    if(obj.username==undefined)
+    {
+      return(false);
+    }
+    if(obj.password==undefined)
+    {
+      return(false);
+    }
+    if(obj.mail==undefined)
+    {
+      return(false);
+    }
+    if(obj.phone==undefined)
+    {
+      return(false);
+    }
+    if(obj.avatar==undefined)
+    {
+      return(false);
+    }
+    return(true);
+  };
+  $scope.avatars=[
+    "turtle",
+    "cat",
+    "toucan",
+    "racoon",
+    "tiger",
+    "squirrel",
+    "sheep",
+    "penguin",
+    "panda",
+    "owl",
+    "pelican",
+    "whale",
+    "snake",
+    "mouse",
+    "giraffe",
+    "macaw",
+    "lion",
+    "llama",
+    "kangaroo",
+    "hen",
+    "frog",
+    "clown-fish",
+    "chameleon",
+    "octopus"
+  ];
+  $scope.avatarSelect = function(avat){
+    $scope.signupData.avatar=avat;
+    //alert($scope.signupData.avatar);
   };
   $scope.logout = function(){
       localStorage.removeItem("c_username");
