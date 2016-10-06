@@ -384,37 +384,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
     }
     $scope.storageusername=localStorage.getItem("c_username");
-    $scope.travel="";
     console.log($stateParams.travelId);
-    /*$http.get(urlapi + 'travels/'+$stateParams.travelId)
-        .success(function(data, status, headers,config){
-            console.log('data success');
-            console.log(data); // for browser console
-            $scope.travel = data; // for UI
-            console.log("b");
-            console.log($scope.travel);
-        })
-        .error(function(data, status, headers,config){
-            console.log('data error');
-        })
-        .then(function(result){
-            travel = result.data;
-    });*/
     $scope.travels= JSON.parse(localStorage.getItem('c_travels'));
     $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
-    $scope.joins="";
-    $http.get(urlapi + 'travels/join/'+$stateParams.travelId)
-        .success(function(data, status, headers,config){
-            console.log('data success');
-            console.log(data); // for browser console
-            $scope.joins = data; // for UI
-        })
-        .error(function(data, status, headers,config){
-            console.log('data error');
-        })
-        .then(function(result){
-            joins = result.data;
-    });
+
     $http.get(urlapi + 'travels/comment/'+$stateParams.travelId)
         .success(function(data, status, headers,config){
             console.log(data); // for browser console
@@ -456,13 +429,13 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     };
     $scope.joinTravel = function(){
         $scope.newjoin={
-            travelId: $stateParams.travelId,
+            //travelId: $stateParams.travelId,
             joinedUserId: localStorage.getItem("c_userid"),
             joinedUsername: localStorage.getItem("c_username"),
             joinedAvatar: localStorage.getItem("c_avatar")
         };
         $http({
-            url: urlapi + 'travels/join/' + $stateParams.travelId,
+            url: urlapi + 'travels/'+ $stateParams.travelId+'/join',
             method: "POST",
             data: $scope.newjoin
         })
@@ -485,7 +458,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             joinedAvatar: localStorage.getItem("c_avatar")
         };
         $http({
-            url: urlapi + 'travels/unjoin/' + $stateParams.travelId,
+            url: urlapi + 'travels/'+ $stateParams.travelId+'/unjoin',
             method: "POST",
             data: $scope.unjoin
         })
@@ -540,7 +513,7 @@ console.log($scope.newComment);
 
 
     $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
-      console.log(myArray+", "+searchTerm+", "+property);
+      //console.log(myArray+", "+searchTerm+", "+property);
         if(myArray)
         {
             for(var i = 0, len = myArray.length; i < len; i++) {

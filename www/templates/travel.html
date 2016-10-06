@@ -49,15 +49,15 @@
         <br>
 
 
-        <div ng-show="storageusername">
-            <p class='text-right' ng-show="storageusername!=travel.owner">
-              <div ng-show="arrayObjectIndexOf(joins, storageusername, 'joinedUsername')==-1">
+        <div ng-show="storageusername && storageusername!=travel.owner">
+            <p class='text-right'>
+              <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')==-1">
                 <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">{{'Ask_to_join' | translate}}</a>
                 <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
                 <a ng-show="travel.modality=='package'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
               </div>
 
-              <div ng-show="arrayObjectIndexOf(joins, storageusername, 'joinedUsername')!=-1">
+              <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')!=-1">
                 <a ng-show="travel.modality=='offering'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">{{'Unjoin' | translate}}</a>
                 <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
                 <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
@@ -65,9 +65,9 @@
             </p>
         </div>
     </div>
-    <div class="item item-body" ng-show="joins[0]">
+    <div class="item item-body" ng-show="travel.joins[0]">
         {{'Joined_users' | translate}}:<br>
-        <a ng-repeat="join in joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
+        <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
             <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
         </a>
     </div>
