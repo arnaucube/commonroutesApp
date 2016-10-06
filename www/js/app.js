@@ -43,6 +43,15 @@ angular.module('starter', ['ionic',
       }
     }
   })
+  .state('app.help', {
+    url: '/help',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/help.html',
+        controller: 'HelpCtrl'
+      }
+    }
+  })
 
   .state('app.users', {
       url: '/users',

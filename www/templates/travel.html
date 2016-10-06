@@ -52,15 +52,15 @@
         <div ng-show="storageusername && storageusername!=travel.owner">
             <p class='text-right'>
               <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')==-1">
-                <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">{{'Ask_to_join' | translate}}</a>
-                <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
-                <a ng-show="travel.modality=='package'" ng-click="joinTravel()" href="#" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
+                <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Ask_to_join' | translate}}</a>
+                <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
+                <a ng-show="travel.modality=='package'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
               </div>
 
               <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')!=-1">
-                <a ng-show="travel.modality=='offering'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">{{'Unjoin' | translate}}</a>
-                <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
-                <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" href="#" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
+                <a ng-show="travel.modality=='offering'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unjoin' | translate}}</a>
+                <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
+                <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
               </div>
             </p>
         </div>

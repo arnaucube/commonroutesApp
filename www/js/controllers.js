@@ -1,6 +1,6 @@
 
-//var urlapi="http://localhost:3000/api/";
-var urlapi="https://collectivecar.paas.primustech.io/api/";
+var urlapi="http://localhost:3000/api/";
+//var urlapi="https://collectivecar.paas.primustech.io/api/";
 
 
 //localStorage.setItem("c_username", "user2");
@@ -460,6 +460,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 $scope.travels=response.data;
                 localStorage.setItem('c_travels', JSON.stringify($scope.travels));
                 localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+                $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
 
         },
         function(response) { // optional
@@ -487,6 +488,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 $scope.travels=response.data;
                 localStorage.setItem('c_travels', JSON.stringify($scope.travels));
                 localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+                $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
 
         },
         function(response) { // optional
@@ -601,7 +603,8 @@ console.log($scope.newComment);
         .then(function(result){
             travels = result.data;
     });
-}).controller('SettingsCtrl', function($scope, $stateParams, $translate) {
+})
+.controller('SettingsCtrl', function($scope, $stateParams, $translate) {
   if(localStorage.getItem('lang'))//initialization
   {
     $scope.lang=localStorage.getItem('lang');
@@ -615,4 +618,7 @@ console.log($scope.newComment);
       window.localStorage.setItem('lang', lang);
       $translate.use(lang);
   };
+})
+.controller('HelpCtrl', function($scope, $stateParams, $translate) {
+  console.log("help page");
 });

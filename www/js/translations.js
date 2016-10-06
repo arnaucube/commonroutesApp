@@ -8,6 +8,7 @@ var translations = {
 		"Users": "Users",
 		"Logout": "Logout",
 		"Settings": "Settings",
+		"Help": "Help",
 		"Login": "Login",
 		"Username": "Username",
 		"Password": "Password",
