@@ -1,6 +1,6 @@
 
-//var urlapi="http://localhost:3000/api/";
-var urlapi="https://collectivecar.paas.primustech.io/api/";
+var urlapi="http://localhost:3000/api/";
+//var urlapi="https://collectivecar.paas.primustech.io/api/";
 
 
 //localStorage.setItem("c_username", "user2");
@@ -107,6 +107,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
       },
       function(response) { // optional
               // failed
+            $ionicLoading.show({ template: 'Username already taken', noBackdrop: true, duration: 2000 });
       });
     }else{
       $ionicLoading.show({ template: 'First complete all parameters', noBackdrop: true, duration: 2000 });
@@ -378,14 +379,14 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
   };
 })
 
-.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicPopup) {
+.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicPopup, $filter) {
     if(localStorage.getItem('c_token')){// adding token to the headers
         $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
     }
     $scope.storageusername=localStorage.getItem("c_username");
     $scope.travel="";
     console.log($stateParams.travelId);
-    $http.get(urlapi + 'travels/'+$stateParams.travelId)
+    /*$http.get(urlapi + 'travels/'+$stateParams.travelId)
         .success(function(data, status, headers,config){
             console.log('data success');
             console.log(data); // for browser console
@@ -398,7 +399,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         })
         .then(function(result){
             travel = result.data;
-    });
+    });*/
+    $scope.travels= JSON.parse(localStorage.getItem('c_travels'));
+    $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
+    $scope.joins="";
     $http.get(urlapi + 'travels/join/'+$stateParams.travelId)
         .success(function(data, status, headers,config){
             console.log('data success');
@@ -536,6 +540,7 @@ console.log($scope.newComment);
 
 
     $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
+      console.log(myArray+", "+searchTerm+", "+property);
         if(myArray)
         {
             for(var i = 0, len = myArray.length; i < len; i++) {
