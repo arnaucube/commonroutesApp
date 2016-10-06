@@ -71,6 +71,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 localStorage.setItem("c_token", response.data.token);
                 localStorage.setItem("c_userid", response.data.userid);
                 localStorage.setItem("c_avatar", response.data.avatar);
+
+                localStorage.setItem("c_userdata", JSON.stringify(response.data.userdata));
             }else{
                 console.log("login failed");
             }
@@ -172,6 +174,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
       localStorage.removeItem("c_token");
       localStorage.removeItem("c_avatar");
       localStorage.removeItem("c_userid");
+      localStorage.removeItem("c_userdata");
       $window.location.reload(true);
   };
 })
@@ -192,8 +195,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.travels="";
 
     $scope.travels=JSON.parse(localStorage.getItem('c_travels'));
+    $scope.userdata=JSON.parse(localStorage.getItem('c_userdata'));
+    console.log($scope.userdata);
 
     $scope.doRefresh = function() {
+      /* travels refresh: */
         $http.get(urlapi + 'travels')
         .success(function(data, status, headers,config){
             console.log('data success');
@@ -213,6 +219,23 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         .then(function(result){
             travels = result.data;
             $ionicLoading.show({ template: 'Travels actualized from server!', noBackdrop: true, duration: 2000 });
+        });
+
+        /* users refresh: */
+        $http.get(urlapi + 'users')
+        .success(function(data, status, headers, config){
+            console.log('data success');
+            console.log(data); // for browser console
+            $scope.users = data; // for UI
+            localStorage.setItem('c_users', JSON.stringify($scope.users));
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+        })
+        .error(function(data, status, headers,config){
+            console.log('data error');
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+        })
+        .then(function(result){
+            users = result.data;
         });
     };
     $scope.newtravel={};
@@ -277,7 +300,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.newtravel.icon="lorry";
     $scope.newtravel.generateddate=$scope.newtravel.date;
     $scope.newtravel.owner=localStorage.getItem("c_username");
-
+    $scope.newtravel.telegram=JSON.parse(localStorage.getItem("c_userdata")).telegram;
+    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;
     $scope.newtravel.modality="offering";
     //$scope.newtravel.token=localStorage.getItem("c_token");
     console.log($scope.newtravel);
@@ -317,6 +341,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.newtravel.icon="lorry";
     $scope.newtravel.generateddate=$scope.newtravel.date;
     $scope.newtravel.owner=localStorage.getItem("c_username");
+    $scope.newtravel.telegram=JSON.parse(localStorage.getItem("c_userdata")).telegram;
+    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;
 
     $scope.newtravel.modality="asking";
     console.log($scope.newtravel);
@@ -356,6 +382,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.newtravel.icon="lorry";
     $scope.newtravel.generateddate=$scope.newtravel.date;
     $scope.newtravel.owner=localStorage.getItem("c_username");
+    $scope.newtravel.telegram=JSON.parse(localStorage.getItem("c_userdata")).telegram;
+    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;
+
     $scope.newtravel.package=true;
 
     $scope.newtravel.modality="package";
@@ -556,12 +585,35 @@ console.log($scope.newComment);
     }
 })
 
-.controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout) {
+.controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading) {
     $scope.users="";
 
     $scope.users=JSON.parse(localStorage.getItem('c_users'));
 
     $scope.doRefresh = function() {
+      /* travels refresh: */
+        $http.get(urlapi + 'travels')
+        .success(function(data, status, headers,config){
+            console.log('data success');
+            console.log(data); // for browser console
+            $scope.travels = data; // for UI
+            localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+            localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+
+        })
+        .error(function(data, status, headers,config){
+            console.log('data error');
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+            $ionicLoading.show({ template: 'Error connecting server', noBackdrop: true, duration: 2000 });
+
+        })
+        .then(function(result){
+            travels = result.data;
+            $ionicLoading.show({ template: 'Travels actualized from server!', noBackdrop: true, duration: 2000 });
+        });
+
+        /* users refresh: */
         $http.get(urlapi + 'users')
         .success(function(data, status, headers, config){
             console.log('data success');
