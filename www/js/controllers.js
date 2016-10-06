@@ -1,6 +1,6 @@
 
-var urlapi="http://localhost:3000/api/";
-//var urlapi="https://collectivecar.paas.primustech.io/api/";
+//var urlapi="http://localhost:3000/api/";
+var urlapi="https://collectivecar.paas.primustech.io/api/";
 
 
 //localStorage.setItem("c_username", "user2");
@@ -177,6 +177,15 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
       localStorage.removeItem("c_userdata");
       $window.location.reload(true);
   };
+
+  /* if no logged, suggest to login */
+  if(localStorage.getItem('c_token')){// adding token to the headers
+      $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
+  }else{
+    setTimeout(function(){
+      $scope.login();
+    },1000);
+  }
 })
 
 
