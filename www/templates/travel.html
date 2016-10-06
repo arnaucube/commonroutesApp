@@ -72,9 +72,9 @@
         </a>
     </div>
     <div class="item item-body">
-        <div ng-show="comments[0]">
+        <div ng-show="travel.comments[0]">
             {{'Comments' | translate}}:<br>
-            <a ng-repeat="comment in comments" ng-href="#/app/users/{{comment.commentUsername}}" class="item">
+            <a ng-repeat="comment in travel.comments" ng-href="#/app/users/{{comment.commentUsername}}" class="item">
                 <h3><img ng-src="img/avatars/{{comment.commentAvatar}}.png" class="o-img-joined" />{{comment.commentUsername}}</h3>
                 <p>{{comment.comment}}</p>
             </a>

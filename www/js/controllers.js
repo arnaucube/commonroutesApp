@@ -512,7 +512,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $scope.newComment.commentAvatar=localStorage.getItem("c_avatar");
 console.log($scope.newComment);
         $http({
-          url: urlapi + 'travels/comment/' + $stateParams.travelId,
+          url: urlapi + 'travels/'+ $stateParams.travelId+'/comment',
           method: "POST",
           data: $scope.newComment
         })
@@ -520,6 +520,11 @@ console.log($scope.newComment);
               // success
               console.log("newComment added to server: " + response);
               console.log(response);
+              $scope.travels=response.data;
+              localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+              localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+              $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
+
               if(response.data.success==false){
 
                   $ionicLoading.show({ template: 'failed to generate new asking package', noBackdrop: true, duration: 2000 });
