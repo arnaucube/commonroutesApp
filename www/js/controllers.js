@@ -1,6 +1,6 @@
 
-var urlapi="http://localhost:3000/api/";
-//var urlapi="https://collectivecar.paas.primustech.io/api/";
+//var urlapi="http://localhost:3000/api/";
+var urlapi="https://collectivecar.paas.primustech.io/api/";
 
 
 //localStorage.setItem("c_username", "user2");
@@ -200,7 +200,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             console.log(data); // for browser console
             $scope.travels = data; // for UI
             localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+            localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
+
         })
         .error(function(data, status, headers,config){
             console.log('data error');
@@ -288,8 +290,11 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             // success
             console.log("response: ");
             console.log(response);
-            $scope.newtravel._id=response.data._id;
-            $scope.travels.push($scope.newtravel);
+            //$scope.newtravel._id=response.data._id;
+            //$scope.travels.push($scope.newtravel);
+            $scope.travels=response.data;
+            localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+            localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
             $scope.newtravel={};
             if(response.data.success==false){
 
@@ -324,8 +329,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             // success
             console.log("response: ");
             console.log(response);
-            $scope.newtravel._id=response.data._id;
-            $scope.travels.push($scope.newtravel);
+            //$scope.newtravel._id=response.data._id;
+            //$scope.travels.push($scope.newtravel);
+            $scope.travels=response.data;
+            localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+            localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+            $scope.newtravel={};
             if(response.data.success==false){
 
                 $ionicLoading.show({ template: 'failed to generate new asking travel', noBackdrop: true, duration: 2000 });
@@ -360,8 +369,12 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
             // success
             console.log("response: ");
             console.log(response);
-            $scope.newtravel._id=response.data._id;
-            $scope.travels.push($scope.newtravel);
+            //$scope.newtravel._id=response.data._id;
+            //$scope.travels.push($scope.newtravel);
+            $scope.travels=response.data;
+            localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+            localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+            $scope.newtravel={};
             if(response.data.success==false){
 
                 $ionicLoading.show({ template: 'failed to generate new asking package', noBackdrop: true, duration: 2000 });
@@ -444,6 +457,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 console.log("response: ");
                 console.log(response);
 
+                $scope.travels=response.data;
+                localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+                localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+
         },
         function(response) { // optional
                 // failed
@@ -466,6 +483,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 // success
                 console.log("response: ");
                 console.log(response);
+
+                $scope.travels=response.data;
+                localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+                localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
 
         },
         function(response) { // optional
