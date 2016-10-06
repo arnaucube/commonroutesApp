@@ -430,7 +430,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.travels= JSON.parse(localStorage.getItem('c_travels'));
     $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
 
-    $http.get(urlapi + 'travels/comment/'+$stateParams.travelId)
+    /*$http.get(urlapi + 'travels/comment/'+$stateParams.travelId)
         .success(function(data, status, headers,config){
             console.log(data); // for browser console
             $scope.comments = data; // for UI
@@ -440,7 +440,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         })
         .then(function(result){
             comments = result.data;
-    });
+    });*/
 
     $scope.deleteTravel = function(){
 
@@ -582,7 +582,7 @@ console.log($scope.newComment);
         }
         //console.log("i: -1");
         return -1;
-    }
+    };
 })
 
 .controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading) {
@@ -632,10 +632,16 @@ console.log($scope.newComment);
     };
 })
 
-.controller('UserCtrl', function($scope, $stateParams, $http) {
+.controller('UserCtrl', function($scope, $stateParams, $http, $filter) {
+    if(localStorage.getItem('c_token')){// adding token to the headers
+        $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
+    }
+    $scope.storageusername=localStorage.getItem("c_username");
+    $scope.users= JSON.parse(localStorage.getItem('c_users'));
+    $scope.user = $filter('filter')($scope.users, $stateParams.username, true)[0];
     //$scope.user="";
     console.log($stateParams.username);
-    $http.get(urlapi + 'users/byusername/'+$stateParams.username)
+    /*$http.get(urlapi + 'users/byusername/'+$stateParams.username)
         .success(function(data, status, headers,config){
             console.log('data success');
             console.log(data); // for browser console
@@ -646,7 +652,7 @@ console.log($scope.newComment);
         })
         .then(function(result){
             user = result.data;
-    });
+    });*/
 
     $http.get(urlapi + 'travels/user/'+$stateParams.username)
         .success(function(data, status, headers,config){
@@ -660,6 +666,74 @@ console.log($scope.newComment);
         .then(function(result){
             travels = result.data;
     });
+
+
+
+    $scope.favUser = function(){
+        $scope.newfav={
+            //travelId: $stateParams.travelId,
+            userId: localStorage.getItem("c_userid"),
+            username: localStorage.getItem("c_username"),
+            avatar: localStorage.getItem("c_avatar")
+        };
+        $http({
+            //url: urlapi + 'users/'+ $stateParams.username+'/fav',
+            url: urlapi + 'users/'+ $scope.user._id+'/fav',
+            method: "POST",
+            data: $scope.newfav
+        })
+        .then(function(response) {
+                // success
+                console.log("response: ");
+                console.log(response);
+
+                $scope.users=response.data;
+                localStorage.setItem('c_users', JSON.stringify($scope.users));
+                $scope.user = $filter('filter')($scope.users, $stateParams.username, true)[0];
+
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+    $scope.unfavUser = function(){
+        console.log("unfav");
+        $scope.unfav={
+            userId: localStorage.getItem("c_userid"),
+            username: localStorage.getItem("c_username"),
+            avatar: localStorage.getItem("c_avatar")
+        };
+        $http({
+            //url: urlapi + 'users/'+ $stateParams.username+'/fav',
+            url: urlapi + 'users/'+ $scope.user._id+'/unfav',
+            method: "POST",
+            data: $scope.unfav
+        })
+        .then(function(response) {
+                // success
+                console.log("response: ");
+                console.log(response);
+
+                $scope.users=response.data;
+                localStorage.setItem('c_users', JSON.stringify($scope.users));
+                $scope.user = $filter('filter')($scope.users, $stateParams.username, true)[0];
+
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+
+    $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
+        if(myArray){
+            for(var i = 0, len = myArray.length; i < len; i++) {
+                if (myArray[i][property] === searchTerm){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    };
 })
 .controller('SettingsCtrl', function($scope, $stateParams, $translate) {
   if(localStorage.getItem('lang'))//initialization

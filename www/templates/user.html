@@ -10,6 +10,19 @@
         <p>
             <img class='o-imgMenu' src="img/telegram.png" /> @{{user.telegram}}
         </p>
+
+        <div class="o-text-right">
+          <b>favs:</b>
+          <span class="o-badge-calm">{{user.favs.length}}</span>
+          <br>
+          <div ng-show="storageusername && storageusername!=user.username">
+            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')==-1" ng-click="favUser()" class="button button-calm o-pull-right">+1</a>
+            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')!=-1" ng-click="unfavUser()" class="button button-assertive o-pull-right">unfav</a>
+          </div>
+          <!--<a ng-repeat="join in user.favs" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
+              <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
+          </a>-->
+        </div>
     </div>
     <div class="item item-body">
         {{'history_of' | translate}} {{user.username}}:
@@ -30,8 +43,6 @@
           <p>
               {{travel.description}}
           </p>
-
-
         </a>
     </div>
   </ion-content>
