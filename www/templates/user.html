@@ -13,11 +13,15 @@
 
         <div class="o-text-right">
           <b>favs:</b>
-          <span class="o-badge-calm">{{user.favs.length}}</span>
-          <br>
+          <span class="">{{user.favs.length}}</span>
+          <br><br>
           <div ng-show="storageusername && storageusername!=user.username">
-            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')==-1" ng-click="favUser()" class="button button-calm o-pull-right">+1</a>
-            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')!=-1" ng-click="unfavUser()" class="button button-assertive o-pull-right">unfav</a>
+            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')==-1" ng-click="favUser()">
+              <img class="o-imgMenu" src="img/unlike.png" />
+            </a>
+            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')!=-1" ng-click="unfavUser()">
+              <img class="o-imgMenu" src="img/like.png" />
+            </a>
           </div>
           <!--<a ng-repeat="join in user.favs" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
               <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>

@@ -73,13 +73,16 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
                 localStorage.setItem("c_avatar", response.data.avatar);
 
                 localStorage.setItem("c_userdata", JSON.stringify(response.data.userdata));
+
+                $timeout(function() {
+                  $scope.closeLogin();
+                  $window.location.reload(true);
+                }, 1000);
             }else{
                 console.log("login failed");
+                $ionicLoading.show({ template: 'Login failed, user or password error.', noBackdrop: true, duration: 2000 });
             }
-            $timeout(function() {
-              $scope.closeLogin();
-              $window.location.reload(true);
-            }, 1000);
+
 
     },
     function(response) { // optional
@@ -101,6 +104,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
               // success
               console.log("response: ");
               console.log(response.data);
+              $scope.loginData.username=$scope.signupData.username;
               $timeout(function() {
                 $scope.closeSignup();
                 $scope.login();
@@ -202,7 +206,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     }*/
 
     $scope.travels="";
-
     $scope.travels=JSON.parse(localStorage.getItem('c_travels'));
     $scope.userdata=JSON.parse(localStorage.getItem('c_userdata'));
     console.log($scope.userdata);
@@ -467,6 +470,10 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
          })
          .then(function(response) {
                  console.log(response);
+                 $scope.travels=response.data;
+                 localStorage.setItem('c_travels', JSON.stringify($scope.travels));
+                 localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
+
          },
          function(response) { // optional
                  // failed
@@ -685,6 +692,7 @@ console.log($scope.newComment);
             username: localStorage.getItem("c_username"),
             avatar: localStorage.getItem("c_avatar")
         };
+        $scope.user.favs.push($scope.newfav);//al unfav no cal fer aquest simulacre pq ja no existeix a l'array i no el resta dos cops en cas de que cliquin dos cops
         $http({
             //url: urlapi + 'users/'+ $stateParams.username+'/fav',
             url: urlapi + 'users/'+ $scope.user._id+'/fav',
