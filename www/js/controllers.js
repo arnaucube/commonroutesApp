@@ -339,6 +339,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     },
     function(response) { // optional
             // failed
+        $ionicLoading.show({ template: 'failed to generate new publication, all input fields needed', noBackdrop: true, duration: 2000 });
     });
 
     // Simulate a login delay. Remove this and replace with your login
@@ -380,6 +381,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     },
     function(response) { // optional
             // failed
+            $ionicLoading.show({ template: 'failed to generate new publication, all input fields needed', noBackdrop: true, duration: 2000 });
     });
 
     // Simulate a login delay. Remove this and replace with your login
@@ -423,6 +425,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     },
     function(response) { // optional
             // failed
+            $ionicLoading.show({ template: 'failed to generate new publication, all input fields needed', noBackdrop: true, duration: 2000 });
     });
 
     // Simulate a login delay. Remove this and replace with your login
