@@ -12,7 +12,7 @@
         </div>
       </div>
 
-        <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" href="#/app/users/{{user.username}}">
+        <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" ng-href="#/app/users/{{user.username}}">
           <img ng-src="img/avatars/{{user.avatar}}.png">
           <h2>{{user.username}}</h2>
           <p>

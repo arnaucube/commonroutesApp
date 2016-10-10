@@ -1,0 +1,24 @@
+<ion-modal-view view-title="{{'User' | translate}}">
+  <ion-content>
+
+    <h4 class="padding">
+        <img class='o-imgTitle' src="img/like.png" />
+        {{'Likes' | translate}} {{newtravel.title}}
+        <div class="item-note">
+          <button class="button button-small button-dark" ng-click="closeModalFavsList()">X</button>
+        </div>
+
+    </h4>
+
+    <div class="list">
+        <a ng-repeat="fav in user.favs | orderBy: 'date'" class="item item-avatar" ng-click="closeModalAndGoUser()" ng-href="#/app/users/{{fav.username}}">
+          <img ng-src="img/avatars/{{fav.avatar}}.png">
+          <h2>{{fav.username}}</h2>
+        </a>
+    </div>
+    <div class="item-note">
+      <button class="button button-small button-dark" ng-click="closeModalFavsList()">{{'Close' | translate}}</button>
+    </div>
+
+  </ion-content>
+</ion-modal-view>

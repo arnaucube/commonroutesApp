@@ -53,6 +53,7 @@ var translations = {
 		"Pull_from_top_to_refresh": "Pull from top to refresh",
 		"User": "User",
 		"history_of": "history of",
+		"current_publications_of": "current publications of",
 		"publications": "publications",
 
 	},

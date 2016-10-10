@@ -15,8 +15,10 @@
     </div>
     <div class="item item-body">
       <div class='row'>
-
           <p class="o-bold">{{travel.description}}</p>
+      </div>
+      <div class="row">
+        <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from}} --> {{travel.to}}</p>
       </div>
       <div class='row'>
         <div class='col'>
@@ -24,10 +26,10 @@
               <img class='o-imgMenu' src="img/smartphone.png" /> {{travel.phone}}
           </p>
           <p ng-show="travel.telegram">
+            <a ng-href="https://telegram.me/{{travel.telegram}}" target="_blank" class="button">
               <img class='o-imgMenu' src="img/telegram.png" /> @{{travel.telegram}}
+            </a>
           </p>
-
-          <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from}} - {{travel.to}}</p>
         </div>
         <div class='col o-text-right'>
           <p ng-show="travel.collectivized">
@@ -49,7 +51,7 @@
         <br>
 
 
-        <div ng-show="storageusername && storageusername!=travel.owner">
+        <div ng-show="storageusername && storageusername!=travel.owner" class="text-right">
             <p class='text-right'>
               <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')==-1">
                 <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Ask_to_join' | translate}}</a>
@@ -90,7 +92,7 @@
             <button ng-click="closeNewComment()" class="button button-small button-assertive">
                {{'Cancel' | translate}}
             </button>
-            <button ng-click="doNewComment()" class="button button-small button-calm">
+            <button ng-click="doNewComment()" ng-show="newComment.comment" class="button button-small button-calm">
                {{'Post_comment' | translate}}
             </button>
         </form>

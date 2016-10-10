@@ -8,13 +8,17 @@
         <p class="o-bold">{{user.description}}</p>
         <p>{{user.mail}}</p>
         <p>
+          <a ng-href="https://telegram.me/{{user.telegram}}" target="_blank" class="button">
             <img class='o-imgMenu' src="img/telegram.png" /> @{{user.telegram}}
+          </a>
         </p>
 
         <div class="o-text-right">
-          <b>favs:</b>
-          <span class="">{{user.favs.length}}</span>
-          <br><br>
+          <div ng-click="showFavsList()">
+            <b>favs:</b>
+            <span class="">{{user.favs.length}}</span>
+          </div>
+          <br>
           <div ng-show="storageusername && storageusername!=user.username">
             <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')==-1" ng-click="favUser()">
               <img class="o-imgMenu" src="img/unlike.png" />
@@ -29,7 +33,7 @@
         </div>
     </div>
     <div class="item item-body">
-        {{'history_of' | translate}} {{user.username}}:
+        {{'current_publications_of' | translate}} {{user.username}}:
         <div class="positive">{{travels.length}} {{'publications' | translate}}</div>
 
         <a ng-repeat="travel in travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">

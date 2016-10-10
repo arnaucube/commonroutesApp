@@ -648,13 +648,13 @@ console.log($scope.newComment);
     };
 })
 
-.controller('UserCtrl', function($scope, $stateParams, $http, $filter) {
+.controller('UserCtrl', function($scope, $stateParams, $http, $filter, $ionicModal) {
     if(localStorage.getItem('c_token')){// adding token to the headers
         $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
     }
     $scope.storageusername=localStorage.getItem("c_username");
     $scope.users= JSON.parse(localStorage.getItem('c_users'));
-    $scope.user = $filter('filter')($scope.users, $stateParams.username, true)[0];
+    $scope.user = $filter('filter')($scope.users, {username: $stateParams.username}, true)[0];
     //$scope.user="";
     console.log($stateParams.username);
     /*$http.get(urlapi + 'users/byusername/'+$stateParams.username)
@@ -706,7 +706,7 @@ console.log($scope.newComment);
 
                 $scope.users=response.data;
                 localStorage.setItem('c_users', JSON.stringify($scope.users));
-                $scope.user = $filter('filter')($scope.users, $stateParams.username, true)[0];
+                $scope.user = $filter('filter')($scope.users, {username: $stateParams.username}, true)[0];
 
         },
         function(response) { // optional
@@ -733,12 +733,27 @@ console.log($scope.newComment);
 
                 $scope.users=response.data;
                 localStorage.setItem('c_users', JSON.stringify($scope.users));
-                $scope.user = $filter('filter')($scope.users, $stateParams.username, true)[0];
+                $scope.user = $filter('filter')($scope.users, {username: $stateParams.username}, true)[0];
 
         },
         function(response) { // optional
                 // failed
         });
+    };
+
+    $ionicModal.fromTemplateUrl('templates/favsList.html', {
+      scope: $scope
+    }).then(function(modal) {
+      $scope.modalFavsList = modal;
+    });
+    $scope.closeModalFavsList = function() {
+      $scope.modalFavsList.hide();
+    };
+    $scope.showFavsList = function(){
+      $scope.modalFavsList.show();
+    };
+    $scope.closeModalAndGoUser = function(){
+      $scope.modalFavsList.hide();
     };
 
     $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
