@@ -9,15 +9,15 @@
     <form ng-submit="doSignup()">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">{{'Username' | translate }}</span>
+          <span class="input-label">{{'Username' | translate }}*</span>
           <input type="text" ng-model="signupData.username">
         </label>
         <label class="item item-input">
-          <span class="input-label">{{'Password' | translate }}</span>
+          <span class="input-label">{{'Password' | translate }}*</span>
           <input type="password" ng-model="signupData.password">
         </label>
         <label class="item item-input">
-          <span class="input-label">{{'Mail' | translate }}</span>
+          <span class="input-label">{{'Mail' | translate }}*</span>
           <input type="email" ng-model="signupData.mail">
         </label>
         <label class="item item-input">
@@ -29,14 +29,14 @@
           <input type="text" ng-model="signupData.telegram">
         </label>
         <label class="item item-input">
-          <span class="input-label">{{'Description' | translate }}</span>
+          <span class="input-label">{{'Description' | translate }}*</span>
           <input type="text" ng-model="signupData.description">
         </label>
         <!--<label class="item item-input">
           <span class="input-label">{{'Avatar' | translate }}</span>
           <input type="text" ng-model="signupData.avatar">
         </label>-->
-        <p>{{'Avatar' | translate }}: <b>{{signupData.avatar}}</b></p>
+        <p>{{'Avatar' | translate }}*: <b>{{signupData.avatar}}</b></p>
         <img ng-repeat="avatar in avatars" ng-click="avatarSelect('{{avatar}}')" ng-src="img/avatars/{{avatar}}.png" class="o-imgSelectAvatar" >
 
         <label class="item">

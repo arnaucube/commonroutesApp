@@ -133,10 +133,6 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     {
       return(false);
     }
-    if(obj.phone==undefined)
-    {
-      return(false);
-    }
     if(obj.avatar==undefined)
     {
       return(false);
