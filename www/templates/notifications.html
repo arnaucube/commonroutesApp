@@ -1,0 +1,14 @@
+<ion-view view-title="{{'Notifications' | translate}} {{user.username}}">
+  <ion-content>
+    <div class="item item-body">
+      <a ng-repeat="notification in notifications | orderBy: '-date'" class="item item-avatar" href="#/app/{{notification.link}}">
+        <img ng-src="img/{{notification.type}}.png"/>
+        <h2>{{notification.description}}</h2>
+        <div class="item-note text-right">
+            <div class="positive">{{notification.date | date:"dd/MM"}}</div>
+            <div class="positive">{{notification.date | date:"HH:mm:ss"}}</div>
+        </div>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

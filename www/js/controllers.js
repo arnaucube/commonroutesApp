@@ -23,6 +23,8 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 
   $scope.storageusername=localStorage.getItem("c_username");
   $scope.storageavatar=localStorage.getItem("c_avatar");
+  $scope.userdata=JSON.parse(localStorage.getItem('c_userdata'));
+  console.log($scope.userdata);
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
@@ -189,7 +191,7 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
 })
 
 
-.controller('TravelsCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading) {
+.controller('TravelsCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading, $filter) {
     if(localStorage.getItem('c_token')){// adding token to the headers
         //console.log("token added to headers in run module");
         //console.log($http.defaults);
@@ -204,13 +206,14 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.travels="";
     $scope.travels=JSON.parse(localStorage.getItem('c_travels'));
     $scope.userdata=JSON.parse(localStorage.getItem('c_userdata'));
+    //$scope.storageusername=JSON.parse(localStorage.getItem('c_username'));
     console.log($scope.userdata);
 
     $scope.doRefresh = function() {
       /* travels refresh: */
         $http.get(urlapi + 'travels')
         .success(function(data, status, headers,config){
-            console.log('data success');
+            console.log('data success travels');
             console.log(data); // for browser console
             $scope.travels = data; // for UI
             localStorage.setItem('c_travels', JSON.stringify($scope.travels));
@@ -232,11 +235,17 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         /* users refresh: */
         $http.get(urlapi + 'users')
         .success(function(data, status, headers, config){
-            console.log('data success');
+            console.log('data success users');
             console.log(data); // for browser console
             $scope.users = data; // for UI
             localStorage.setItem('c_users', JSON.stringify($scope.users));
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
+
+            //set userdata
+            $scope.userdata = $filter('filter')($scope.users, {username: $scope.storageusername}, true)[0];
+            console.log("userdata");
+            console.log($scope.userdata);
+            localStorage.setItem("c_userdata", JSON.stringify($scope.userdata));
         })
         .error(function(data, status, headers,config){
             console.log('data error');
@@ -307,9 +316,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     console.log('Doing new travel', $scope.newtravel);
     $scope.newtravel.icon="lorry";
     $scope.newtravel.generateddate=$scope.newtravel.date;
-    $scope.newtravel.owner=localStorage.getItem("c_username");
+    /*$scope.newtravel.owner=localStorage.getItem("c_username");
     $scope.newtravel.telegram=JSON.parse(localStorage.getItem("c_userdata")).telegram;
-    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;
+    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;*/
     $scope.newtravel.modality="offering";
     //$scope.newtravel.token=localStorage.getItem("c_token");
     console.log($scope.newtravel);
@@ -349,9 +358,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     console.log('Doing new travel', $scope.newtravel);
     $scope.newtravel.icon="lorry";
     $scope.newtravel.generateddate=$scope.newtravel.date;
-    $scope.newtravel.owner=localStorage.getItem("c_username");
+    /*$scope.newtravel.owner=localStorage.getItem("c_username");
     $scope.newtravel.telegram=JSON.parse(localStorage.getItem("c_userdata")).telegram;
-    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;
+    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;*/
 
     $scope.newtravel.modality="asking";
     console.log($scope.newtravel);
@@ -391,9 +400,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     console.log('Doing new package', $scope.newtravel);
     $scope.newtravel.icon="lorry";
     $scope.newtravel.generateddate=$scope.newtravel.date;
-    $scope.newtravel.owner=localStorage.getItem("c_username");
+    /*$scope.newtravel.owner=localStorage.getItem("c_username");
     $scope.newtravel.telegram=JSON.parse(localStorage.getItem("c_userdata")).telegram;
-    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;
+    $scope.newtravel.phone=JSON.parse(localStorage.getItem("c_userdata")).phone;*/
 
     $scope.newtravel.package=true;
 
@@ -487,9 +496,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
     $scope.joinTravel = function(){
         $scope.newjoin={
             //travelId: $stateParams.travelId,
-            joinedUserId: localStorage.getItem("c_userid"),
+            /*joinedUserId: localStorage.getItem("c_userid"),
             joinedUsername: localStorage.getItem("c_username"),
-            joinedAvatar: localStorage.getItem("c_avatar")
+            joinedAvatar: localStorage.getItem("c_avatar")*/
         };
         $http({
             url: urlapi + 'travels/'+ $stateParams.travelId+'/join',
@@ -515,9 +524,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         console.log("unjoin");
         $scope.unjoin={
             travelId: $stateParams.travelId,
-            joinedUserId: localStorage.getItem("c_userid"),
+            /*joinedUserId: localStorage.getItem("c_userid"),
             joinedUsername: localStorage.getItem("c_username"),
-            joinedAvatar: localStorage.getItem("c_avatar")
+            joinedAvatar: localStorage.getItem("c_avatar")*/
         };
         $http({
             url: urlapi + 'travels/'+ $stateParams.travelId+'/unjoin',
@@ -551,9 +560,9 @@ angular.module('starter.controllers', ['pascalprecht.translate'])
         $scope.doingNewComment=false;
     };
     $scope.doNewComment = function() {
-        $scope.newComment.commentUserId=localStorage.getItem("c_userid");
+        /*$scope.newComment.commentUserId=localStorage.getItem("c_userid");
         $scope.newComment.commentUsername=localStorage.getItem("c_username");
-        $scope.newComment.commentAvatar=localStorage.getItem("c_avatar");
+        $scope.newComment.commentAvatar=localStorage.getItem("c_avatar");*/
 console.log($scope.newComment);
         $http({
           url: urlapi + 'travels/'+ $stateParams.travelId+'/comment',
@@ -600,7 +609,7 @@ console.log($scope.newComment);
     };
 })
 
-.controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading) {
+.controller('UsersCtrl', function($scope, $http, $ionicModal, $timeout, $ionicLoading, $filter) {
     $scope.users="";
 
     $scope.users=JSON.parse(localStorage.getItem('c_users'));
@@ -636,6 +645,12 @@ console.log($scope.newComment);
             $scope.users = data; // for UI
             localStorage.setItem('c_users', JSON.stringify($scope.users));
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
+
+            //set userdata
+            $scope.userdata = $filter('filter')($scope.users, {username: $scope.storageusername}, true)[0];
+            console.log("userdata");
+            console.log($scope.userdata);
+            localStorage.setItem("c_userdata", JSON.stringify($scope.userdata));
         })
         .error(function(data, status, headers,config){
             console.log('data error');
@@ -687,9 +702,9 @@ console.log($scope.newComment);
     $scope.favUser = function(){
         $scope.newfav={
             //travelId: $stateParams.travelId,
-            userId: localStorage.getItem("c_userid"),
+            /*userId: localStorage.getItem("c_userid"),
             username: localStorage.getItem("c_username"),
-            avatar: localStorage.getItem("c_avatar")
+            avatar: localStorage.getItem("c_avatar")*/
         };
         $scope.user.favs.push($scope.newfav);//al unfav no cal fer aquest simulacre pq ja no existeix a l'array i no el resta dos cops en cas de que cliquin dos cops
         $http({
@@ -715,9 +730,9 @@ console.log($scope.newComment);
     $scope.unfavUser = function(){
         console.log("unfav");
         $scope.unfav={
-            userId: localStorage.getItem("c_userid"),
+            /*userId: localStorage.getItem("c_userid"),
             username: localStorage.getItem("c_username"),
-            avatar: localStorage.getItem("c_avatar")
+            avatar: localStorage.getItem("c_avatar")*/
         };
         $http({
             //url: urlapi + 'users/'+ $stateParams.username+'/fav',
@@ -766,6 +781,20 @@ console.log($scope.newComment);
         return -1;
     };
 })
+.controller('NotificationsCtrl', function($scope, $stateParams, $translate, $filter) {
+  if(localStorage.getItem('c_token')){// adding token to the headers
+    //  $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
+  }
+  $scope.storageusername=localStorage.getItem("c_username");
+  $scope.users= JSON.parse(localStorage.getItem('c_users'));
+  $scope.user = $filter('filter')($scope.users, {username: $stateParams.username}, true)[0];
+  $scope.notifications=$scope.user.notifications;
+
+  console.log($stateParams.username);
+  console.log($scope.notifications);
+  console.log("notifications page");
+})
+
 .controller('SettingsCtrl', function($scope, $stateParams, $translate) {
   if(localStorage.getItem('lang'))//initialization
   {

@@ -32,6 +32,11 @@
             <img class='o-imgMenu' src="img/users.png" />
           {{'Users' | translate }}
         </ion-item>
+        <ion-item menu-close href="#/app/notifications/{{storageusername}}" ng-show="storageusername">
+            <img class='o-imgMenu' src="img/notification.png" />
+          {{'Notifications' | translate }}
+          <span class="badge badge-positive">{{userdata.notifications.length}}</span>
+        </ion-item>
         <ion-item menu-close href="#/app/users/{{storageusername}}" ng-show="storageusername">
             <img class='o-imgMenu' ng-src="img/avatars/{{storageavatar}}.png" />
           {{storageusername}}

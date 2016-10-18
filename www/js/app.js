@@ -52,7 +52,15 @@ angular.module('starter', ['ionic',
       }
     }
   })
-
+  .state('app.notifications', {
+    url: '/notifications/:username',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/notifications.html',
+        controller: 'NotificationsCtrl'
+      }
+    }
+  })
   .state('app.users', {
       url: '/users',
       views: {

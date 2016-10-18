@@ -6,6 +6,7 @@ var translations = {
 		"Login": "Login",
 		"Travels": "Travels",
 		"Users": "Users",
+		"Notifications": "Notifications",
 		"Logout": "Logout",
 		"Settings": "Settings",
 		"Help": "Help",
