@@ -1,6 +1,6 @@
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-calm">
+    <ion-nav-bar class="bar-calm" ng-show="storageuser">
       <ion-nav-back-button>
       </ion-nav-back-button>
 
@@ -10,6 +10,19 @@
       </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
+    <!-- menu footer -->
+    <div class="tabs tabs-icon-left" ng-controller="FooterMenuCtrl" ng-show="storageuser" ng-hide="location=='message'">
+      <a class="tab-item" ng-href="#/app/notifications">
+        <i class="icon ion-android-notifications-none"></i> Notifications
+      </a>
+      <a class="tab-item" ng-href="#/app/main">
+        <i class="icon ion-home"></i> Home
+      </a>
+      <a ng-href="#/app/newPublication" class="tab-item">
+        <i class="icon ion-paper-airplane"></i> New publication
+      </a>
+    </div>
+    <!-- /menu footer -->
   </ion-side-menu-content>
 
   <ion-side-menu side="left">
@@ -18,40 +31,31 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close ng-click="signup()" ng-show="!storageusername">
-            {{'Signup' | translate }}
-        </ion-item>
-        <ion-item menu-close ng-click="login()" ng-show="!storageusername">
-          {{'Login' | translate }}
-        </ion-item>
-        <ion-item menu-close href="#/app/travels">
-            <img class='o-imgMenu' src="img/road.png" />
-          {{'Travels' | translate }}
-        </ion-item>
-        <ion-item menu-close href="#/app/users">
-            <img class='o-imgMenu' src="img/users.png" />
-          {{'Users' | translate }}
-        </ion-item>
-        <ion-item menu-close href="#/app/notifications/{{storageusername}}" ng-show="storageusername">
-            <img class='o-imgMenu' src="img/notification.png" />
-          {{'Notifications' | translate }}
+        <a class="item item-icon-left" menu-close href="#/app/main">
+          <i class="icon ion-home"></i> {{'Main' | translate }}
+        </a>
+        <a class="item item-icon-left" menu-close href="#/app/users/{{storageuser}}" ng-show="storageuser">
+          <i class="icon ion-person"></i> {{storageuser.username}}
+        </a>
+        <a class="item item-icon-left" menu-close href="#/app/travels">
+          <i class="icon ion-android-car"></i> {{'Travels' | translate }}
+        </a>
+        <a class="item item-icon-left" menu-close href="#/app/users">
+          <i class="icon ion-person-stalker"></i> {{'Users' | translate }}
+        </a>
+        <a class="item item-icon-left" menu-close href="#/app/notifications" ng-show="storageuser">
+          <i class="icon ion-android-notifications-none"></i> {{'Notifications' | translate }}
           <span class="badge badge-positive">{{userdata.notifications.length}}</span>
-        </ion-item>
-        <ion-item menu-close href="#/app/users/{{storageusername}}" ng-show="storageusername">
-            <img class='o-imgMenu' ng-src="img/avatars/{{storageavatar}}.png" />
-          {{storageusername}}
-        </ion-item>
-        <ion-item menu-close href="#/app/settings">
-            <img class='o-imgMenu' src="img/settings.png" />
-          {{'Settings' | translate }}
-        </ion-item>
-        <ion-item menu-close href="#/app/help">
-            <img class='o-imgMenu' src="img/help.png" />
-          {{'Help' | translate }}
-        </ion-item>
-        <ion-item menu-close ng-click="logout()" ng-show="storageusername">
-          {{'Logout' | translate }}
-        </ion-item>
+        </a>
+        <a class="item item-icon-left" menu-close href="#/app/settings">
+          <i class="icon ion-settings"></i> {{'Settings' | translate }}
+        </a>
+        <a class="item item-icon-left" menu-close href="#/app/help">
+          <i class="icon ion-ios-help-outline"></i> {{'Help' | translate }}
+        </a>
+        <a class="item item-icon-left" menu-close ng-click="logout()" ng-show="storageuser">
+          <i class="icon ion-home"></i> {{'Logout' | translate }}
+        </a>
       </ion-list>
     </ion-content>
   </ion-side-menu>
