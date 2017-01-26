@@ -9,7 +9,7 @@ angular.module('app.login', ['pascalprecht.translate'])
       console.log('Doing login', $scope.loginData);
 
       $http({
-          url: urlapi + 'auth',
+          url: urlapi + 'login',
           method: "POST",
           data: $scope.loginData
       })

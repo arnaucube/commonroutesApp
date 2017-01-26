@@ -6,7 +6,7 @@ angular.module('app.signup', ['pascalprecht.translate'])
       console.log('Doing signup', $scope.signupData);
       if ($scope.emptyParams($scope.signupData)) {
         $http({
-            url: urlapi + 'users',
+            url: urlapi + 'signup',
             method: "POST",
             data: $scope.signupData
           })
@@ -49,7 +49,7 @@ angular.module('app.signup', ['pascalprecht.translate'])
       if (obj.password == undefined) {
         return (false);
       }
-      if (obj.mail == undefined) {
+      if (obj.email == undefined) {
         return (false);
       }
       /*if(obj.avatar==undefined)

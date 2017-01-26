@@ -1,32 +1,14 @@
 angular.module('app.user', ['pascalprecht.translate'])
 
 .controller('UserCtrl', function($scope, $stateParams, $http, $filter, $ionicModal) {
-    if(localStorage.getItem('c_token')){// adding token to the headers
-        $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
-    }
-    $scope.storageusername=localStorage.getItem("c_username");
-    $scope.users= JSON.parse(localStorage.getItem('c_users'));
-    $scope.user = $filter('filter')($scope.users, {username: $stateParams.username}, true)[0];
-    //$scope.user="";
-    console.log($stateParams.username);
-    /*$http.get(urlapi + 'users/byusername/'+$stateParams.username)
+
+
+    $scope.user={};
+    $http.get(urlapi + 'users/getByUserId/'+$stateParams.userid)
         .success(function(data, status, headers,config){
             console.log('data success');
             console.log(data); // for browser console
             $scope.user = data; // for UI
-        })
-        .error(function(data, status, headers,config){
-            console.log('data error');
-        })
-        .then(function(result){
-            user = result.data;
-    });*/
-
-    $http.get(urlapi + 'travels/user/'+$stateParams.username)
-        .success(function(data, status, headers,config){
-            console.log('data success');
-            console.log(data); // for browser console
-            $scope.travels = data; // for UI
         })
         .error(function(data, status, headers,config){
             console.log('data error');

@@ -131,7 +131,7 @@ angular.module('starter', [
         }
       })
       .state('app.user', {
-        url: '/users/:username',
+        url: '/users/:userid',
         views: {
           'menuContent': {
             templateUrl: 'templates/user.html',
@@ -201,4 +201,31 @@ angular.module('starter', [
 
     $translateProvider.useSanitizeValueStrategy('escape');
 
-  }]);
+  }])
+  .factory('httpInterceptor', function httpInterceptor($q, $window, $location) {
+        return {
+            request: function (config) {
+                return config;
+            },
+            requestError: function (config) {
+                return config;
+            },
+            response: function (res) {
+                return res;
+            },
+            responseError: function (res) {
+                return res;
+            }
+        }
+    })
+    .factory('api', function ($http) {
+        return {
+            init: function () {
+                $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem("cim_app_token");
+                $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem("cim_app_token");
+            }
+        };
+    })
+    .run(function (api) {
+        api.init();
+    });

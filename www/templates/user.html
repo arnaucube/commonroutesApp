@@ -1,13 +1,13 @@
 <ion-view view-title="{{'User' | translate}} {{user.username}}">
   <ion-content>
     <div class="item item-avatar">
-        <img ng-src="img/avatars/{{user.avatar}}.png" />
+        <img ng-src="{{user.avatar}}" />
         <h2>{{user.username}}</h2>
     </div>
     <div class="item item-body">
         <p class="o-bold">{{user.description}}</p>
         <p>{{user.mail}}</p>
-        <p>
+        <p ng-show="user.telegram">
           <!--<a ng-href="https://telegram.me/{{user.telegram}}" target="_blank" class="button">-->
             <img class='o-imgMenu' src="img/telegram.png" /> @{{user.telegram}}
           <!--</a>-->
@@ -34,13 +34,13 @@
     </div>
     <div class="item item-body">
         {{'current_publications_of' | translate}} {{user.username}}:
-        <div class="positive">{{travels.length}} {{'publications' | translate}}</div>
+        <div class="positive">{{user.travels.length}} {{'publications' | translate}}</div>
 
-        <a ng-repeat="travel in travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">
-          <img ng-src="img/{{travel.modality}}.png">
+        <a ng-repeat="travel in user.travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">
+          <img ng-src="img/{{travel.type}}.png">
           <h2>{{travel.title}}
               <div class="item-note">
-                  <div class="positive">{{travel.date | date:"dd/MM HH:mm a"}}</div>
+                  <div class="positive">{{travel.date | date:"dd/MM/yyyy HH:mm a"}}</div>
               </div>
           </h2>
 

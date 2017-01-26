@@ -1,6 +1,6 @@
 <ion-view view-title="Offer Car">
   <ion-content>
-      <form class="list">
+      <div class="list">
           <label class="item item-input">
               <span class="input-label"t>{{'Title' | translate}}</span>
               <input ng-model="newtravel.title" class="positive" type="text" placeholder="">
@@ -50,13 +50,10 @@
               <input ng-model="newtravel.description" type="text" placeholder="Description">
           </label>
           <p class="padding">
-            <button ng-click="closeNewOfferingTravel()" class="button button-assertive">
-               {{'Cancel' | translate}}
-            </button>
-            <button ng-click="doNewOfferingTravel()" class="button button-calm">
+            <button ng-click="createTravel()" class="button button-calm o_floatRight">
                {{'Create_travel' | translate}}
             </button>
           </p>
-      </form>
+      </div>
   </ion-content>
 </ion-view>

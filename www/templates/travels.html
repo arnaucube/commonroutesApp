@@ -24,7 +24,7 @@
           </div>
         </div>
         <a ng-repeat="travel in travels | orderBy: 'date' | filter: search" class="item item-avatar" href="#/app/travels/{{travel._id}}">
-          <img ng-src="img/{{travel.modality}}.png"/>
+          <img ng-src="img/{{travel.type}}.png"/>
           <h2>{{travel.title}}</h2>
           <div class="item-note text-right">
               <div class="positive">{{travel.date | date:"dd/MM"}}</div>
