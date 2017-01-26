@@ -94,7 +94,7 @@ angular.module('starter', [
       })
 
       .state('app.travel', {
-        url: '/travels/:travelId',
+        url: '/travels/:travelid',
         views: {
           'menuContent': {
             templateUrl: 'templates/travel.html',

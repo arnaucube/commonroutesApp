@@ -29,16 +29,12 @@
           <input type="text" ng-model="signupData.telegram">
         </label>
         <label class="item item-input">
-          <span class="input-label">{{'Description' | translate }}*</span>
+          <span class="input-label">{{'Description' | translate }}</span>
           <input type="text" ng-model="signupData.description">
         </label>
-        <!--<label class="item item-input">
-          <span class="input-label">{{'Avatar' | translate }}</span>
-          <input type="text" ng-model="signupData.avatar">
-        </label>-->
-        <p>{{'Avatar' | translate }}*: <b>{{signupData.avatar}}</b></p>
+        <!--<p>{{'Avatar' | translate }}*: <b>{{signupData.avatar}}</b></p>
         <img ng-repeat="avatar in avatars" ng-click="avatarSelect('{{avatar}}')" ng-src="img/avatars/{{avatar}}.png" class="o-imgSelectAvatar" >
-
+-->
         <label class="item">
           <button class="button button-block button-positive" type="submit">{{'Signup' | translate }}</button>
         </label>

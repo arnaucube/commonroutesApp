@@ -1,25 +1,25 @@
 angular.module('app.travel', ['pascalprecht.translate'])
 
 .controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicPopup, $filter) {
-    if(localStorage.getItem('c_token')){// adding token to the headers
-        $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
-    }
-    $scope.storageusername=localStorage.getItem("c_username");
-    console.log($stateParams.travelId);
-    $scope.travels= JSON.parse(localStorage.getItem('c_travels'));
-    $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
 
-    /*$http.get(urlapi + 'travels/comment/'+$stateParams.travelId)
-        .success(function(data, status, headers,config){
+    $scope.travel={};
+    $scope.doRefresh = function() {
+      /* travels refresh: */
+        $http.get(urlapi + 'travels/id/' + $stateParams.travelid)
+        .then(function(data){
+            console.log('data success travels');
             console.log(data); // for browser console
-            $scope.comments = data; // for UI
-        })
-        .error(function(data, status, headers,config){
+            $scope.travel = data.data; // for UI
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+
+        }, function(data){
             console.log('data error');
-        })
-        .then(function(result){
-            comments = result.data;
-    });*/
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+            $ionicLoading.show({ template: 'Error connecting server', noBackdrop: true, duration: 2000 });
+
+        });
+    };
+    $scope.doRefresh();
 
     $scope.deleteTravel = function(){
 
@@ -147,9 +147,6 @@ console.log($scope.newComment);
         });
         $scope.closeNewComment();
     };
-    console.log("a");
-    console.log($scope.storageusername);
-    console.log($scope.travel.owner);
 
 
     $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {

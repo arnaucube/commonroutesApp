@@ -1,21 +1,24 @@
 <ion-view view-title="{{'Travel' | translate}}">
   <ion-content>
     <div class="item item-avatar">
-        <img ng-src="img/{{travel.modality}}.png" />
-        <div class="item-note o-text-right">
-          <p>
-            <a class="o-badge-calm" href="#/app/users/{{travel.owner}}">{{travel.owner}}</a>
-          </p>
-            <p ng-show="storageusername==travel.owner" class="text-right">
-                <a ng-click="deleteTravel()" class="button button-small button-assertive o-pull-right"><i class="icon ion-trash-a"></i></a>
-            </p>
-        </div>
-        <h2>{{travel.title}}</h2>
-        <div class="">{{travel.date | date:"dd/MM HH:mm a"}}</div>
+      <img ng-src="img/{{travel.type}}.png" />
+      <div class="item-note o-text-right">
+        <p>
+          <span class="mdl-chip mdl-chip--contact" ng-href="#/app/users/{{travel.user._id}}">
+            <img class="mdl-chip__contact" src="{{travel.user.avatar}}"></img>
+            <span class="mdl-chip__text">{{travel.user.username}}</span>
+        </span>
+        </p>
+        <p ng-show="storageuser._id==travel.user._id" class="text-right">
+          <a ng-click="deleteTravel()" class="button button-small o_bRed"><i class="icon ion-trash-a"></i></a>
+        </p>
+      </div>
+      <h2>{{travel.title}}</h2>
+      <div class="">{{travel.date | date:"dd/MM HH:mm a"}}</div>
     </div>
     <div class="item item-body">
       <div class='row'>
-          <p class="o-bold">{{travel.description}}</p>
+        <p class="o-bold">{{travel.description}}</p>
       </div>
       <div class="row">
         <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from}} --> {{travel.to}}</p>
@@ -23,11 +26,11 @@
       <div class='row'>
         <div class='col'>
           <p ng-show="travel.phone">
-              <img class='o-imgMenu' src="img/smartphone.png" /> {{travel.phone}}
+            <img class='o-imgMenu' src="img/smartphone.png" /> {{travel.user.phone}}
           </p>
           <p ng-show="travel.telegram">
             <!--<a ng-href="https://telegram.me/{{travel.telegram}}" target="_blank" class="button">-->
-              <img class='o-imgMenu' src="img/telegram.png" /> @{{travel.telegram}}
+            <img class='o-imgMenu' src="img/telegram.png" /> @{{travel.user.telegram}}
             <!--</a>-->
           </p>
         </div>
@@ -37,65 +40,65 @@
           </p>
           <p ng-show="travel.package">
             <div class="o-mini-text">
-                <div ng-show="travel.modality=='offering'">{{'Can_carry_package' | translate}} <img src="img/package.png" class="o-imgMenu" /></div>
-                <div ng-show="travel.modality=='asking'">{{'Need_to_carry_package' | translate}} <img src="img/package.png" class="o-imgMenu" /></div>
+              <div ng-show="travel.modality=='offering'">{{'Can_carry_package' | translate}} <img src="img/package.png" class="o-imgMenu" /></div>
+              <div ng-show="travel.modality=='asking'">{{'Need_to_carry_package' | translate}} <img src="img/package.png" class="o-imgMenu" /></div>
             </div>
           </p>
 
-            <p>
-                <div ng-show="travel.modality=='offering'">{{'n_Seats' | translate}}: {{travel.seats}}</div>
-                <div ng-show="travel.modality=='asking'">{{'n_People' | translate}}: {{travel.seats}}</div>
-            </p>
+          <p>
+            <div ng-show="travel.modality=='offering'">{{'n_Seats' | translate}}: {{travel.seats}}</div>
+            <div ng-show="travel.modality=='asking'">{{'n_People' | translate}}: {{travel.seats}}</div>
+          </p>
         </div>
       </div>
-        <br>
+      <br>
 
 
-        <div ng-show="storageusername && storageusername!=travel.owner" class="text-right">
-            <p class='text-right'>
-              <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')==-1">
-                <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Ask_to_join' | translate}}</a>
-                <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
-                <a ng-show="travel.modality=='package'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
-              </div>
+      <div ng-show="storageuser._id!=travel.user._id" class="text-right">
+        <p class='text-right'>
+          <div ng-show="arrayObjectIndexOf(travel.joins, storageuser.username, 'joinPetitions')==-1">
+            <a ng-show="travel.modality=='offering'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Ask_to_join' | translate}}</a>
+            <a ng-show="travel.modality=='asking'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
+            <a ng-show="travel.modality=='package'" ng-click="joinTravel()" class="button button-calm o-pull-right">{{'Offer_car' | translate}}</a>
+          </div>
 
-              <div ng-show="arrayObjectIndexOf(travel.joins, storageusername, 'joinedUsername')!=-1">
-                <a ng-show="travel.modality=='offering'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unjoin' | translate}}</a>
-                <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
-                <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
-              </div>
-            </p>
-        </div>
+          <div ng-show="arrayObjectIndexOf(travel.joins, storageuser.username, 'joinPetitions')!=-1">
+            <a ng-show="travel.modality=='offering'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unjoin' | translate}}</a>
+            <a ng-show="travel.modality=='asking'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
+            <a ng-show="travel.modality=='package'" ng-click="unjoinTravel()" class="button button-assertive o-pull-right">{{'Unoffer_car' | translate}}</a>
+          </div>
+        </p>
+      </div>
     </div>
     <div class="item item-body" ng-show="travel.joins[0]">
-        {{'Joined_users' | translate}}:<br>
-        <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
-            <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
-        </a>
+      {{'Joined_users' | translate}}:<br>
+      <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
+        <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
+      </a>
     </div>
     <div class="item item-body">
-        <div ng-show="travel.comments[0]">
-            {{'Comments' | translate}}:<br>
-            <a ng-repeat="comment in travel.comments" ng-href="#/app/users/{{comment.commentUsername}}" class="item">
-                <h3><img ng-src="img/avatars/{{comment.commentAvatar}}.png" class="o-img-joined" />{{comment.commentUsername}}</h3>
-                <p>{{comment.comment}}</p>
-            </a>
-        </div>
-        <div ng-show="storageusername">
-          <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-small button-calm right">{{'New_comment' | translate}}</a>
-        </div>
-        <form class="list" ng-show="doingNewComment">
-            <label class="item item-input item-floating-label">
+      <div ng-show="travel.comments[0]">
+        {{'Comments' | translate}}:<br>
+        <a ng-repeat="comment in travel.comments" ng-href="#/app/users/{{comment.commentUsername}}" class="item">
+          <h3><img ng-src="img/avatars/{{comment.commentAvatar}}.png" class="o-img-joined" />{{comment.commentUsername}}</h3>
+          <p>{{comment.comment}}</p>
+        </a>
+      </div>
+      <div ng-show="storageusername">
+        <a ng-click="showNewComment()" ng-show="!doingNewComment" class="button button-small button-calm right">{{'New_comment' | translate}}</a>
+      </div>
+      <form class="list" ng-show="doingNewComment">
+        <label class="item item-input item-floating-label">
                 <input ng-model="newComment.comment" type="text" placeholder="Comment">
             </label>
 
-            <button ng-click="closeNewComment()" class="button button-small button-assertive">
+        <button ng-click="closeNewComment()" class="button button-small button-assertive">
                {{'Cancel' | translate}}
             </button>
-            <button ng-click="doNewComment()" ng-show="newComment.comment" class="button button-small button-calm">
+        <button ng-click="doNewComment()" ng-show="newComment.comment" class="button button-small button-calm">
                {{'Post_comment' | translate}}
             </button>
-        </form>
+      </form>
     </div>
   </ion-content>
 </ion-view>

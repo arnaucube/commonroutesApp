@@ -4,18 +4,14 @@ angular.module('app.user', ['pascalprecht.translate'])
 
 
     $scope.user={};
-    $http.get(urlapi + 'users/getByUserId/'+$stateParams.userid)
-        .success(function(data, status, headers,config){
+    $http.get(urlapi + 'users/id/'+$stateParams.userid)
+        .then(function(data, status, headers,config){
             console.log('data success');
             console.log(data); // for browser console
-            $scope.user = data; // for UI
-        })
-        .error(function(data, status, headers,config){
+            $scope.user = data.data; // for UI
+        },function(data, status, headers,config){
             console.log('data error');
-        })
-        .then(function(result){
-            travels = result.data;
-    });
+        });
 
 
 
