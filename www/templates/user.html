@@ -34,13 +34,14 @@
     </div>
     <div class="item item-body">
         {{'current_publications_of' | translate}} {{user.username}}:
-        <div class="positive">{{user.travels.length}} {{'publications' | translate}}</div>
+        <div class="o_text_purple600">{{user.travels.length}} {{'publications' | translate}}</div>
 
         <a ng-repeat="travel in user.travels | orderBy: 'date'" class="item item-avatar" href="#/app/travels/{{travel._id}}">
           <img ng-src="img/{{travel.type}}.png">
           <h2>{{travel.title}}
               <div class="item-note">
-                  <div class="positive">{{travel.date | date:"dd/MM/yyyy HH:mm a"}}</div>
+                  <div class="o_text_purple400">{{travel.date | date:"HH:mm a"}}</div>
+                  <div class="o_text_purple400">{{travel.date | date:"dd/MM/yyyy"}}</div>
               </div>
           </h2>
 

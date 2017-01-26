@@ -2,7 +2,7 @@
   <ion-content>
       <div class="list">
           <label class="item item-input">
-              <span class="input-label"t>{{'Title' | translate}}</span>
+              <span class="input-label">{{'Title' | translate}}</span>
               <input ng-model="newtravel.title" class="positive" type="text" placeholder="">
           </label>
 
@@ -50,9 +50,9 @@
               <input ng-model="newtravel.description" type="text" placeholder="Description">
           </label>
           <p class="padding">
-            <button ng-click="createTravel()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent o_floatRight">
+            <md-button ng-click="createTravel()" class="o_purple400 o_floatRight">
                {{'Create_travel' | translate}}
-            </button>
+           </md-button>
           </p>
       </div>
   </ion-content>

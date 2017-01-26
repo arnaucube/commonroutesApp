@@ -1,18 +1,30 @@
 <ion-view view-title="Main">
   <ion-content>
-      <a ng-href="#/app/travels" class="item item-icon-left o_bGreenDark">
+      <a ng-href="#/app/users/{{storageuser._id}}" class="item item-icon-left o_purpleG300to500">
+        <i class="icon ion-person"></i>
+        {{storageuser.username}} profile
+      </a>
+      <a ng-href="#/app/newPublication" class="item item-icon-left o_purpleG300to500">
+        <i class="icon ion-paper-airplane"></i>
+        New publication
+      </a>
+      <a ng-href="#/app/travels" class="item item-icon-left o_purpleG300to500">
         <i class="icon ion-android-car"></i>
         Travels
       </a>
-      <a href="#/app/users" class="item item-icon-left o_bBlue">
+      <a href="#/app/users" class="item item-icon-left o_purpleG300to500">
         <i class="icon ion-person-stalker"></i>
         Users
       </a>
-      <a href="#/app/settings" class="item item-icon-left o_bOrange">
+      <a href="#/app/notifications" class="item item-icon-left o_purpleG300to500">
+        <i class="icon ion-android-notifications"></i>
+        Notifications
+      </a>
+      <a href="#/app/settings" class="item item-icon-left o_purpleG300to500">
       <i class="icon ion-settings"></i>
         Settings
       </a>
-      <a href="#/app/help" class="item item-icon-left">
+      <a href="#/app/help" class="item item-icon-left o_purpleG300to500">
         <i class="icon ion-ios-help-outline"></i>
         Help
       </a>

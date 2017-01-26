@@ -22,8 +22,8 @@
     a part podem posar ColorDark o ColorLight per fer un color més fosc o més clar
 */
 .o_bSidenav{
-    background: #333b42!important;
-    color: #c6ccd2!important;
+    background: #ffffff!important;
+    color: #616161!important;
 }
 .o_fWhiteLight{
     color: #c6ccd2!important;
@@ -85,11 +85,94 @@
     background: #FF7043!important;
     color: #ffffff!important;
 }
-.o_bPurple{
+/*.o_bPurple{
     background: #9575CD!important;
     color: #ffffff!important;
 }
 .o_bPurpleDark{
     background: #512DA8!important;
     color: #ffffff!important;
+}*/
+
+.o_purple50{
+    background: #EDE7F6!important;
+    color: #000000!important;
+}
+.o_purple100{
+    background: #D1C4E9!important;
+    color: #000000!important;
+}
+.o_purple200{
+    background: #B39DDB!important;
+    color: #000000!important;
+}
+.o_purple300{
+    background: #9575CD!important;
+    color: #ffffff!important;
+}
+.o_purple400{
+    background: #7E57C2!important;
+    color: #ffffff!important;
+}
+.o_purple500{
+    background: #673AB7!important;
+    color: #ffffff!important;
+}
+.o_purple600{
+    background: #5E35B1!important;
+    color: #ffffff!important;
+}
+.o_purple700{
+    background: #512DA8!important;
+    color: #ffffff!important;
+}
+.o_purple800{
+    background: #4527A0!important;
+    color: #ffffff!important;
+}
+.o_purple900{
+    background: #311B92!important;
+    color: #ffffff!important;
+}
+
+
+.o_purpleG000to200{
+    background: -moz-linear-gradient(0deg, #ffffff 0%, #D1C4E9 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, #ffffff), color-stop(100%, #D1C4E9)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(0deg, #ffffff 0%, #D1C4E9 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(0deg, #ffffff 0%, #D1C4E9 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(0deg, #ffffff 0%, #D1C4E9 100%); /* ie10+ */
+    background: linear-gradient(90deg, #ffffff 0%, #D1C4E9 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#D1C4E9',GradientType=1 ); /* ie6-9 */
+}
+.o_purpleG500to300{
+    background: -moz-linear-gradient(219deg, #9575CD 0%, #673AB7 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #673AB7), color-stop(100%, #9575CD)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(219deg, #9575CD 0%, #673AB7 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(219deg, #9575CD 0%, #673AB7 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(219deg, #9575CD 0%, #673AB7 100%); /* ie10+ */
+    background: linear-gradient(231deg, #9575CD 0%, #673AB7 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#673AB7', endColorstr='#9575CD',GradientType=1 ); /* ie6-9 */
+    color: #ffffff!important;
+}
+.o_purpleG300to500{
+    background: -moz-linear-gradient(42deg, #9575CD 0%, #673AB7 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #9575CD), color-stop(100%, #673AB7)); /* safari4+,chrome */
+    background: -webkit-linear-gradient(42deg, #9575CD 0%, #673AB7 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(42deg, #9575CD 0%, #673AB7 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(42deg, #9575CD 0%, #673AB7 100%); /* ie10+ */
+    background: linear-gradient(48deg, #9575CD 0%, #673AB7 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9575CD', endColorstr='#673AB7',GradientType=1 ); /* ie6-9 */
+    color: #ffffff!important;
+}
+
+
+.o_text_purple400{
+    color: #7E57C2!important;
+}
+.o_text_purple500{
+    color: #673AB7!important;
+}
+.o_text_purple600{
+    color: #5E35B1!important;
 }

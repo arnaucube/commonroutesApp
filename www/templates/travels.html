@@ -23,12 +23,13 @@
             {{'Pull_from_top_to_refresh' | translate}}
           </div>
         </div>
-        <a ng-repeat="travel in travels | orderBy: 'date' | filter: search" class="item item-avatar" href="#/app/travels/{{travel._id}}">
+        <a ng-repeat="travel in travels | orderBy: 'date' | filter: search"
+        class="item item-avatar" href="#/app/travels/{{travel._id}}">
           <img ng-src="img/{{travel.type}}.png"/>
-          <h2>{{travel.title}}</h2>
+          <h2 class="o_text_purple600">{{travel.title}}</h2>
           <div class="item-note text-right">
-              <div class="positive">{{travel.date | date:"dd/MM"}}</div>
-              <div class="positive">{{travel.date | date:"HH:mm"}}h</div>
+              <div class="o_text_purple400">{{travel.date | date:"dd/MM"}}</div>
+              <div class="o_text_purple400">{{travel.date | date:"HH:mm"}}h</div>
               <!--<div class="badge badge-calm">{{travel.owner}}</div>-->
           </div>
           <p>
