@@ -12,6 +12,7 @@ var urlapi = "http://localhost:3000/api/";
 
 angular.module('starter', [
     'ionic',
+    'ngMaterial',
     'pascalprecht.translate',
     'app.login',
     'app.signup',

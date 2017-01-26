@@ -4,10 +4,10 @@
       <img ng-src="img/{{travel.type}}.png" />
       <div class="item-note o-text-right">
         <p>
-          <span class="mdl-chip mdl-chip--contact" ng-href="#/app/users/{{travel.user._id}}">
-            <img class="mdl-chip__contact" src="{{travel.user.avatar}}"></img>
-            <span class="mdl-chip__text">{{travel.user.username}}</span>
-        </span>
+            <md-button class="md-raised" ng-href="#/app/users/{{travel.user._id}}">
+                <img class="mdl-chip__contact" style="width: 30px;" ng-src="{{travel.user.avatar}}"></img>
+                {{travel.user.username}}
+            </md-button>
         </p>
         <p ng-show="storageuser._id==travel.user._id" class="text-right">
           <a ng-click="deleteTravel()" class="button button-small o_bRed"><i class="icon ion-trash-a"></i></a>
