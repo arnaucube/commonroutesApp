@@ -1,11 +1,10 @@
 <ion-view view-title="{{'Travel' | translate}}">
   <ion-content class="has-footer">
-    <div class="item item-avatar">
-      <img ng-src="img/{{travel.type}}.png" />
+    <div class="item item-icon-left">
       <div class="item-note o-text-right">
         <p>
             <md-button ng-href="#/app/users/{{travel.user._id}}">
-                <img style="width: 30px;" ng-src="{{travel.user.avatar}}"></img>
+                <img class="o_userImgCircularMini" ng-src="{{travel.user.avatar}}"></img>
                 {{travel.user.username}}
             </md-button>
         </p>
@@ -13,64 +12,59 @@
           <a ng-click="deleteTravel()" class="button button-small o_bRed"><i class="icon ion-trash-a"></i></a>
         </p>
       </div>
-      <h2>{{travel.title}}</h2>
+      <h2>
+        <i class="icon ion-android-car"></i> {{travel.title}}</h2>
       <div class="">{{travel.date | date:"dd/MM HH:mm a"}}</div>
     </div>
+
     <leaflet width="100%" height="40%" markers="markers" center="center"
-    id="map-simple-map"></leaflet>
+    tiles="tiles" id="map-simple-map"></leaflet>
+    <div ng-show="storageuser._id!=travel.user._id" class="text-right">
+      <p class='text-right'>
+        <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)==-1">
+          <md-button ng-show="travel.type=='offering'" ng-click="joinTravel()" class="o_purple300">{{'Ask_to_join' | translate}}</md-button>
+          <md-button ng-show="travel.type=='asking'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
+          <md-button ng-show="travel.type=='package'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
+        </div>
+
+        <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)>-1">
+          <md-button ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="o_purple100">{{'Unjoin' | translate}}</md-button>
+          <md-button ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
+          <md-button ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
+        </div>
+      </p>
+    </div>
+    <div class="item item-icon-left">
+        <i class="icon ion-ios-location"></i>{{travel.from.name}} --> {{travel.to.name}}
+    </div>
+    <div class="item item-icon-left">
+        <i class="icon ion-clipboard"></i> {{travel.description}}
+    </div>
+    <div class="item item-icon-left" ng-show="travel.package">
+        <i class="icon ion-ios-box"></i> package
+    </div>
+    <div class="item item-icon-left" ng-show="travel.user.telegram">
+        <i class="icon ion-paper-airplane"></i> @{{user.telegram}}
+    </div>
+    <div class="item item-icon-left" ng-show="travel.user.phone">
+        <i class="icon ion-ios-telephone"></i> {{travel.user.phone}}
+    </div>
+    <div class="item item-icon-left">
+        <i class="icon ion-ios-people"></i> {{travel.seats}} seats
+    </div>
+
     <div class="item item-body">
       <div class='row'>
-        <p class="o-bold">{{travel.description}}</p>
-      </div>
-      <div class="row">
-        <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from.name}} --> {{travel.to.name}}</p>
-      </div>
-      <div class='row'>
-        <div class='col'>
-          <p ng-show="travel.phone">
-            <img class='o-imgMenu' src="img/smartphone.png" /> {{travel.user.phone}}
-          </p>
-          <p ng-show="travel.telegram">
-            <!--<a ng-href="https://telegram.me/{{travel.telegram}}" target="_blank" class="button">-->
-            <img class='o-imgMenu' src="img/telegram.png" /> @{{travel.user.telegram}}
-            <!--</a>-->
-          </p>
-        </div>
         <div class='col o-text-right'>
           <p ng-show="travel.collectivized">
             <span class="o-badgeCollectivized">{{'Collectivized' | translate}}</span>
-          </p>
-          <p ng-show="travel.package">
-            <div class="o-mini-text">
-              <div ng-show="travel.type=='offering'">{{'Can_carry_package' | translate}} <img src="img/package.png" class="o-imgMenu" /></div>
-              <div ng-show="travel.type=='asking'">{{'Need_to_carry_package' | translate}} <img src="img/package.png" class="o-imgMenu" /></div>
-            </div>
-          </p>
-
-          <p>
-            <div ng-show="travel.type=='offering'">{{'n_Seats' | translate}}: {{travel.seats}}</div>
-            <div ng-show="travel.type=='asking'">{{'n_People' | translate}}: {{travel.seats}}</div>
           </p>
         </div>
       </div>
       <br>
 
 
-      <div ng-show="storageuser._id!=travel.user._id" class="text-right">
-        <p class='text-right'>
-          <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)==-1">
-            <md-button ng-show="travel.type=='offering'" ng-click="joinTravel()" class="o_purple300">{{'Ask_to_join' | translate}}</md-button>
-            <md-button ng-show="travel.type=='asking'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
-            <md-button ng-show="travel.type=='package'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
-          </div>
 
-          <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)>-1">
-            <md-button ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="o_purple100">{{'Unjoin' | translate}}</md-button>
-            <md-button ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
-            <md-button ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
-          </div>
-        </p>
-      </div>
     </div>
     <div class="item item-body" ng-show="travel.joins[0]">
       {{'Joined_users' | translate}}:<br>

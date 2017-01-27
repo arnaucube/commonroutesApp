@@ -9,6 +9,12 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         zoom: 1
     };
     $scope.markers=[];
+    $scope.tiles= {
+        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        options: {
+            attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }
+    };
 
     $scope.travel={};
     $scope.doRefresh = function() {

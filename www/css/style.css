@@ -37,10 +37,16 @@
 	border-radius: 150px;
 	-webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
-	/*background: url(http://link-to-your/image.jpg) no-repeat;*/
 }
 .o_userImgCircular p{
     color: #ffffff!important;
+}
+.o_userImgCircularMini {
+    background: #ffffff;
+	width: 35px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
 }
 /*
     SISTEMA DE COLORS

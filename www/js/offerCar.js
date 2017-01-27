@@ -18,7 +18,12 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
         zoom: 1
     };
     $scope.markers=new Array();
-    
+    $scope.tiles= {
+        url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        options: {
+            attribution: '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }
+    };
     $scope.createTravel =function(){
         $scope.newtravel.type="offering";
         $http({
@@ -44,6 +49,7 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
         .then(function(data) {
             $scope.newtravel.from.lat=data.data[0].lat;
             $scope.newtravel.from.long=data.data[0].lon;
+            $scope.newtravel.from.name=data.data[0].display_name;
             $scope.markers.push({
                 lat: Number(data.data[0].lat),
                 lng: Number(data.data[0].lon),
@@ -53,6 +59,7 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
             .then(function(data) {
                 $scope.newtravel.to.lat=data.data[0].lat;
                 $scope.newtravel.to.long=data.data[0].lon;
+                $scope.newtravel.to.name=data.data[0].display_name;
                 $scope.markers.push({
                     lat: Number(data.data[0].lat),
                     lng: Number(data.data[0].lon),
