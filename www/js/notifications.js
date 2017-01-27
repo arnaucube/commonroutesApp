@@ -1,15 +1,21 @@
 angular.module('app.notifications', ['pascalprecht.translate'])
 
-.controller('NotificationsCtrl', function($scope, $stateParams, $translate, $filter) {
-  if(localStorage.getItem('c_token')){// adding token to the headers
-    //  $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem('c_token');
-  }
-  $scope.storageusername=localStorage.getItem("c_username");
-  $scope.users= JSON.parse(localStorage.getItem('c_users'));
-  $scope.user = $filter('filter')($scope.users, {username: $stateParams.username}, true)[0];
-  $scope.notifications=$scope.user.notifications;
+.controller('NotificationsCtrl', function($scope, $http, $ionicLoading,
+                                    $stateParams, $translate, $filter) {
+    $scope.notifications=[];
+    $scope.doRefresh = function(){
+        $http.get(urlapi + 'notifications')
+        .then(function(data){
+            console.log(data); // for browser console
+            $scope.notifications = data.data; // for UI
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
 
-  console.log($stateParams.username);
-  console.log($scope.notifications);
-  console.log("notifications page");
+        }, function(data){
+            console.log('data error');
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
+            $ionicLoading.show({ template: 'Error connecting server', noBackdrop: true, duration: 2000 });
+
+        });
+    };
+    $scope.doRefresh();
 });

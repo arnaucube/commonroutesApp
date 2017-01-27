@@ -1,26 +1,28 @@
 <ion-view view-title="{{'User' | translate}} {{user.username}}">
-  <ion-content>
+  <ion-content class="has-footer">
     <div class="o_userProfileBackground">
         <img ng-src="{{user.avatar}}" class="o_userImgCircular" />
-        <h3>{{user.username}}</h3>
+        <h3 class="o_text_white">{{user.username}}</h3>
         <p>{{user.description}}</p>
         <p>{{user.email}}</p>
     </div>
     <div class="">
-
-
-        <p ng-show="user.telegram">
-          <!--<a ng-href="https://telegram.me/{{user.telegram}}" target="_blank" class="button">-->
-            <img class='o-imgMenu' src="img/telegram.png" /> @{{user.telegram}}
-          <!--</a>-->
-        </p>
+        <div class="row">
+          <a class="tab-item" ng-show="user.telegram">
+              <i class="icon ion-paper-airplane"></i>
+              @{{user.telegram}}
+          </a>
+          <a class="tab-item">
+              <i class="icon ion-android-car"></i>
+              {{user.travels.length}} Travels
+          </a>
+          <a class="tab-item">
+              <i class="icon ion-ios-heart"></i>
+              {{user.favs.length}} favs
+          </a>
+        </div>
 
         <div class="o-text-right">
-          <div ng-click="showFavsList()">
-            <b>favs:</b>
-            <span class="">{{user.favs.length}}</span>
-          </div>
-          <br>
           <div ng-show="storageusername && storageusername!=user.username">
             <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')==-1" ng-click="favUser()">
               <img class="o-imgMenu" src="img/unlike.png" />

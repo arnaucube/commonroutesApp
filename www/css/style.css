@@ -201,6 +201,9 @@
 }
 
 
+.o_text_white{
+    color: #ffffff!important;
+}
 .o_text_purple400{
     color: #7E57C2!important;
 }
@@ -209,4 +212,10 @@
 }
 .o_text_purple600{
     color: #5E35B1!important;
+}
+.o_text_purple700{
+    color: #512DA8!important;
+}
+.o_text_purple800{
+    color: #4527A0!important;
 }

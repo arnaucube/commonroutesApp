@@ -1,42 +1,33 @@
 <ion-view view-title="Offer Car">
-  <ion-content>
-      <div class="list">
-          <label class="item item-input">
-              <span class="input-label">{{'Title' | translate}}</span>
-              <input ng-model="newtravel.title" class="positive" type="text" placeholder="">
-          </label>
+  <ion-content class="has-footer">
+      <div class="padding">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Title' | translate}}</label>
+            <input ng-model="newtravel.title">
+          </md-input-container>
+          <div layout="row">
+              <md-input-container>
+                <label>{{'From' | translate}}</label>
+                <input ng-model="newtravel.from">
+              </md-input-container>
+              <md-input-container>
+                <label>{{'To' | translate}}</label>
+                <input ng-model="newtravel.to">
+              </md-input-container>
+          </div>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'n_Seats' | translate}}</label>
+            <input ng-model="newtravel.seats" type="number">
+          </md-input-container>
 
-          <label class="item item-input">
-              <img class='o-imgMenu' src="img/localization.png" />
-              <span class="input-label">{{'From' | translate}}</span>
-              <input ng-model="newtravel.from" type="text" placeholder="">
-          </label>
-          <label class="item item-input">
-              <img class='o-imgMenu' src="img/localization.png" />
-              <span class="input-label">{{'To' | translate}}</span>
-              <input ng-model="newtravel.to" type="text" placeholder="">
-          </label>
-
-          <label class="item item-input">
-              <span class="input-label">{{'n_Seats' | translate}}</span>
-              <input ng-model="newtravel.seats" type="number" placeholder="">
-          </label>
-          <label class="item item-input">
+          <label class="item-input">
               <span class="input-label">{{'Date' | translate}}</span>
               <input ng-model="newtravel.date" type="date" placeholder="">
           </label>
-          <label class="item item-input">
+          <label class="item-input">
               <span class="input-label">{{'Hour' | translate}}</span>
               <input ng-model="newtravel.date" type="time" placeholder="">
           </label>
-          <!--<label class="item item-input">
-              <span class="input-label"><i class="icon ion-iphone"></i> {{'Phone_contact' | translate}}</span>
-              <input ng-model="newtravel.phone" type="number" placeholder="">
-          </label>
-          <label class="item item-input">
-              <span class="input-label">{{'Telegram_user' | translate}}</span>
-              <input ng-model="newtravel.telegram" type="text" placeholder="">
-          </label>-->
           <ion-toggle ng-model="newtravel.package" toggle-class="toggle-calm">
               <img class='o-imgMenu' src="img/package.png" />
               {{'Can_carry_package' | translate}}
@@ -44,11 +35,10 @@
           <ion-toggle ng-model="newtravel.collectivized" toggle-class="toggle-calm">
               {{'Collectivized_car' | translate}}
           </ion-toggle>
-
-          <label class="item item-input item-floating-label">
-              <span class="input-label">{{'Description' | translate}}</span>
-              <input ng-model="newtravel.description" type="text" placeholder="Description">
-          </label>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Description' | translate}}</label>
+            <input ng-model="newtravel.description">
+          </md-input-container>
           <p class="padding">
             <md-button ng-click="createTravel()" class="o_purple400 o_floatRight">
                {{'Create_travel' | translate}}

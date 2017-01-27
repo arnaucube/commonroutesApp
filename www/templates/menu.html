@@ -11,15 +11,16 @@
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
     <!-- menu footer -->
-    <div class="tabs tabs-icon-left" ng-controller="FooterMenuCtrl" ng-show="storageuser">
+    <div class="tabs tabs-icon-left" style="position:absolute;"
+    ng-controller="FooterMenuCtrl" ng-show="storageuser">
       <a class="tab-item" ng-href="#/app/notifications">
         <i class="icon ion-android-notifications-none"></i> Notifications
       </a>
       <a class="tab-item" ng-href="#/app/main">
         <i class="icon ion-home"></i> Home
       </a>
-      <a ng-href="#/app/newPublication" class="tab-item">
-        <i class="icon ion-paper-airplane"></i> New publication
+      <a ng-href="#/app/newTravel" class="tab-item">
+        <i class="icon ion-map"></i> New travel
       </a>
     </div>
     <!-- /menu footer -->
@@ -37,8 +38,11 @@
         <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/users/{{storageuser._id}}">
           <i class="icon ion-person"></i> {{storageuser.username}}
         </a>
+        <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/search">
+          <i class="icon ion-search"></i> {{'Search' | translate }}
+        </a>
         <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/travels">
-          <i class="icon ion-android-car"></i> {{'Travels' | translate }}
+          <i class="icon ion-android-car"></i> {{'Travels_feed' | translate }}
         </a>
         <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/users">
           <i class="icon ion-person-stalker"></i> {{'Users' | translate }}

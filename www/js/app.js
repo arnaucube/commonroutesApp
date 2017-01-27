@@ -6,8 +6,9 @@
 // 'starter.controllers' is found in controllers.js
 
 
-var urlapi = "http://localhost:3000/api/";
+//var urlapi = "http://localhost:3000/api/";
 //var urlapi="https://collectivecar.paas.primustech.io/api/";
+var urlapi="http://147.83.7.158:3000/api/";
 
 
 angular.module('starter', [
@@ -19,9 +20,10 @@ angular.module('starter', [
     'app.menu',
     'app.footerMenu',
     'app.main',
+    'app.search',
     'app.travels',
     'app.travel',
-    'app.newPublication',
+    'app.newTravel',
     'app.offerCar',
 /*    'app.askCar',
     'app.askPackage',*/
@@ -84,6 +86,15 @@ angular.module('starter', [
           }
         }
       })
+      .state('app.search', {
+        url: '/search',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/search.html',
+            controller: 'SearchCtrl'
+          }
+        }
+      })
       .state('app.travels', {
         url: '/travels',
         views: {
@@ -104,12 +115,12 @@ angular.module('starter', [
         }
       })
 
-      .state('app.newPublication', {
-        url: '/newPublication',
+      .state('app.newTravel', {
+        url: '/newTravel',
         views: {
           'menuContent': {
-            templateUrl: 'templates/newPublication.html',
-            controller: 'NewPublicationCtrl'
+            templateUrl: 'templates/newTravel.html',
+            controller: 'NewTravelCtrl'
           }
         }
       })

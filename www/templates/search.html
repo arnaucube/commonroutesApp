@@ -1,24 +1,15 @@
-<ion-view view-title="{{'Travels' | translate}}">
+<ion-view view-title="{{'Search' | translate}}">
   <ion-content class="has-footer">
-      <ion-refresher
-        pulling-text="{{'Pull_to_refresh' | translate}}..."
-        on-refresh="doRefresh()">
-      </ion-refresher>
     <div class="list">
-        <div>
-            <label class="item item-input">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input type="search" placeholder="{{'filter' | translate}}..." ng-model="search">
-            </label>
+        <div class="item item-input">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="{{'search' | translate}}..." ng-model="search.word">
+            <md-button class="o_purple300" ng-click="doSearch()"><i class="icon ion-search"></i></md-button>
         </div>
-
-        <div class="card" ng-show="!travels">
-          <div class="item item-text-wrap">
-            {{'No_data_in_memory' | translate}}<br>
-            {{'Pull_from_top_to_refresh' | translate}}
-          </div>
+        <div class="item item-divider o_purple300" ng-show="travels[0]">
+            Travels
         </div>
-        <a ng-repeat="travel in travels | orderBy: 'date' | filter: search"
+        <a ng-repeat="travel in travels | orderBy: 'date'"
         class="item item-avatar" href="#/app/travels/{{travel._id}}">
           <img ng-src="img/{{travel.type}}.png"/>
           <h2 class="o_text_purple600">{{travel.title}}</h2>
@@ -33,6 +24,16 @@
           <!--<p class="" ng-show="travel.modality=='offering'">nºseats: {{travel.seats}}</p>
           <p class="" ng-show="travel.modality=='asking'">nºpeople: {{travel.seats}}</p>-->
           <p class="">{{travel.from}} --> {{travel.to}}</p>
+        </a>
+        <div class="item item-divider o_purple300" ng-show="users[0]">
+            Users
+        </div>
+        <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" ng-href="#/app/users/{{user._id}}">
+          <img ng-src="{{user.avatar}}">
+          <h2 class="o_text_purple600">{{user.username}}</h2>
+          <p>
+              {{user.description}}
+          </p>
         </a>
     </div>
   </ion-content>

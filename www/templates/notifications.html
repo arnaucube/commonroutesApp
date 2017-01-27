@@ -1,14 +1,17 @@
-<ion-view view-title="{{'Notifications' | translate}} {{user.username}}">
-  <ion-content>
-    <div class="item item-body">
-      <a ng-repeat="notification in notifications | orderBy: '-date'" class="item item-avatar" href="#/app/{{notification.link}}">
-        <img ng-src="img/{{notification.type}}.png"/>
-        <h2>{{notification.description}}</h2>
+<ion-view view-title="{{'Notifications' | translate}}">
+  <ion-content class="has-footer">
+      <ion-refresher
+        pulling-text="{{'Pull_to_refresh' | translate}}..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+      <a ng-repeat="notification in notifications | orderBy: '-date'"
+      class="item item-icon-left" href="#/app/{{notification.link}}">
+        <i class="icon ion-android-notifications-none"></i>
+        <h2>{{notification.message}}</h2>
         <div class="item-note text-right">
-            <div class="positive">{{notification.date | date:"dd/MM"}}</div>
-            <div class="positive">{{notification.date | date:"HH:mm:ss"}}</div>
+            <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
+            <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
         </div>
       </a>
-    </div>
   </ion-content>
 </ion-view>

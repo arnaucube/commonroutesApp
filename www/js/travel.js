@@ -1,6 +1,6 @@
 angular.module('app.travel', ['pascalprecht.translate'])
 
-.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicPopup, $filter) {
+.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicLoading, $ionicPopup, $filter) {
 
     $scope.travel={};
     $scope.doRefresh = function() {
@@ -53,55 +53,38 @@ angular.module('app.travel', ['pascalprecht.translate'])
 
     };
     $scope.joinTravel = function(){
-        $scope.newjoin={
-            //travelId: $stateParams.travelId,
-            /*joinedUserId: localStorage.getItem("c_userid"),
-            joinedUsername: localStorage.getItem("c_username"),
-            joinedAvatar: localStorage.getItem("c_avatar")*/
-        };
         $http({
-            url: urlapi + 'travels/'+ $stateParams.travelId+'/join',
+            url: urlapi + 'travels/join/'+ $stateParams.travelid,
             method: "POST",
-            data: $scope.newjoin
+            data: {}
         })
-        .then(function(response) {
-                // success
-                console.log("response: ");
-                console.log(response);
-
-                $scope.travels=response.data;
-                localStorage.setItem('c_travels', JSON.stringify($scope.travels));
-                localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
-                $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
-
+        .then(function(data) {
+            console.log("data: ");
+            console.log(data);
+            if(data.success==false){
+                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.travel=data.data;
+            }
         },
         function(response) { // optional
                 // failed
         });
     };
     $scope.unjoinTravel = function(){
-        console.log("unjoin");
-        $scope.unjoin={
-            travelId: $stateParams.travelId,
-            /*joinedUserId: localStorage.getItem("c_userid"),
-            joinedUsername: localStorage.getItem("c_username"),
-            joinedAvatar: localStorage.getItem("c_avatar")*/
-        };
         $http({
-            url: urlapi + 'travels/'+ $stateParams.travelId+'/unjoin',
+            url: urlapi + 'travels/unjoin/'+ $stateParams.travelid,
             method: "POST",
-            data: $scope.unjoin
+            data: {}
         })
-        .then(function(response) {
-                // success
-                console.log("response: ");
-                console.log(response);
-
-                $scope.travels=response.data;
-                localStorage.setItem('c_travels', JSON.stringify($scope.travels));
-                localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
-                $scope.travel = $filter('filter')($scope.travels, $stateParams.travelId, true)[0];
-
+        .then(function(data) {
+            console.log("data: ");
+            console.log(data);
+            if(data.success==false){
+                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.travel=data.data;
+            }
         },
         function(response) { // optional
                 // failed
@@ -149,12 +132,13 @@ console.log($scope.newComment);
     };
 
 
-    $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
+    $scope.userHasJoined = function(myArray, searchTerm) {
       //console.log(myArray+", "+searchTerm+", "+property);
         if(myArray)
         {
             for(var i = 0, len = myArray.length; i < len; i++) {
-                if (myArray[i][property] === searchTerm){
+                //console.log(myArray[i] + " - " + searchTerm);
+                if (myArray[i] === searchTerm){
                     //console.log("i: " + i);
                     return i;
                 }
