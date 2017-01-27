@@ -1,6 +1,14 @@
-angular.module('app.travel', ['pascalprecht.translate'])
+angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
 
-.controller('TravelCtrl', function($scope, $stateParams, $http, $ionicModal, $ionicLoading, $ionicPopup, $filter) {
+.controller('TravelCtrl', function($scope, $stateParams, $http,
+        $ionicModal, $ionicLoading, $ionicPopup, $filter) {
+
+    $scope.center= {
+        lat: 0,
+        lng: 0,
+        zoom: 1
+    };
+    $scope.markers=[];
 
     $scope.travel={};
     $scope.doRefresh = function() {
@@ -10,6 +18,17 @@ angular.module('app.travel', ['pascalprecht.translate'])
             console.log('data success travels');
             console.log(data); // for browser console
             $scope.travel = data.data; // for UI
+            $scope.markers=[];
+            $scope.markers.push({
+                lat: Number($scope.travel.from.lat),
+                lng: Number($scope.travel.from.long),
+                message: $scope.travel.from.name
+            });
+            $scope.markers.push({
+                lat: Number($scope.travel.to.lat),
+                lng: Number($scope.travel.to.long),
+                message: $scope.travel.to.name
+            });
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
 
         }, function(data){

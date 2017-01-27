@@ -16,12 +16,14 @@
       <h2>{{travel.title}}</h2>
       <div class="">{{travel.date | date:"dd/MM HH:mm a"}}</div>
     </div>
+    <leaflet width="100%" height="40%" markers="markers" center="center"
+    id="map-simple-map"></leaflet>
     <div class="item item-body">
       <div class='row'>
         <p class="o-bold">{{travel.description}}</p>
       </div>
       <div class="row">
-        <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from}} --> {{travel.to}}</p>
+        <p><img class='o-imgTitle' src="img/from-to.png" />{{travel.from.name}} --> {{travel.to.name}}</p>
       </div>
       <div class='row'>
         <div class='col'>
