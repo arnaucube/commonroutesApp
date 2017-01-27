@@ -1,44 +1,37 @@
 <ion-modal-view>
   <ion-header-bar>
     <h1 class="title">{{'Signup' | translate }}</h1>
-    <div class="buttons">
-      <a class="button button-dark" ng-href="#/app/login">{{'Close' | translate }}</a>
-    </div>
   </ion-header-bar>
   <ion-content>
-    <form ng-submit="doSignup()">
-      <div class="list">
-        <label class="item item-input">
-          <span class="input-label">{{'Username' | translate }}*</span>
-          <input type="text" ng-model="signupData.username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">{{'Password' | translate }}*</span>
-          <input type="password" ng-model="signupData.password">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">{{'Mail' | translate }}*</span>
-          <input type="email" ng-model="signupData.email">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">{{'Phone' | translate }}</span>
-          <input type="number" ng-model="signupData.phone">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">{{'Telegram' | translate }}</span>
-          <input type="text" ng-model="signupData.telegram">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">{{'Description' | translate }}</span>
-          <input type="text" ng-model="signupData.description">
-        </label>
-        <!--<p>{{'Avatar' | translate }}*: <b>{{signupData.avatar}}</b></p>
-        <img ng-repeat="avatar in avatars" ng-click="avatarSelect('{{avatar}}')" ng-src="img/avatars/{{avatar}}.png" class="o-imgSelectAvatar" >
--->
-        <label class="item">
-          <button class="button button-block button-positive" type="submit">{{'Signup' | translate }}</button>
-        </label>
+      <div class="padding">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Username' | translate}}</label>
+            <input ng-model="signupData.username">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Password' | translate}}</label>
+            <input type="password" ng-model="signupData.password">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Email' | translate}}</label>
+            <input ng-model="signupData.email">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Phone' | translate}}</label>
+            <input type="number" ng-model="signupData.phone">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Telegram' | translate}}</label>
+            <input ng-model="signupData.telegram">
+          </md-input-container>
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>{{'Description' | translate}}</label>
+            <input ng-model="signupData.description">
+          </md-input-container>
+        <div>
+            <md-button class="o_purple100" ng-href="#/app/login">{{'Cancel' | translate}}</md-button>
+            <md-button class="o_purple300 o_floatRight" ng-click="doSignup()">{{'Signup' | translate}}</md-button>
+        </div>
       </div>
-    </form>
   </ion-content>
 </ion-modal-view>

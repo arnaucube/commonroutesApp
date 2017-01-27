@@ -8,6 +8,40 @@
 .o_floatRight{
     float: right;
 }
+.o_userProfileBackground{
+    min-height: 30%!important;
+    width: 100%;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../img/userProfileBackground.png');
+    text-align: center;
+    /*color: white;*/
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: #ffffff;
+}
+.o_userImgCircular {
+    margin-top: 5%;
+    background: #ffffff;
+	width: 40%;
+    border: 4px #ffffff solid;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	/*background: url(http://link-to-your/image.jpg) no-repeat;*/
+}
+.o_userImgCircular p{
+    color: #ffffff!important;
+}
 /*
     SISTEMA DE COLORS
 

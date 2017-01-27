@@ -13,7 +13,7 @@ var translations = {
 		"Login": "Login",
 		"Username": "Username",
 		"Password": "Password",
-		"Mail": "Mail",
+		"Email": "Email",
 		"Phone": "Phone",
 		"Telegram": "Telegram",
 		"Avatar": "Avatar",

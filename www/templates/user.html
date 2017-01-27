@@ -1,12 +1,14 @@
 <ion-view view-title="{{'User' | translate}} {{user.username}}">
   <ion-content>
-    <div class="item item-avatar">
-        <img ng-src="{{user.avatar}}" />
-        <h2>{{user.username}}</h2>
+    <div class="o_userProfileBackground">
+        <img ng-src="{{user.avatar}}" class="o_userImgCircular" />
+        <h3>{{user.username}}</h3>
+        <p>{{user.description}}</p>
+        <p>{{user.email}}</p>
     </div>
-    <div class="item item-body">
-        <p class="o-bold">{{user.description}}</p>
-        <p>{{user.mail}}</p>
+    <div class="">
+
+
         <p ng-show="user.telegram">
           <!--<a ng-href="https://telegram.me/{{user.telegram}}" target="_blank" class="button">-->
             <img class='o-imgMenu' src="img/telegram.png" /> @{{user.telegram}}
@@ -31,6 +33,9 @@
               <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
           </a>-->
         </div>
+    </div>
+    <div class="item">
+        <img src="img/faircoinpublickey_sample.png" style="width: 100%;" />
     </div>
     <div class="item item-body">
         {{'current_publications_of' | translate}} {{user.username}}:
