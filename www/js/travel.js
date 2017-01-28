@@ -1,13 +1,15 @@
 angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
 
 .controller('TravelCtrl', function($scope, $stateParams, $http,
-        $ionicModal, $ionicLoading, $ionicPopup, $filter) {
+        $ionicModal, $ionicLoading, $ionicPopup, $filter,
+        leafletData, leafletBoundsHelpers) {
 
     $scope.center= {
-        lat: 0,
+        /*lat: 0,
         lng: 0,
-        zoom: 1
+        zoom: 1*/
     };
+    $scope.bounds={};
     $scope.markers=[];
     $scope.tiles= {
         url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -35,6 +37,12 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
                 lng: Number($scope.travel.to.long),
                 message: $scope.travel.to.name
             });
+            $scope.center= {
+                lat: (Number($scope.travel.from.lat)+Number($scope.travel.to.lat))/2,
+                lng: (Number($scope.travel.from.long)+Number($scope.travel.to.long))/2,
+                zoom: 4
+            };
+
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
 
         }, function(data){

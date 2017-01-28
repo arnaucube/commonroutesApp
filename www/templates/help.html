@@ -1,7 +1,7 @@
 <ion-view view-title="{{'Help' | translate}}">
   <ion-content class="padding">
     <p>
-      (help instructions here)
+      (not ready yet)
     </p>
     <p>
       This is a car sharing App.
@@ -11,30 +11,51 @@
       <br>
       There are <b>3 types of publication</b>:
     </p>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Offer">
+        <md-content class="md-padding">
+            <div class="card">
+              <div class="item item-divider o_purple500">
+                <i class="icon ion-android-car"></i> Travel offer
+              </div>
+              <div class="item item-text-wrap">
+                For example: I'm going with my car to a place, in my car can go more people.
+              </div>
+            </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Ask">
+        <md-content class="md-padding">
+            <div class="card">
+              <div class="item item-divider o_purple400">
+                 <i class="icon ion-help"></i> Travel ask
+              </div>
+              <div class="item item-text-wrap">
+                For example: I need to travel a place, can somebody take me there?
+              </div>
+            </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="Package">
+        <md-content class="md-padding">
+            <div class="card">
+              <div class="item item-divider o_purple300">
+                 <i class="icon ion-ios-box"></i> Package send ask
+              </div>
+              <div class="item item-text-wrap">
+                For example: I need to send some package to a place, can somebody carry it to there?
+              </div>
+            </div>
+        </md-content>
+      </md-tab>
+    </md-tabs>
+
+
+
     <p>
-      <ul class="list">
-        <li class="item">
-          <h4>Travel offer</h4>
-          <img ng-src="img/offering.png" class="o-img-new"/>
-          For example: I'm going with my car to a place, in my car can go more people.
-        </li>
-        <li class="item">
-          <h4>Travel ask</h4>
-          <img ng-src="img/package.png" class="o-img-new"/>
-          For example: I need to travel a place, can somebody take me there?
-        </li>
-        <li class="item">
-          <h4>Package send ask</h4>
-          <img ng-src="img/asking.png" class="o-img-new"/>
-          For example: I need to send some package to a place, can somebody carry it to there?
-        </li>
-      </ul>
-    </p>
-    <p>
-      To <b>create a new publication</b>, just need to go in to 'Travels' section in the main menu, and select one of the 3 top buttons:
-      <img ng-src="img/newpackage.png" class="o-img-new"/>
-      <img ng-src="img/newasking.png" class="o-img-new"/>
-      <img ng-src="img/newoffering.png" class="o-img-new"/>
+      To <b>create a new publication</b>, just need to click the 'New Travel' button on the right of footer menu,
+      and select wich type of publication is.
+
     </p>
     <br><br>
     <p>(not finished yet)...</p>

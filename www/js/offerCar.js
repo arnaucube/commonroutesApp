@@ -47,24 +47,31 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
         console.log($scope.newtravel.to.name);
         $http.get('http://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.from.name + '&format=json&limit=1')
         .then(function(data) {
-            $scope.newtravel.from.lat=data.data[0].lat;
-            $scope.newtravel.from.long=data.data[0].lon;
-            $scope.newtravel.from.name=data.data[0].display_name;
-            $scope.markers.push({
-                lat: Number(data.data[0].lat),
-                lng: Number(data.data[0].lon),
-                message: data.data[0].display_name
-            });
-            $http.get('http://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.to.name + '&format=json&limit=1')
-            .then(function(data) {
-                $scope.newtravel.to.lat=data.data[0].lat;
-                $scope.newtravel.to.long=data.data[0].lon;
-                $scope.newtravel.to.name=data.data[0].display_name;
+            console.log(data);
+            if(data.data[0])
+            {
+                $scope.newtravel.from.lat=data.data[0].lat;
+                $scope.newtravel.from.long=data.data[0].lon;
+                $scope.newtravel.from.name=data.data[0].display_name;
                 $scope.markers.push({
                     lat: Number(data.data[0].lat),
                     lng: Number(data.data[0].lon),
                     message: data.data[0].display_name
                 });
+            }
+            $http.get('http://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.to.name + '&format=json&limit=1')
+            .then(function(data) {
+                if(data.data[0])
+                {
+                    $scope.newtravel.to.lat=data.data[0].lat;
+                    $scope.newtravel.to.long=data.data[0].lon;
+                    $scope.newtravel.to.name=data.data[0].display_name;
+                    $scope.markers.push({
+                        lat: Number(data.data[0].lat),
+                        lng: Number(data.data[0].lon),
+                        message: data.data[0].display_name
+                    });
+                }
             });
         });
 

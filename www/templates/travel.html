@@ -1,15 +1,18 @@
 <ion-view view-title="{{'Travel' | translate}}">
   <ion-content class="has-footer">
     <div class="item item-icon-left">
-      <div class="item-note o-text-right">
+      <div class="item-note">
         <p>
             <md-button ng-href="#/app/users/{{travel.user._id}}">
                 <img class="o_userImgCircularMini" ng-src="{{travel.user.avatar}}"></img>
                 {{travel.user.username}}
             </md-button>
-        </p>
-        <p ng-show="storageuser._id==travel.user._id" class="text-right">
-          <a ng-click="deleteTravel()" class="button button-small o_bRed"><i class="icon ion-trash-a"></i></a>
+            <p  class="text-right">
+              <a ng-click="deleteTravel()" class="button button-small o_bRed"
+              ng-show="storageuser._id==travel.user._id">
+                  <i class="icon ion-trash-a"></i>
+              </a>
+            </p>
         </p>
       </div>
       <h2>
@@ -19,6 +22,7 @@
 
     <leaflet width="100%" height="40%" markers="markers" center="center"
     tiles="tiles" id="map-simple-map"></leaflet>
+
     <div ng-show="storageuser._id!=travel.user._id" class="text-right">
       <p class='text-right'>
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)==-1">
@@ -35,8 +39,12 @@
       </p>
     </div>
     <div class="item item-icon-left">
-        <i class="icon ion-ios-location"></i>{{travel.from.name}} --> {{travel.to.name}}
+        <i class="icon ion-ios-location-outline"></i>From: {{travel.from.name}}
     </div>
+    <div class="item item-icon-left">
+        <i class="icon ion-ios-location"></i>To: {{travel.to.name}}
+    </div>
+
     <div class="item item-icon-left">
         <i class="icon ion-clipboard"></i> {{travel.description}}
     </div>
@@ -44,28 +52,50 @@
         <i class="icon ion-ios-box"></i> package
     </div>
     <div class="item item-icon-left" ng-show="travel.user.telegram">
-        <i class="icon ion-paper-airplane"></i> @{{user.telegram}}
+        <i class="icon ion-paper-airplane"></i> @{{travel.user.telegram}}
     </div>
     <div class="item item-icon-left" ng-show="travel.user.phone">
         <i class="icon ion-ios-telephone"></i> {{travel.user.phone}}
     </div>
-    <div class="item item-icon-left">
-        <i class="icon ion-ios-people"></i> {{travel.seats}} seats
-    </div>
 
-    <div class="item item-body">
+    <div class="item item-body" ng-show="travel.collectivized">
       <div class='row'>
         <div class='col o-text-right'>
-          <p ng-show="travel.collectivized">
+          <p>
             <span class="o-badgeCollectivized">{{'Collectivized' | translate}}</span>
           </p>
         </div>
       </div>
       <br>
-
-
-
     </div>
+
+    <div class="item item-icon-left">
+        <i class="icon ion-ios-people"></i>
+                <p>0/{{travel.seats}} seats</p>
+                <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join._id}}">
+                    <img class="o_userImgCircularMini" ng-src="{{join.avatar}}"></img>
+                </a>
+    </div>
+    <div class="">
+        <p>Pendent petitions</p>
+        <div class="row" ng-repeat="joinPetition in travel.joinPetitions">
+            <div class="col col-90">
+                <a class="item item-avatar"  ng-href="#/app/users/{{joinPetition._id}}">
+                    <img class="o_userImgCircularMini" ng-src="{{joinPetition.avatar}}"></img>
+                    <h2>{{joinPetition.username}}</h2>
+                </a>
+            </div>
+            <div class="col">
+                <button class="button button-small o_grey600">
+                    <i class="icon ion-close"></i>
+                </button><br>
+                <button class="button button-small o_purple400">
+                    <i class="icon ion-checkmark"></i>
+                </button><br>
+            </div>
+        </div>
+    </div>
+
     <div class="item item-body" ng-show="travel.joins[0]">
       {{'Joined_users' | translate}}:<br>
       <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
