@@ -3,6 +3,7 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
 .controller('TravelCtrl', function($scope, $stateParams, $http,
         $ionicModal, $ionicLoading, $ionicPopup, $filter,
         leafletData, leafletBoundsHelpers) {
+    $scope.storageuser = JSON.parse(localStorage.getItem("cim_app_userdata"));
 
     $scope.center= {
         /*lat: 0,
@@ -124,6 +125,27 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         });
     };
 
+    $scope.acceptJoin = function(joinPetition){
+        $http({
+            url: urlapi + 'travels/acceptJoin/'+ $stateParams.travelid,
+            method: "POST",
+            data: {userid: joinPetition._id}
+        })
+        .then(function(data) {
+            console.log("data: ");
+            console.log(data);
+            if(data.success==false){
+                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.travel=data.data;
+                console.log("success");
+            }
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+
     /* adding comment */
     $scope.doingNewComment=false;
     $scope.newComment={};
@@ -166,12 +188,12 @@ console.log($scope.newComment);
 
 
     $scope.userHasJoined = function(myArray, searchTerm) {
-      //console.log(myArray+", "+searchTerm+", "+property);
+      //console.log(myArray+", "+searchTerm);
         if(myArray)
         {
             for(var i = 0, len = myArray.length; i < len; i++) {
                 //console.log(myArray[i] + " - " + searchTerm);
-                if (myArray[i] === searchTerm){
+                if (myArray[i]._id === searchTerm){
                     //console.log("i: " + i);
                     return i;
                 }

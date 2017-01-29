@@ -26,16 +26,18 @@
     <div ng-show="storageuser._id!=travel.user._id" class="text-right">
       <p class='text-right'>
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)==-1">
-          <md-button ng-show="travel.type=='offering'" ng-click="joinTravel()" class="o_purple300">{{'Ask_to_join' | translate}}</md-button>
-          <md-button ng-show="travel.type=='asking'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
-          <md-button ng-show="travel.type=='package'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
+            <div ng-show="userHasJoined(travel.joins, storageuser._id)==-1">
+                <md-button ng-show="travel.type=='offering'" ng-click="joinTravel()" class="o_purple300">{{'Ask_to_join' | translate}}</md-button>
+                <md-button ng-show="travel.type=='asking'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
+                <md-button ng-show="travel.type=='package'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
+            </div>
         </div>
 
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)>-1">
           <md-button ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="o_purple100">{{'Unjoin' | translate}}</md-button>
           <md-button ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
           <md-button ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
-        </div>
+      </div>
       </p>
     </div>
     <div class="item item-icon-left">
@@ -51,9 +53,10 @@
     <div class="item item-icon-left" ng-show="travel.package">
         <i class="icon ion-ios-box"></i> package
     </div>
-    <div class="item item-icon-left" ng-show="travel.user.telegram">
+    <a class="item item-icon-left" ng-show="travel.user.telegram"
+    ng-href="http://telegram.me/{{travel.user.telegram}}">
         <i class="icon ion-paper-airplane"></i> @{{travel.user.telegram}}
-    </div>
+    </a>
     <div class="item item-icon-left" ng-show="travel.user.phone">
         <i class="icon ion-ios-telephone"></i> {{travel.user.phone}}
     </div>
@@ -71,12 +74,15 @@
 
     <div class="item item-icon-left">
         <i class="icon ion-ios-people"></i>
-                <p>0/{{travel.seats}} seats</p>
-                <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join._id}}">
-                    <img class="o_userImgCircularMini" ng-src="{{join.avatar}}"></img>
-                </a>
+        <!--<button class="o_floatRight button o_grey600" ng-show="travel.user._id==storageuser._id">
+            <i class="icon ion-edit"></i>
+        </button>-->
+        <p>{{travel.joins.length}}/{{travel.seats}} seats</p>
+        <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join._id}}">
+            <img class="o_userImgCircularMini" ng-src="{{join.avatar}}"></img>
+        </a>
     </div>
-    <div class="">
+    <div ng-show="travel.joinPetitions.length>0">
         <p>Pendent petitions</p>
         <div class="row" ng-repeat="joinPetition in travel.joinPetitions">
             <div class="col col-90">
@@ -85,23 +91,23 @@
                     <h2>{{joinPetition.username}}</h2>
                 </a>
             </div>
-            <div class="col">
+            <div class="col" ng-show="travel.user._id==storageuser._id">
                 <button class="button button-small o_grey600">
                     <i class="icon ion-close"></i>
                 </button><br>
-                <button class="button button-small o_purple400">
+                <button class="button button-small o_purple400" ng-click="acceptJoin(joinPetition)">
                     <i class="icon ion-checkmark"></i>
                 </button><br>
             </div>
         </div>
     </div>
 
-    <div class="item item-body" ng-show="travel.joins[0]">
+    <!--<div class="item item-body" ng-show="travel.joins[0]">
       {{'Joined_users' | translate}}:<br>
       <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
         <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
       </a>
-    </div>
+  </div>-->
     <div class="item item-body">
       <div ng-show="travel.comments[0]">
         {{'Comments' | translate}}:<br>
