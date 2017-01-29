@@ -1,0 +1,44 @@
+<ion-view view-title="{{'Edit user' | translate}} {{user.username}}">
+  <ion-content class="has-footer">
+    <div class="o_userProfileBackground">
+        <img ng-src="{{user.avatar}}" class="o_userImgCircular"
+        ng-click="selectAvatar()"/>
+        <h3 class="o_text_white">{{user.username}}</h3>
+        <p>
+            <input ng-model="user.description" class="o_transparentInput"
+            placeholder="{{'Description' | translate}}">
+        </p>
+        <p>
+            <input ng-model="user.email" class="o_transparentInput"
+            placeholder="{{'Email' | translate}}">
+        </p>
+
+        <p ng-show="storageuser._id==user._id">
+            <md-button class="o_purple300" ng-click="update()">
+                Update profile
+            </md-button>
+        </p>
+    </div>
+    <div class="">
+        <div class="row">
+          <a class="tab-item">
+              <i class="icon ion-paper-airplane"></i>
+              @
+              <input style="display: inline-block;" type="text" ng-model="user.telegram" placeholder="{{'Telegram' | translate}}">
+          </a>
+          <a class="tab-item">
+              <i class="icon ion-android-car"></i>
+              {{user.travels.length}} Travels
+          </a>
+          <a class="tab-item">
+              <i class="icon ion-ios-heart"></i>
+              {{user.favs.length}} favs
+          </a>
+        </div>
+    </div>
+    <div class="item">
+        <img src="{{user.faircoin}}" style="width: 100%;"
+         ng-click="selectFaircoinPublicKey()" />
+    </div>
+  </ion-content>
+</ion-view>

@@ -29,6 +29,12 @@
 
     color: #ffffff;
 }
+.o_transparentInput{
+    background: rgba(255, 255, 255, 0);
+    color: #ffffff;
+    border: 0px;
+    width: 80%;
+}
 .o_userImgCircular {
     margin-top: 5%;
     background: #ffffff;

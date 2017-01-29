@@ -1,10 +1,17 @@
 <ion-view view-title="{{'User' | translate}} {{user.username}}">
   <ion-content class="has-footer">
+      <ion-refresher
+        pulling-text="{{'Pull_to_refresh' | translate}}..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
     <div class="o_userProfileBackground">
         <img ng-src="{{user.avatar}}" class="o_userImgCircular" />
         <h3 class="o_text_white">{{user.username}}</h3>
         <p>{{user.description}}</p>
         <p>{{user.email}}</p>
+        <p ng-show="storageuser._id==user._id">
+            <md-button class="o_grey500" ng-href="#/app/editUser">Edit profile</md-button>
+        </p>
     </div>
     <div class="">
         <div class="row">
@@ -38,7 +45,7 @@
         </div>
     </div>
     <div class="item">
-        <img src="img/faircoinpublickey_sample.png" style="width: 100%;" />
+        <img src="{{user.faircoin}}" style="width: 100%;" />
     </div>
     <div class="item item-body">
         {{'current_publications_of' | translate}} {{user.username}}:

@@ -6,14 +6,15 @@
 // 'starter.controllers' is found in controllers.js
 
 
-var urlapi = "http://localhost:3000/api/";
+//var urlapi = "http://localhost:3000/api/";
 //var urlapi="https://collectivecar.paas.primustech.io/api/";
-//var urlapi="http://147.83.7.158:3000/api/";
+var urlapi="http://147.83.7.158:3000/api/";
 
 
 angular.module('starter', [
     'ionic',
     'ngMaterial',
+    'ngCordova',
     'pascalprecht.translate',
     'app.login',
     'app.signup',
@@ -29,6 +30,7 @@ angular.module('starter', [
     'app.askPackage',*/
     'app.users',
     'app.user',
+    'app.editUser',
     'app.notifications',
     'app.settings',
     'app.help'
@@ -148,6 +150,15 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/user.html',
             controller: 'UserCtrl'
+          }
+        }
+      })
+      .state('app.editUser', {
+        url: '/editUser',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/editUser.html',
+            controller: 'EditUserCtrl'
           }
         }
       })

@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "angular-material": "^1.1.1",
-    "ui-leaflet": "^2.0.0"
+    "ui-leaflet": "^2.0.0",
+    "ngCordova": "0.1.27-alpha"
   }
 }

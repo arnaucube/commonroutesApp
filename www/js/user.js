@@ -1,17 +1,27 @@
 angular.module('app.user', ['pascalprecht.translate'])
 
-.controller('UserCtrl', function($scope, $stateParams, $http, $filter, $ionicModal) {
+.controller('UserCtrl', function($scope, $stateParams, $http,
+                            $ionicLoading, $filter, $ionicModal) {
 
-
+    $scope.storageuser = JSON.parse(localStorage.getItem("cim_app_userdata"));
     $scope.user={};
-    $http.get(urlapi + 'users/id/'+$stateParams.userid)
+    $scope.doRefresh = function(){
+        $http.get(urlapi + 'users/id/'+$stateParams.userid)
         .then(function(data, status, headers,config){
             console.log('data success');
             console.log(data); // for browser console
             $scope.user = data.data; // for UI
+            if($scope.storageuser._id==$scope.user._id)
+            {
+                localStorage.setItem("cim_app_userdata", JSON.stringify(data.data));
+            }
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
         },function(data, status, headers,config){
             console.log('data error');
+            $scope.$broadcast('scroll.refreshComplete');//refresher stop
         });
+    };
+    $scope.doRefresh();
 
 
 
