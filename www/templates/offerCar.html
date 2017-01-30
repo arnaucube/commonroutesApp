@@ -16,9 +16,11 @@
               </md-input-container>
           </div>
       </div><!-- end of padding -->
-      <md-button ng-click="getGeo()" class="o_purple300">Get positions</md-button>
+      <md-button ng-click="getGeo()" ng-show="newtravel.from.name && newtravel.to.name"
+      class="o_purple300">Get positions</md-button>
 
-      <leaflet width="100%" height="40%" markers="markers" center="center"
+      <leaflet ng-show="markers[0]"
+      width="100%" height="40%" markers="markers" center="center"
       tiles="tiles" id="map-simple-map"></leaflet>
 
       <div class="padding" ng-show="markers[0]">
