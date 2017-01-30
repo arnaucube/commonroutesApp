@@ -125,6 +125,27 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         });
     };
 
+    $scope.declineJoin = function(joinPetition){
+        $http({
+            url: urlapi + 'travels/declineJoin/'+ $stateParams.travelid,
+            method: "POST",
+            data: {userid: joinPetition._id}
+        })
+        .then(function(data) {
+            console.log("data: ");
+            console.log(data);
+            if(data.success==false){
+                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.travel=data.data;
+                console.log("success");
+            }
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+
     $scope.acceptJoin = function(joinPetition){
         $http({
             url: urlapi + 'travels/acceptJoin/'+ $stateParams.travelid,
@@ -139,6 +160,26 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
             }else{
                 $scope.travel=data.data;
                 console.log("success");
+            }
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+
+    $scope.leaveTravel = function(){
+        $http({
+            url: urlapi + 'travels/leave/'+ $stateParams.travelid,
+            method: "POST",
+            data: {}
+        })
+        .then(function(data) {
+            console.log("data: ");
+            console.log(data);
+            if(data.success==false){
+                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.travel=data.data;
             }
         },
         function(response) { // optional

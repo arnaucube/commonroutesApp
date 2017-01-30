@@ -1,5 +1,9 @@
 <ion-view view-title="{{'Travel' | translate}}">
   <ion-content class="has-footer">
+      <ion-refresher
+        pulling-text="{{'Pull_to_refresh' | translate}}..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
     <div class="item item-icon-left">
       <div class="item-note">
         <p>
@@ -60,7 +64,7 @@
         </div>
 
         <div ng-show="userHasJoined(travel.joins, storageuser._id)>-1">
-            <md-button ng-show="travel.type=='offering'" ng-click="" class="o_bRed">{{'Leave' | translate}}</md-button>
+            <md-button ng-show="travel.type=='offering'" ng-click="leaveTravel()" class="o_bRed">{{'Leave' | translate}}</md-button>
             <md-button ng-show="travel.type=='asking'" ng-click="" class="o_purple100">{{'Leave' | translate}}</md-button>
             <md-button ng-show="travel.type=='package'" ng-click="" class="o_purple100">{{'Leave' | translate}}</md-button>
         </div>
@@ -97,7 +101,7 @@
                 </a>
             </div>
             <div class="col" ng-show="travel.user._id==storageuser._id">
-                <button class="button button-small o_grey600">
+                <button class="button button-small o_grey600" ng-click="declineJoin(joinPetition)">
                     <i class="icon ion-close"></i>
                 </button><br>
                 <button class="button button-small o_purple400" ng-click="acceptJoin(joinPetition)">
