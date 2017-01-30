@@ -8,6 +8,62 @@
 .o_floatRight{
     float: right;
 }
+.o_loginBackground{
+    height: 100%!important;
+    width: 100%;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('../img/userProfileBackground.png');
+    text-align: center;
+    /*color: white;*/
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: #ffffff;
+
+    padding-top: 30%;
+}
+@font-face {
+    font-family: 'Thinking_of_Betty';
+    src: url('../fonts/Thinking_of_Betty.ttf');
+}
+.o_loginBackground h1{
+    color: #ffffff!important;
+    margin: 10px;
+    font-family: 'Thinking_of_Betty'
+    /*font-weight: bold;*/
+}
+.o_loginDivForm{
+    /*background: rgba(255, 255, 255, 0.2);*/
+}
+.o_loginInput{
+    background: rgba(255, 255, 255, 0.2);
+    padding:10px;
+    color: #ffffff;
+    border: 0px;
+    width: 80%;
+    font-size: 120%;
+}
+.o_loginInput::-webkit-input-placeholder{
+    color: rgba(255, 255, 255, 0.6);
+}
+.o_loginButton{
+    color: rgba(0, 0, 0, 0.8);
+    font-weight: bold;
+    margin: 10%;
+}
+.o_transparentBackground{
+    background: rgba(255, 255, 255, 0);
+    color: #ffffff;
+}
 .o_userProfileBackground{
     min-height: 30%!important;
     width: 100%;

@@ -1,22 +1,39 @@
 <ion-modal-view>
   <ion-content>
-      <img src="img/header.png" style="width:100%;"/>
-    <form ng-submit="doLogin()">
-      <div class="list padding">
-          <span class="item-note">v0.0.1</span>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Username' | translate}}</label>
-            <input ng-model="loginData.username">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Password' | translate}}</label>
-            <input ng-model="loginData.password" type="password">
-          </md-input-container>
-        <div>
-            <md-button class="o_purple100" ng-href="#/app/signup">{{'Signup' | translate}}</md-button>
-            <md-button class="o_purple300 o_floatRight" ng-click="doLogin()">{{'Login' | translate}}</md-button>
+    <div class="o_loginBackground">
+      <div class="o_loginDivForm">
+        <h1>Cars in Common</h1>
+
+        <span class="item-note">v0.0.1</span>
+        <br><br>
+        <p>
+            <i class="icon ion-person"></i>
+            <input ng-model="loginData.username" class="o_loginInput"
+            placeholder="{{'Username' | translate}}">
+        </p>
+        <br>
+        <p>
+            <i class="icon ion-locked"></i>
+            <input ng-model="loginData.password" class="o_loginInput"
+            placeholder="{{'Password' | translate}}" style="-webkit-text-security: disc;">
+        </p>
+        <br>
+        <p>
+            <a class="o_loginButton button button-block" ng-click="doLogin()">
+                {{'LOG IN' | translate}}
+            </a>
+        </p>
+        <!--<p>
+            <a class="o_loginButton button button-block" ng-href="#/app/signup">
+                {{'Signup' | translate}}
+            </a>
+        </p>-->
+        <div class="bar bar-footer o_transparentBackground">
+            <a class="button o_purple300 pull-right" ng-href="#/app/signup">
+                {{'SIGN UP' | translate}}
+            </a>
         </div>
       </div>
-    </form>
+    </div>
   </ion-content>
 </ion-modal-view>
