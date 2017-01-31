@@ -95,7 +95,7 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         .then(function(data) {
             console.log("data: ");
             console.log(data);
-            if(data.success==false){
+            if(data.data.success==false){
                 $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
             }else{
                 $scope.travel=data.data;
@@ -114,7 +114,7 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         .then(function(data) {
             console.log("data: ");
             console.log(data);
-            if(data.success==false){
+            if(data.data.success==false){
                 $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
             }else{
                 $scope.travel=data.data;
@@ -134,8 +134,8 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         .then(function(data) {
             console.log("data: ");
             console.log(data);
-            if(data.success==false){
-                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            if(data.data.success==false){
+                $ionicLoading.show({template: 'Error on declining', noBackdrop: true, duration: 2000});
             }else{
                 $scope.travel=data.data;
                 console.log("success");
@@ -155,8 +155,8 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         .then(function(data) {
             console.log("data: ");
             console.log(data);
-            if(data.success==false){
-                $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
+            if(data.data.success==false){
+                $ionicLoading.show({template: 'Error on accepting', noBackdrop: true, duration: 2000});
             }else{
                 $scope.travel=data.data;
                 console.log("success");
@@ -176,7 +176,7 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
         .then(function(data) {
             console.log("data: ");
             console.log(data);
-            if(data.success==false){
+            if(data.data.success==false){
                 $ionicLoading.show({template: 'Error on unjoin', noBackdrop: true, duration: 2000});
             }else{
                 $scope.travel=data.data;

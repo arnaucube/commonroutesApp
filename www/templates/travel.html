@@ -101,12 +101,12 @@
                 </a>
             </div>
             <div class="col" ng-show="travel.user._id==storageuser._id">
-                <button class="button button-small o_grey600" ng-click="declineJoin(joinPetition)">
+                <div class="button button-small o_grey600" ng-click="declineJoin(joinPetition)">
                     <i class="icon ion-close"></i>
-                </button><br>
-                <button class="button button-small o_purple400" ng-click="acceptJoin(joinPetition)">
+                </div><br>
+                <div class="button button-small o_purple400" ng-click="acceptJoin(joinPetition)">
                     <i class="icon ion-checkmark"></i>
-                </button><br>
+                </div><br>
             </div>
         </div>
     </div>
@@ -133,12 +133,12 @@
                 <input ng-model="newComment.comment" type="text" placeholder="Comment">
             </label>
 
-        <button ng-click="closeNewComment()" class="button button-small button-assertive">
+        <div ng-click="closeNewComment()" class="button button-small button-assertive">
                {{'Cancel' | translate}}
-            </button>
-        <button ng-click="doNewComment()" ng-show="newComment.comment" class="button button-small button-calm">
+           </div>
+        <div ng-click="doNewComment()" ng-show="newComment.comment" class="button button-small button-calm">
                {{'Post_comment' | translate}}
-            </button>
+           </div>
       </form>
     </div>
   </ion-content>
