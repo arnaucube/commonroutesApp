@@ -60,6 +60,10 @@
     font-weight: bold;
     margin: 10%;
 }
+.o_signupLink{
+    text-decoration: none;
+    color: #ffffff;
+}
 .o_transparentBackground{
     background: rgba(255, 255, 255, 0);
     color: #ffffff;

@@ -20,13 +20,13 @@
               <i class="icon ion-paper-airplane"></i>
               @{{user.telegram}}
           </a>
-          <a class="tab-item">
+          <a class="tab-item" ng-href="#/app/users/userTravels/{{user._id}}">
               <i class="icon ion-android-car"></i>
               {{user.travels.length}} Travels
           </a>
           <a class="tab-item">
               <i class="icon ion-ios-heart"></i>
-              {{user.favs.length}} favs
+              {{user.favs.length}} favs<br>(not yet)
           </a>
         </div>
 
@@ -47,7 +47,7 @@
     <div class="item">
         <img src="{{user.faircoin}}" style="width: 100%;" />
     </div>
-    <div class="item item-body">
+    <!--<div class="item item-body">
         {{'current_publications_of' | translate}} {{user.username}}:
         <div class="o_text_purple600">{{user.travels.length}} {{'publications' | translate}}</div>
 
@@ -68,6 +68,6 @@
               {{travel.description}}
           </p>
         </a>
-    </div>
+    </div>-->
   </ion-content>
 </ion-view>

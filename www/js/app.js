@@ -30,6 +30,7 @@ angular.module('starter', [
     'app.askPackage',*/
     'app.users',
     'app.user',
+    'app.userTravels',
     'app.editUser',
     'app.notifications',
     'app.settings',
@@ -150,6 +151,15 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/user.html',
             controller: 'UserCtrl'
+          }
+        }
+      })
+      .state('app.userTravels', {
+        url: '/users/userTravels/:userid',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/userTravels.html',
+            controller: 'UserTravelsCtrl'
           }
         }
       })
