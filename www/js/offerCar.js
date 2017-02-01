@@ -1,7 +1,7 @@
 angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
 
 .controller('OfferCarCtrl', function($scope, $stateParams, $translate,
-        $http, $filter) {
+        $http, $filter, $ionicLoading) {
 
     $scope.newtravel={};
     $scope.newtravel.from={
@@ -38,6 +38,8 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
         function(data) { // optional
             // failed
             console.log(data);
+            $ionicLoading.show({ template: 'Complete all parameters first', noBackdrop: true, duration: 2000 });
+
         });
     };
     $scope.getGeo = function(){
