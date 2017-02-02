@@ -29,7 +29,7 @@
               {{user.travels.length}} Travels
           </a>
           <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)==-1">
-              <i class="icon ion-ios-heart" ng-click="likeUser()"></i>
+              <i class="icon ion-heart" ng-click="likeUser()"></i>
               <i ng-href="#/app/users/userLikes/{{user._id}}">
                   {{user.likes.length}} likes
               </i>
