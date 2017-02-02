@@ -23,6 +23,46 @@ angular.module('app.user', ['pascalprecht.translate'])
     };
     $scope.doRefresh();
 
+    $scope.likeUser = function(){
+        $http({
+            //url: urlapi + 'users/'+ $stateParams.username+'/fav',
+            url: urlapi + 'users/id/like/'+ $scope.user._id,
+            method: "POST",
+            data: {}
+        })
+        .then(function(data) {
+            // success
+            if(data.data.success==false){
+                console.log("failed");
+                $ionicLoading.show({template: 'Error on like', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.user = data.data; // for UI
+            }
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
+    $scope.unlikeUser = function(){
+        $http({
+            //url: urlapi + 'users/'+ $stateParams.username+'/fav',
+            url: urlapi + 'users/id/unlike/'+ $scope.user._id,
+            method: "POST",
+            data: {}
+        })
+        .then(function(data) {
+            // success
+            if(data.data.success==false){
+                console.log("failed");
+                $ionicLoading.show({template: 'Error on unlike', noBackdrop: true, duration: 2000});
+            }else{
+                $scope.user = data.data; // for UI
+            }
+        },
+        function(response) { // optional
+                // failed
+        });
+    };
 
 
     $scope.favUser = function(){
@@ -96,10 +136,10 @@ angular.module('app.user', ['pascalprecht.translate'])
       $scope.modalFavsList.hide();
     };
 
-    $scope.arrayObjectIndexOf = function(myArray, searchTerm, property) {
+    $scope.arrayObjectIndexOf = function(myArray, searchTerm) {
         if(myArray){
             for(var i = 0, len = myArray.length; i < len; i++) {
-                if (myArray[i][property] === searchTerm){
+                if (myArray[i] === searchTerm){
                     return i;
                 }
             }

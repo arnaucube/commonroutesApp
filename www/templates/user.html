@@ -9,6 +9,10 @@
         <h3 class="o_text_white">{{user.username}}</h3>
         <p>{{user.description}}</p>
         <p>{{user.email}}</p>
+
+        <p><a class="button button-small" ng-href="#/app/users/userLikes/{{user._id}}">
+            view likes
+        </a></p>
         <p ng-show="storageuser._id==user._id">
             <md-button class="o_grey500" ng-href="#/app/editUser">Edit profile</md-button>
         </p>
@@ -24,24 +28,18 @@
               <i class="icon ion-android-car"></i>
               {{user.travels.length}} Travels
           </a>
-          <a class="tab-item">
-              <i class="icon ion-ios-heart"></i>
-              {{user.favs.length}} favs<br>(not yet)
+          <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)==-1">
+              <i class="icon ion-ios-heart" ng-click="likeUser()"></i>
+              <i ng-href="#/app/users/userLikes/{{user._id}}">
+                  {{user.likes.length}} likes
+              </i>
           </a>
-        </div>
-
-        <div class="o-text-right">
-          <div ng-show="storageusername && storageusername!=user.username">
-            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')==-1" ng-click="favUser()">
-              <img class="o-imgMenu" src="img/unlike.png" />
-            </a>
-            <a ng-show="arrayObjectIndexOf(user.favs, storageusername, 'username')!=-1" ng-click="unfavUser()">
-              <img class="o-imgMenu" src="img/like.png" />
-            </a>
-          </div>
-          <!--<a ng-repeat="join in user.favs" ng-href="#/app/users/{{join.joinedUsername}}" class="button button-small button-dark">
-              <img ng-src="img/avatars/{{join.joinedAvatar}}.png" class="o-img-joined" />{{join.joinedUsername}}<br>
-          </a>-->
+          <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)>-1">
+              <i class="icon ion-heart-broken" ng-click="unlikeUser()"></i>
+              <i ng-href="#/app/users/userLikes/{{user._id}}">
+                  {{user.likes.length}} likes
+              </i>
+          </a>
         </div>
     </div>
     <div class="item">

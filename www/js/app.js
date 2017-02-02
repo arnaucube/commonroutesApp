@@ -31,6 +31,7 @@ angular.module('starter', [
     'app.users',
     'app.user',
     'app.userTravels',
+    'app.userLikes',
     'app.editUser',
     'app.notifications',
     'app.settings',
@@ -160,6 +161,15 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/userTravels.html',
             controller: 'UserTravelsCtrl'
+          }
+        }
+      })
+      .state('app.userLikes', {
+        url: '/users/userLikes/:userid',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/userLikes.html',
+            controller: 'UserLikesCtrl'
           }
         }
       })

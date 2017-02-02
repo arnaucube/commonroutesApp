@@ -1,0 +1,17 @@
+<ion-view view-title="{{' travels' | translate}}">
+  <ion-content class="has-footer">
+      <ion-refresher
+        pulling-text="{{'Pull_to_refresh' | translate}}..."
+        on-refresh="doRefresh()">
+      </ion-refresher>
+    <div class="list">
+        <a ng-repeat="user in likes | orderBy: 'date'" class="item item-avatar" ng-href="#/app/users/{{user._id}}">
+          <img ng-src="{{user.avatar}}">
+          <h2 class="o_text_purple600">{{user.username}}</h2>
+          <p>
+              {{user.description}}
+          </p>
+        </a>
+    </div>
+  </ion-content>
+</ion-view>
