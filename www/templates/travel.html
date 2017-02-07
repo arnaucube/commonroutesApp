@@ -28,17 +28,17 @@
     tiles="tiles" id="map-simple-map"></leaflet>
 
     <div class="item item-icon-left">
-        <i class="icon ion-ios-location-outline"></i>From: {{travel.from.name}}
+        <i class="icon ion-ios-location-outline"></i>{{'From' | translate}}: {{travel.from.name}}
     </div>
     <div class="item item-icon-left">
-        <i class="icon ion-ios-location"></i>To: {{travel.to.name}}
+        <i class="icon ion-ios-location"></i>{{'To' | translate}}: {{travel.to.name}}
     </div>
 
     <div class="item item-icon-left">
         <i class="icon ion-clipboard"></i> {{travel.description}}
     </div>
     <div class="item item-icon-left" ng-show="travel.package">
-        <i class="icon ion-ios-box"></i> package
+        <i class="icon ion-ios-box"></i> {{'package' | translate}}
     </div>
     <a class="item item-icon-left" ng-show="travel.user.telegram"
     ng-href="http://telegram.me/{{travel.user.telegram}}">
@@ -86,13 +86,13 @@
         <!--<button class="o_floatRight button o_grey600" ng-show="travel.user._id==storageuser._id">
             <i class="icon ion-edit"></i>
         </button>-->
-        <p>{{travel.joins.length}}/{{travel.seats}} seats</p>
+        <p>{{travel.joins.length}}/{{travel.seats}} {{'seats' | translate}}</p>
                 <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join._id}}">
                     <img class="o_userImgCircularMini" ng-src="{{join.avatar}}"></img>
                 </a>
     </div>
     <div ng-show="travel.joinPetitions.length>0">
-        <p>Pendent petitions</p>
+        <p>{{'Pendent_petitions' | translate}}</p>
         <div class="row" ng-repeat="joinPetition in travel.joinPetitions">
             <div class="col col-90">
                 <a class="item item-avatar"  ng-href="#/app/users/{{joinPetition._id}}">

@@ -11,10 +11,10 @@
         <p>{{user.email}}</p>
 
         <p><a class="button button-small" ng-href="#/app/users/userLikes/{{user._id}}">
-            view likes
+            {{'view_likes' | translate}}
         </a></p>
         <p ng-show="storageuser._id==user._id">
-            <md-button class="o_grey500" ng-href="#/app/editUser">Edit profile</md-button>
+            <md-button class="o_grey500" ng-href="#/app/editUser">{{'Edit_profile' | translate}}</md-button>
         </p>
     </div>
     <div class="">
@@ -26,18 +26,18 @@
           </a>
           <a class="tab-item" ng-href="#/app/users/userTravels/{{user._id}}">
               <i class="icon ion-android-car"></i>
-              {{user.travels.length}} Travels
+              {{user.travels.length}} {{'Travels' | translate}}
           </a>
           <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)==-1">
               <i class="icon ion-heart" ng-click="likeUser()"></i>
               <i ng-href="#/app/users/userLikes/{{user._id}}">
-                  {{user.likes.length}} likes
+                  {{user.likes.length}} {{'likes' | translate}}
               </i>
           </a>
           <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)>-1">
               <i class="icon ion-heart-broken" ng-click="unlikeUser()"></i>
               <i ng-href="#/app/users/userLikes/{{user._id}}">
-                  {{user.likes.length}} likes
+                  {{user.likes.length}} {{'likes' | translate}}
               </i>
           </a>
         </div>

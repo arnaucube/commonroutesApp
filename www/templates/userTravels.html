@@ -6,7 +6,7 @@
       </ion-refresher>
     <div class="list">
         <div class="item item-divider o_purple300" ng-show="travels[0]">
-            Travels offering
+            {{'Travels_offering' | translate}}
         </div>
         <a ng-repeat="travel in travels | orderBy: 'date'"
         class="item item-icon-left" href="#/app/travels/{{travel._id}}">
@@ -24,7 +24,7 @@
           </p>
         </a>
         <div class="item item-divider o_purple300" ng-show="joins[0]">
-            Travels joining
+            {{'Travels_joining' | translate}}
         </div>
         <a ng-repeat="travel in joins | orderBy: 'date'"
         class="item item-icon-left" href="#/app/travels/{{travel._id}}">

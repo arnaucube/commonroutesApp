@@ -7,7 +7,7 @@
             <md-button class="o_purple300" ng-click="doSearch()"><i class="icon ion-search"></i></md-button>
         </div>
         <div class="item item-divider o_purple300" ng-show="travels[0]">
-            Travels
+            {{'Travels' | translate}}
         </div>
         <a ng-repeat="travel in travels | orderBy: 'date'"
         class="item item-icon-left" href="#/app/travels/{{travel._id}}">
@@ -25,7 +25,7 @@
           </p>
         </a>
         <div class="item item-divider o_purple300" ng-show="users[0]">
-            Users
+            {{'Users' | translate}}
         </div>
         <a ng-repeat="user in users | orderBy: 'date'" class="item item-avatar" ng-href="#/app/users/{{user._id}}">
           <img ng-src="{{user.avatar}}">

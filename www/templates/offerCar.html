@@ -1,4 +1,4 @@
-<ion-view view-title="Offer Car">
+<ion-view view-title="{{'Offer_Car' | translate}}">
   <ion-content class="has-footer">
       <div class="padding">
           <md-input-container class="md-block" flex-gt-sm>
@@ -17,7 +17,7 @@
           </div>
       </div><!-- end of padding -->
       <md-button ng-click="getGeo()" ng-show="newtravel.from.name && newtravel.to.name"
-      class="o_purple300">Get positions</md-button>
+      class="o_purple300">{{'Get_positions' | translate}}</md-button>
 
       <leaflet ng-show="markers[0]"
       width="100%" height="40%" markers="markers" center="center"
