@@ -8,8 +8,8 @@
 
 //var urlapi = "http://localhost:3000/api/";
 //var urlapi="https://collectivecar.paas.primustech.io/api/";
-var urlapi="http://147.83.7.158:3000/api/";
-
+//var urlapi="http://147.83.7.158:3000/api/";
+var urlapi = "http://46.105.30.116:3000/api/";
 
 angular.module('starter', [
     'ionic',
