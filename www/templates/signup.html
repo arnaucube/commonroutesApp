@@ -3,34 +3,34 @@
     <h1 class="title">{{'Signup' | translate }}</h1>
   </ion-header-bar>
   <ion-content>
-      <div class="padding">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Username' | translate}}</label>
-            <input ng-model="signupData.username">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Password' | translate}}</label>
+      <div class="list">
+          <label class="item item-input">
+            <span class="input-label">{{'Username' | translate}}</span>
+            <input type="text" ng-model="signupData.username">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">{{'Password' | translate}}</span>
             <input type="password" ng-model="signupData.password">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Email' | translate}}</label>
-            <input ng-model="signupData.email">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Phone' | translate}}</label>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">{{'Email' | translate}}</span>
+            <input type="text" ng-model="signupData.email">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">{{'Phone' | translate}}</span>
             <input type="number" ng-model="signupData.phone">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Telegram' | translate}}</label>
-            <input ng-model="signupData.telegram">
-          </md-input-container>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Description' | translate}}</label>
-            <input ng-model="signupData.description">
-          </md-input-container>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">{{'Telegram' | translate}}</span>
+            <input type="text" ng-model="signupData.telegram">
+          </label>
+          <label class="item item-input">
+            <span class="input-label">{{'Description' | translate}}</span>
+            <input type="text" ng-model="signupData.description">
+          </label>
         <div>
-            <md-button class="o_purple100" ng-href="#/app/login">{{'Cancel' | translate}}</md-button>
-            <md-button class="o_purple300 o_floatRight" ng-click="doSignup()">{{'Signup' | translate}}</md-button>
+            <a class="button o_purple100" ng-href="#/app/login">{{'Cancel' | translate}}</a>
+            <a class="button o_purple300 o_floatRight" ng-click="doSignup()">{{'Signup' | translate}}</a>
         </div>
       </div>
   </ion-content>

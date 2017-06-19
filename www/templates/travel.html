@@ -7,10 +7,10 @@
     <div class="item item-icon-left">
       <div class="item-note">
         <p>
-            <md-button ng-href="#/app/users/{{travel.user._id}}">
+            <a class="button" ng-href="#/app/users/{{travel.user._id}}">
                 <img class="o_userImgCircularMini" ng-src="{{travel.user.avatar}}"></img>
                 {{travel.user.username}}
-            </md-button>
+            </a>
             <p  class="text-right">
               <a ng-click="deleteTravel()" class="button button-small o_bRed"
               ng-show="storageuser._id==travel.user._id">
@@ -51,22 +51,22 @@
       <p class='text-right'>
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)==-1">
             <div ng-show="userHasJoined(travel.joins, storageuser._id)==-1">
-                <md-button ng-show="travel.type=='offering'" ng-click="joinTravel()" class="o_purple300">{{'Ask_to_join' | translate}}</md-button>
-                <md-button ng-show="travel.type=='asking'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
-                <md-button ng-show="travel.type=='package'" ng-click="joinTravel()" class="o_purple300">{{'Offer_car' | translate}}</md-button>
+                <a ng-show="travel.type=='offering'" ng-click="joinTravel()" class="button o_purple300">{{'Ask_to_join' | translate}}</a>
+                <a ng-show="travel.type=='asking'" ng-click="joinTravel()" class="button o_purple300">{{'Offer_car' | translate}}</a>
+                <a ng-show="travel.type=='package'" ng-click="joinTravel()" class="button o_purple300">{{'Offer_car' | translate}}</a>
             </div>
         </div>
 
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)>-1">
-            <md-button ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="o_purple100">{{'Unjoin' | translate}}</md-button>
-            <md-button ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
-            <md-button ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="o_purple100">{{'Unoffer_car' | translate}}</md-button>
+            <a ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="button o_purple100">{{'Unjoin' | translate}}</a>
+            <a ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="button o_purple100">{{'Unoffer_car' | translate}}</a>
+            <a ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="button o_purple100">{{'Unoffer_car' | translate}}</a>
         </div>
 
         <div ng-show="userHasJoined(travel.joins, storageuser._id)>-1">
-            <md-button ng-show="travel.type=='offering'" ng-click="leaveTravel()" class="o_bRed">{{'Leave' | translate}}</md-button>
-            <md-button ng-show="travel.type=='asking'" ng-click="" class="o_purple100">{{'Leave' | translate}}</md-button>
-            <md-button ng-show="travel.type=='package'" ng-click="" class="o_purple100">{{'Leave' | translate}}</md-button>
+            <a ng-show="travel.type=='offering'" ng-click="leaveTravel()" class="button o_bRed">{{'Leave' | translate}}</a>
+            <a ng-show="travel.type=='asking'" ng-click="" class="button o_purple100">{{'Leave' | translate}}</a>
+            <a ng-show="travel.type=='package'" ng-click="" class="button o_purple100">{{'Leave' | translate}}</a>
         </div>
       </p>
     </div>

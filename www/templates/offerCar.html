@@ -1,33 +1,33 @@
 <ion-view view-title="{{'Offer_Car' | translate}}">
   <ion-content class="has-footer">
       <div class="padding">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Title' | translate}}</label>
-            <input ng-model="newtravel.title">
-          </md-input-container>
+          <label class="item item-input">
+            <span class="input-label">{{'Title' | translate}}</span>
+            <input type="text" ng-model="newtravel.title">
+          </label>
           <div layout="row">
-              <md-input-container>
-                <label>{{'From' | translate}}</label>
-                <input ng-model="newtravel.from.name">
-              </md-input-container>
-              <md-input-container>
-                <label>{{'To' | translate}}</label>
-                <input ng-model="newtravel.to.name">
-              </md-input-container>
+              <label class="item item-input">
+                <span class="input-label">{{'From' | translate}}</span>
+                <input type="text" ng-model="newtravel.from.name">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">{{'To' | translate}}</span>
+                <input type="text" ng-model="newtravel.to.name">
+              </label>
           </div>
       </div><!-- end of padding -->
-      <md-button ng-click="getGeo()" ng-show="newtravel.from.name && newtravel.to.name"
-      class="o_purple300">{{'Get_positions' | translate}}</md-button>
+      <a ng-click="getGeo()" ng-show="newtravel.from.name && newtravel.to.name"
+      class="button o_purple300">{{'Get_positions' | translate}}</a>
 
       <leaflet ng-show="markers[0]"
       width="100%" height="40%" markers="markers" center="center"
       tiles="tiles" id="map-simple-map"></leaflet>
 
       <div class="padding" ng-show="markers[0]">
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'n_Seats' | translate}}</label>
+          <label class="item item-input">
+            <span class="input-label">{{'n_Seats' | translate}}</span>
             <input ng-model="newtravel.seats" type="number">
-          </md-input-container>
+          </label>
 
           <label class="item-input">
               <span class="input-label">{{'Date' | translate}}</span>
@@ -44,14 +44,14 @@
           <ion-toggle ng-model="newtravel.collectivized" toggle-class="toggle-calm">
               {{'Collectivized_car' | translate}}
           </ion-toggle>
-          <md-input-container class="md-block" flex-gt-sm>
-            <label>{{'Description' | translate}}</label>
-            <input ng-model="newtravel.description">
-          </md-input-container>
+          <label class="item item-input">
+            <span class="input-label">{{'Description' | translate}}</span>
+            <input type="text" ng-model="newtravel.description">
+          </label>
           <p class="padding">
-            <md-button ng-click="createTravel()" class="o_purple400 o_floatRight">
+            <a ng-click="createTravel()" class="button o_purple400 o_floatRight">
                {{'Create_travel' | translate}}
-           </md-button>
+           </a>
           </p>
       </div><!-- end of padding -->
   </ion-content>

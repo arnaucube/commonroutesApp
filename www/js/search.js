@@ -23,7 +23,7 @@ angular.module('app.search', ['pascalprecht.translate'])
         }, function(data){
             console.log('data error');
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
-            $ionicLoading.show({ template: 'Error connecting server', noBackdrop: true, duration: 2000 });
+            $ionicLoading.show({ template: 'Search error, need text to search', noBackdrop: true, duration: 2000 });
 
         });
     };

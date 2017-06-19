@@ -7,6 +7,10 @@ angular.module('app.notifications', ['pascalprecht.translate'])
         $http.get(urlapi + 'notifications')
         .then(function(data){
             console.log(data); // for browser console
+            $scope.storageuser = JSON.parse(localStorage.getItem("cim_app_userdata"));
+            $scope.storageuser.notifications = data.data;
+            localStorage.setItem("cim_app_userdata", JSON.stringify($scope.storageuser));
+
             $scope.notifications = data.data; // for UI
             $scope.$broadcast('scroll.refreshComplete');//refresher stop
 

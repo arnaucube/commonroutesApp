@@ -14,7 +14,7 @@
             {{'view_likes' | translate}}
         </a></p>
         <p ng-show="storageuser._id==user._id">
-            <md-button class="o_grey500" ng-href="#/app/editUser">{{'Edit_profile' | translate}}</md-button>
+            <a class="button button-small o_grey500" ng-href="#/app/editUser">{{'Edit_profile' | translate}}</a>
         </p>
     </div>
     <div class="">
@@ -35,7 +35,7 @@
               </i>
           </a>
           <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)>-1">
-              <i class="icon ion-heart-broken" ng-click="unlikeUser()"></i>
+              <i class="icon ion-heart ctext_red600" ng-click="unlikeUser()"></i>
               <i ng-href="#/app/users/userLikes/{{user._id}}">
                   {{user.likes.length}} {{'likes' | translate}}
               </i>
