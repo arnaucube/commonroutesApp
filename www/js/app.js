@@ -6,7 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 
 
-var urlapi = "http://localhost:3000/api/";
+//var urlapi = "http://localhost:3000/api/";
+var urlapi = "http://192.168.1.36:3000/api/";
 //var urlapi = "http://51.255.193.106:3000/api/";
 
 angular.module('starter', [

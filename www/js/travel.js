@@ -64,9 +64,9 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
        confirmPopup.then(function(res) {
        if(res) {
          console.log('You are sure');
-         console.log("delete travel: " + $stateParams.travelId);
+         console.log("delete travel: " + $stateParams.travelid);
          $http({
-             url: urlapi + 'travels/' + $stateParams.travelId,
+             url: urlapi + '/travels/id/modify/' + $stateParams.travelid,
              method: "DELETE"
          })
          .then(function(response) {

@@ -11,19 +11,27 @@ angular.module('app.editUser', ['pascalprecht.translate'])
                 destinationType: Camera.DestinationType.DATA_URL,
                 sourceType: Camera.sourceType,
                 allowEdit: true,
-                encodingType: Camera.EncodingType.JPEG,
-                targetWidth: 100,
-                targetHeight: 100,
+                encodingType: Camera.EncodingType.PNG,
+                targetWidth: 500,
+                targetHeight: 500,
                 popoverOptions: CameraPopoverOptions,
                 saveToPhotoAlbum: false,
                 correctOrientation:true
             };
 
             $cordovaCamera.getPicture(options).then(function(imageData) {
+                //$scope.user.newAvatar = "data:image/jpeg;base64," + imageData;
                 $scope.user.avatar = "data:image/jpeg;base64," + imageData;
+                $scope.user.newAvatar = imageData;
                 }, function(err) {
                 console.log(err);
             });
+            /*$cordovaCamera.getPicture(options).then(function(imageURI) {
+                $scope.user.avatar = imageURI;
+                $scope.user.newAvatar = imageURI;
+                }, function(err) {
+                console.log(err);
+            });*/
     };
     $scope.selectFaircoinPublicKey = function(){
         console.log("img");
@@ -42,6 +50,7 @@ angular.module('app.editUser', ['pascalprecht.translate'])
 
             $cordovaCamera.getPicture(options).then(function(imageData) {
                 $scope.user.faircoin = "data:image/jpeg;base64," + imageData;
+                $scope.user.newFaircoin = imageData;
                 }, function(err) {
                 console.log(err);
             });
