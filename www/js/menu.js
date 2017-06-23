@@ -10,6 +10,8 @@ angular.module('app.menu', ['pascalprecht.translate'])
     $scope.logout = function() {
       localStorage.removeItem("cim_app_token");
       localStorage.removeItem("cim_app_userdata");
+      localStorage.removeItem("cim_app_storageuser");
+      localStorage.removeItem("cim_app_notifications");
       $window.location.reload(true);
     };
   });

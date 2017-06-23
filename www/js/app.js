@@ -6,8 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 
 
-//var urlapi = "http://localhost:3000/api/";
-var urlapi = "http://192.168.1.36:3000/api/";
+var urlapi = "http://localhost:3000/api/";
+//var urlapi = "http://192.168.1.36:3000/api/";
 //var urlapi = "http://51.255.193.106:3000/api/";
 
 angular.module('starter', [
@@ -24,8 +24,8 @@ angular.module('starter', [
     'app.travel',
     'app.newTravel',
     'app.offerCar',
-/*    'app.askCar',
-    'app.askPackage',*/
+    /*    'app.askCar',
+        'app.askPackage',*/
     'app.users',
     'app.user',
     'app.userTravels',
@@ -56,12 +56,14 @@ angular.module('starter', [
     $stateProvider
 
       .state('app', {
+        cache: false,
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
         controller: 'MenuCtrl'
       })
       .state('app.main', {
+        cache: false,
         url: '/main',
         views: {
           'menuContent': {
@@ -209,19 +211,19 @@ angular.module('starter', [
       });
     // if none of the above states are matched, use this as the fallback
     if ((localStorage.getItem("cim_app_token")) && (JSON.parse(localStorage.getItem("cim_app_userdata")) != "null") && (JSON.parse(localStorage.getItem("cim_app_userdata")) != null)) {
-            if ((window.location.hash == "#/app/login") || (window.location.hash == "#/app/signup")) {
-                window.location = '#/app/main';
-            }
-            $urlRouterProvider.otherwise('/app/main');
-        } else {
-            if ((window.location != "#/app/login") || (window.location != "#/app/signup")) {
-                console.log("removing data, and going to login");
-                localStorage.removeItem("cim_app_token");
-                localStorage.removeItem("cim_app_userdata");
-                window.location = "#/app/login";
-                $urlRouterProvider.otherwise('/app/login');
-            }
-        }
+      if ((window.location.hash == "#/app/login") || (window.location.hash == "#/app/signup")) {
+        window.location = '#/app/main';
+      }
+      $urlRouterProvider.otherwise('/app/main');
+    } else {
+      if ((window.location != "#/app/login") || (window.location != "#/app/signup")) {
+        console.log("removing data, and going to login");
+        localStorage.removeItem("cim_app_token");
+        localStorage.removeItem("cim_app_userdata");
+        window.location = "#/app/login";
+        $urlRouterProvider.otherwise('/app/login');
+      }
+    }
   })
 
 
@@ -244,29 +246,29 @@ angular.module('starter', [
 
   }])
   .factory('httpInterceptor', function httpInterceptor($q, $window, $location) {
-        return {
-            request: function (config) {
-                return config;
-            },
-            requestError: function (config) {
-                return config;
-            },
-            response: function (res) {
-                return res;
-            },
-            responseError: function (res) {
-                return res;
-            }
-        }
-    })
-    .factory('api', function ($http) {
-        return {
-            init: function () {
-                $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem("cim_app_token");
-                $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem("cim_app_token");
-            }
-        };
-    })
-    .run(function (api) {
-        api.init();
-    });
+    return {
+      request: function(config) {
+        return config;
+      },
+      requestError: function(config) {
+        return config;
+      },
+      response: function(res) {
+        return res;
+      },
+      responseError: function(res) {
+        return res;
+      }
+    }
+  })
+  .factory('api', function($http) {
+    return {
+      init: function() {
+        $http.defaults.headers.common['X-Access-Token'] = localStorage.getItem("cim_app_token");
+        $http.defaults.headers.post['X-Access-Token'] = localStorage.getItem("cim_app_token");
+      }
+    };
+  })
+  .run(function(api) {
+    api.init();
+  });

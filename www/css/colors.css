@@ -478,6 +478,11 @@
     color: #ffffff;
 }
 
+
+.ctext_blueGrey500{
+    color: #607D8B!important;
+}
+
 .c_blueGradient1{
     background: #2d4a56;
     background: -moz-linear-gradient(left, #2d4a56 0%, #1c2b36 100%);
