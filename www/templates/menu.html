@@ -8,10 +8,18 @@
         <button class="button button-icon button-clear ion-navicon o_text_purple500" menu-toggle="left">
         </button>
       </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <a ng-href="#/app/main" menu-close class="button button-icon button-clear ion-home o_text_purple500">
+    </a>
+        <a ng-href="#/app/notifications" menu-close class="button button-icon button-clear ion-android-notifications-none o_text_purple500">
+      </a>
+        <a ng-href="#/app/newTravel" menu-close class="button button-icon button-clear ion-map o_text_purple500">
+    </a>
+      </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
     <!-- menu footer -->
-    <div class="tabs tabs-icon-left" style="position:absolute;"
+    <!--<div class="tabs tabs-icon-left" style="position:absolute;"
     ng-controller="FooterMenuCtrl" ng-show="storageuser">
       <a class="tab-item" ng-href="#/app/notifications">
         <i class="icon ion-android-notifications-none"></i> {{'Notifications' | translate }}
@@ -22,7 +30,7 @@
       <a ng-href="#/app/newTravel" class="tab-item">
         <i class="icon ion-map"></i> {{'New_travel' | translate }}
       </a>
-    </div>
+  </div>-->
     <!-- /menu footer -->
   </ion-side-menu-content>
 
@@ -32,11 +40,13 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
+        <a class="item item-icon-left item-avatar o_bSidenav" menu-close ng-href="#/app/users/{{storageuser._id}}">
+        <img src="{{storageuser.avatar}}" />
+        <h2>{{storageuser.username}}</h2>
+        <p>{{storageuser.description}}</p>
+      </a>
         <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/main">
           <i class="icon ion-home"></i> {{'Main' | translate }}
-        </a>
-        <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/users/{{storageuser._id}}">
-          <i class="icon ion-person"></i> {{storageuser.username}}
         </a>
         <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/search">
           <i class="icon ion-search"></i> {{'Search' | translate }}
