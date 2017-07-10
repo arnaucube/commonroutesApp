@@ -1,0 +1,9 @@
+<ion-view view-title="{{'Users' | translate}}">
+  <ion-content>
+    <ion-header-bar class="bar bar-header">
+      <a class="button" ng-click="modal.hide()">Back</a>
+      <h1 class="title">{{user.username}} profile image</h1>
+    </ion-header-bar>
+    <img ng-click="modal.hide()" ng-src="{{user.avatar}}" style="width:100%;" />
+  </ion-content>
+</ion-view>

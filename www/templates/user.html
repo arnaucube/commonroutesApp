@@ -1,49 +1,50 @@
 <ion-view view-title="{{'User' | translate}} {{user.username}}">
-  <ion-content class="has-footer">
-      <ion-refresher
-        pulling-text="{{'Pull_to_refresh' | translate}}..."
-        on-refresh="doRefresh()">
-      </ion-refresher>
+  <ion-content>
+    <ion-refresher pulling-text="{{'Pull_to_refresh' | translate}}..." on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="o_userProfileBackground">
-        <img ng-src="{{user.avatar}}" class="o_userImgCircular" />
-        <h3 class="o_text_white">{{user.username}}</h3>
-        <p>{{user.description}}</p>
-        <p>{{user.email}}</p>
+      <img ng-click="showImg()" ng-src="{{user.avatar}}" class="o_userImgCircular" />
+      <!--
+        show image disabled, here the code prepared to enable show image:
+        <img ng-click="showImg()" ng-src="{{user.avatar}}" class="o_userImgCircular" />
+    -->
+      <h3 class="o_text_white">{{user.username}}</h3>
+      <p>{{user.description}}</p>
+      <p>{{user.email}}</p>
 
-        <p><a class="button button-small" ng-href="#/app/users/userLikes/{{user._id}}">
+      <p><a class="button button-small" ng-href="#/app/users/userLikes/{{user._id}}">
             {{'view_likes' | translate}}
         </a></p>
-        <p ng-show="storageuser._id==user._id">
-            <a class="button button-small o_grey500" ng-href="#/app/editUser">{{'Edit_profile' | translate}}</a>
-        </p>
+      <p ng-show="storageuser._id==user._id">
+        <a class="button button-small o_grey500" ng-href="#/app/editUser">{{'Edit_profile' | translate}}</a>
+      </p>
     </div>
     <div class="">
-        <div class="row">
-          <a class="tab-item" ng-show="user.telegram"
-          ng-href="http://telegram.me/{{user.telegram}}">
+      <div class="row">
+        <a class="tab-item" ng-show="user.telegram" ng-href="http://telegram.me/{{user.telegram}}">
               <i class="icon ion-paper-airplane"></i>
               @{{user.telegram}}
           </a>
-          <a class="tab-item" ng-href="#/app/users/userTravels/{{user._id}}">
+        <a class="tab-item" ng-href="#/app/users/userTravels/{{user._id}}">
               <i class="icon ion-android-car"></i>
               {{user.travels.length}} {{'Travels' | translate}}
           </a>
-          <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)==-1">
+        <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)==-1">
               <i class="icon ion-heart" ng-click="likeUser()"></i>
               <i ng-href="#/app/users/userLikes/{{user._id}}">
                   {{user.likes.length}} {{'likes' | translate}}
               </i>
           </a>
-          <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)>-1">
+        <a class="tab-item" ng-show="arrayObjectIndexOf(user.likes, storageuser._id)>-1">
               <i class="icon ion-heart ctext_red600" ng-click="unlikeUser()"></i>
               <i ng-href="#/app/users/userLikes/{{user._id}}">
                   {{user.likes.length}} {{'likes' | translate}}
               </i>
           </a>
-        </div>
+      </div>
     </div>
     <div class="item">
-        <img src="{{user.faircoin}}" style="width: 100%;" />
+      <img src="{{user.faircoin}}" style="width: 100%;" />
     </div>
     <!--<div class="item item-body">
         {{'current_publications_of' | translate}} {{user.username}}:

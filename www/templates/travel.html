@@ -51,22 +51,23 @@
       <p class='text-right'>
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)==-1">
             <div ng-show="userHasJoined(travel.joins, storageuser._id)==-1">
-                <a ng-show="travel.type=='offering'" ng-click="joinTravel()" class="button o_purple300">{{'Ask_to_join' | translate}}</a>
-                <a ng-show="travel.type=='asking'" ng-click="joinTravel()" class="button o_purple300">{{'Offer_car' | translate}}</a>
-                <a ng-show="travel.type=='package'" ng-click="joinTravel()" class="button o_purple300">{{'Offer_car' | translate}}</a>
+                <a ng-show="travel.type=='offering'" ng-click="joinTravel()" class="button button-small o_purple300">{{'Ask_to_join' | translate}}</a>
+                <a ng-show="travel.type=='asking'" ng-click="joinTravel()" class="button button-small o_purple300">{{'Offer_car' | translate}}</a>
+                <a ng-show="travel.type=='package'" ng-click="joinTravel()" class="button button-small o_purple300">{{'Offer_car' | translate}}</a>
             </div>
         </div>
 
         <div ng-show="userHasJoined(travel.joinPetitions, storageuser._id)>-1">
-            <a ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="button o_purple100">{{'Unjoin' | translate}}</a>
-            <a ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="button o_purple100">{{'Unoffer_car' | translate}}</a>
-            <a ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="button o_purple100">{{'Unoffer_car' | translate}}</a>
+            <a ng-show="travel.type=='offering'" ng-click="unjoinTravel()" class="button button-small o_purple100">{{'Unjoin' | translate}}</a>
+            <a ng-show="travel.type=='asking'" ng-click="unjoinTravel()" class="button button-small o_purple100">{{'Unoffer_car' | translate}}</a>
+            <a ng-show="travel.type=='package'" ng-click="unjoinTravel()" class="button button-small o_purple100">{{'Unoffer_car' | translate}}</a>
         </div>
 
         <div ng-show="userHasJoined(travel.joins, storageuser._id)>-1">
-            <a ng-show="travel.type=='offering'" ng-click="leaveTravel()" class="button o_bRed">{{'Leave' | translate}}</a>
-            <a ng-show="travel.type=='asking'" ng-click="" class="button o_purple100">{{'Leave' | translate}}</a>
-            <a ng-show="travel.type=='package'" ng-click="" class="button o_purple100">{{'Leave' | translate}}</a>
+            You have been accepted!
+            <a ng-show="travel.type=='offering'" ng-click="leaveTravel()" class="button button-small o_bRed">{{'Leave' | translate}}</a>
+            <a ng-show="travel.type=='asking'" ng-click="" class="button button-small o_purple100">{{'Leave' | translate}}</a>
+            <a ng-show="travel.type=='package'" ng-click="" class="button button-small o_purple100">{{'Leave' | translate}}</a>
         </div>
       </p>
     </div>

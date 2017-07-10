@@ -3,25 +3,23 @@
     <ion-refresher pulling-text="{{'Pull_to_refresh' | translate}}..." on-refresh="doRefresh()">
     </ion-refresher>
     <div ng-show="!notifications[0]" class="item">
-        No notifications yet
+      No notifications yet
     </div>
-    <a ng-repeat="notification in notifications | orderBy: '-date'"  ng-show="notification.state=='pendent'"
-    class="item item-icon-left c_deepPurple100" href="#/app/{{notification.link}}">
-        <i ng-show="notification.state=='pendent'" class="icon ion-android-notifications-none o_text_purple600"></i>
-        <h2>{{notification.message}}</h2>
-        <div class="item-note text-right">
-            <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
-            <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
-        </div>
-      </a>
-    <a ng-repeat="notification in notifications | orderBy: '-date'"  ng-show="notification.state=='viewed'"
-    class="item item-icon-left" href="#/app/{{notification.link}}">
-        <i ng-show="notification.state=='viewed'" class="icon ion-android-notifications-none"></i>
-        <h2>{{notification.message}}</h2>
-        <div class="item-note text-right">
-            <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
-            <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
-        </div>
-      </a>
+    <a ng-repeat="notification in notifications | orderBy: '-date'" ng-show="notification.state=='pendent'" class="item item-icon-left item-text-wrap c_deepPurple100" href="#/app/{{notification.link}}">
+      <div class="item-note text-right">
+        <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
+        <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
+      </div>
+      <i ng-show="notification.state=='pendent'" class="icon ion-android-notifications-none o_text_purple600"></i>
+      <h2>{{notification.message}}</h2>
+    </a>
+    <a ng-repeat="notification in notifications | orderBy: '-date'" ng-show="notification.state=='viewed'" class="item item-icon-left item-text-wrap" href="#/app/{{notification.link}}">
+      <div class="item-note text-right">
+        <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
+        <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
+      </div>
+      <i ng-show="notification.state=='viewed'" class="icon ion-android-notifications-none"></i>
+      <h2>{{notification.message}}</h2>
+    </a>
   </ion-content>
 </ion-view>
