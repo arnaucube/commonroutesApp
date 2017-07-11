@@ -23,7 +23,9 @@
         <div class="item-note text-right">
             {{travel.user.username}}
         </div>
-          <i class="icon ion-android-car o_text_grey700"></i>
+          <i ng-show="travel.type=='offering'" class="icon ion-android-car o_text_grey700"></i>
+          <i ng-show="travel.type=='asking'" class="icon ion-help o_text_grey700"></i>
+          <i ng-show="travel.type=='package'" class="icon ion-ios-box o_text_grey700"></i>
           <h2 class="o_text_grey800">{{travel.title}}</h2>
           <div class="item-note text-right">
               <div class="o_text_purple300">{{travel.date | date:"dd/MM"}}</div>

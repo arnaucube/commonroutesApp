@@ -1,5 +1,5 @@
 <ion-view view-title="{{'Edit_user' | translate}} {{user.username}}">
-  <ion-content class="has-footer">
+  <ion-content>
     <div class="o_userProfileBackground">
         <img ng-src="{{user.avatar}}" class="o_userImgCircular"
         ng-click="selectAvatar()"/>
@@ -24,6 +24,10 @@
         </p>
     </div>
     <div class="item">
+        <p>
+        <input ng-model="user.faircoinString" class="o_transparentInputBlack"
+        placeholder="{{'FaircoinWallet' | translate}}">
+    </p>
         <img src="{{user.faircoin}}" style="width: 100%;"
          ng-click="selectFaircoinPublicKey()" />
     </div>

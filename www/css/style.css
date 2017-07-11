@@ -95,6 +95,12 @@
     border: 0px;
     width: 80%;
 }
+.o_transparentInputBlack{
+    background: rgba(255, 255, 255, 0);
+    color: #000000;
+    border: 0px;
+    width: 100%;
+}
 .o_userImgCircular {
     margin-top: 5%;
     background: #ffffff;

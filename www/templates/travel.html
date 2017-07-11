@@ -20,7 +20,10 @@
         </p>
       </div>
       <h2>
-        <i class="icon ion-android-car"></i> {{travel.title}}</h2>
+        <i ng-show="travel.type=='offering'" class="icon ion-android-car"></i>
+        <i ng-show="travel.type=='asking'" class="icon ion-help"></i>
+        <i ng-show="travel.type=='package'" class="icon ion-ios-box"></i>
+        {{travel.title}}</h2>
       <div class="">{{travel.date | date:"dd/MM HH:mm a"}}</div>
     </div>
 

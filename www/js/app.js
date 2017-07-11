@@ -24,8 +24,8 @@ angular.module('starter', [
     'app.travel',
     'app.newTravel',
     'app.offerCar',
-    /*    'app.askCar',
-        'app.askPackage',*/
+    'app.askForCar',
+    'app.askForPackage',
     'app.users',
     'app.user',
     'app.userTravels',
@@ -134,6 +134,24 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/offerCar.html',
             controller: 'OfferCarCtrl'
+          }
+        }
+      })
+      .state('app.askForCar', {
+        url: '/askForCar',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/askForCar.html',
+            controller: 'AskForCarCtrl'
+          }
+        }
+      })
+      .state('app.askForPackage', {
+        url: '/askForPackage',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/askForPackage.html',
+            controller: 'AskForPackageCtrl'
           }
         }
       })
