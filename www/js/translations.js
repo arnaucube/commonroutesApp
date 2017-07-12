@@ -5,6 +5,8 @@ var translations = {
         "Signup": "Signup",
         "Login": "Login",
         "Travels": "Travels",
+        "travels": "travels",
+        "likes": "likes",
         "Travels_feed": "Travels feed",
         "Users": "Users",
         "Notifications": "Notifications",
@@ -76,7 +78,7 @@ var translations = {
         "load_more": "load more",
         "view_likes": "view likes",
         "Edit_profile": "Edit profile",
-        "Travels_offering": "Travels offering",
+        "Travels_publicated": "Travels publicated",
         "Travels_joining": "Travels joining"
     },
    "catalan": {

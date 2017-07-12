@@ -1,8 +1,13 @@
 <ion-view view-title="Main">
   <ion-content class="has-footer">
-      <a ng-href="#/app/users/{{storageuser._id}}" class="item item-icon-left o_purpleG300to500">
-        <i class="icon ion-person"></i>
+      <a ng-href="#/app/users/{{storageuser._id}}" class="item item-avatar o_purpleG300to500">
+        <!--<i class="icon ion-person"></i>-->
+        <img ng-src="{{storageuser.avatar}}">
         {{storageuser.username}} {{'profile' | translate}}
+        <p style="color:#ffffff;">
+            {{storageuser.travels.length}} {{'travels' | translate }},
+            {{storageuser.likes.length}} {{'likes' | translate }}
+        </p>
       </a>
       <a ng-href="#/app/newTravel" class="item item-icon-left o_purpleG300to500">
         <i class="icon ion-map"></i>

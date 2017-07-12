@@ -33,7 +33,7 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
         })
         .then(function(data) {
             console.log(data);
-            window.location="#app/travels"
+            window.location="#app/travels";
         },
         function(data) { // optional
             // failed

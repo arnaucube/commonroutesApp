@@ -79,6 +79,7 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
                 localStorage.setItem('c_travels', JSON.stringify($scope.travels));
                 localStorage.setItem('c_travelsLastDate', JSON.stringify(new Date()));
 
+                window.location="#app/users/userTravels/" + $scope.storageuser._id;
               },
               function(response) { // optional
                 // failed
