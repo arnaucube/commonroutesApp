@@ -1,5 +1,5 @@
 <ion-view view-title="{{'Travel' | translate}}">
-  <ion-content class="has-footer">
+  <ion-content>
       <ion-refresher
         pulling-text="{{'Pull_to_refresh' | translate}}..."
         on-refresh="doRefresh()">
@@ -11,7 +11,7 @@
                 <img class="o_userImgCircularMini" ng-src="{{travel.user.avatar}}"></img>
                 {{travel.user.username}}
             </a>
-            <p  class="text-right">
+            <p class="text-right">
               <a ng-click="deleteTravel()" class="button button-small o_bRed"
               ng-show="storageuser._id==travel.user._id">
                   <i class="icon ion-trash-a"></i>
@@ -90,7 +90,7 @@
         <!--<button class="o_floatRight button o_grey600" ng-show="travel.user._id==storageuser._id">
             <i class="icon ion-edit"></i>
         </button>-->
-        <p>{{travel.joins.length}}/{{travel.seats}} {{'seats' | translate}}</p>
+        <p ng-show="travel.seats>0">{{travel.joins.length}}/{{travel.seats}} {{'seats' | translate}}</p>
                 <a ng-repeat="join in travel.joins" ng-href="#/app/users/{{join._id}}">
                     <img class="o_userImgCircularMini" ng-src="{{join.avatar}}"></img>
                 </a>

@@ -1,5 +1,5 @@
 <ion-view view-title="{{'Travels' | translate}}">
-  <ion-content class="has-footer">
+  <ion-content>
       <ion-refresher
         pulling-text="{{'Pull_to_refresh' | translate}}..."
         on-refresh="paginationNext()">
@@ -20,23 +20,7 @@
         </div>
         <a ng-repeat="travel in travels | orderBy: 'date' | filter: search"
         class="item item-icon-left" href="#/app/travels/{{travel._id}}">
-        <div class="item-note text-right">
-            {{travel.user.username}}
-        </div>
-          <i ng-show="travel.type=='offering'" class="icon ion-android-car o_text_grey700"></i>
-          <i ng-show="travel.type=='asking'" class="icon ion-help o_text_grey700"></i>
-          <i ng-show="travel.type=='package'" class="icon ion-ios-box o_text_grey700"></i>
-          <h2 class="o_text_grey800">{{travel.title}}</h2>
-          <div class="item-note text-right">
-              <div class="o_text_purple300">{{travel.date | date:"dd/MM"}}</div>
-              <div class="o_text_purple300">{{travel.date | date:"HH:mm"}}h</div>
-          </div>
-          <p>
-              {{travel.from.name}}
-          </p>
-          <p>
-              {{travel.to.name}}
-          </p>
+          <div ng-include="'templates/travelListTemplate.html'"></div>
         </a>
     </div>
     <!--<div class="button" ng-click="paginationNext()">

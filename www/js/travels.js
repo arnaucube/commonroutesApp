@@ -18,6 +18,7 @@ angular.module('app.travels', ['pascalprecht.translate'])
           if (data.data.length < 1) {
               console.log("setting loadMorePagination to false");
             $scope.loadMorePagination = false;
+            $scope.$broadcast('scroll.infiniteScrollComplete');
           }
 
         }, function(data) {
