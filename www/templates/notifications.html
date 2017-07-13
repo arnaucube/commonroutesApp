@@ -10,7 +10,7 @@
         <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
         <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
       </div>
-      <i ng-show="notification.state=='pendent'" class="icon ion-android-notifications-none o_text_purple600"></i>
+      <i ng-show="notification.state=='pendent'" class="icon {{notification.icon}} o_text_purple600"></i>
       <h2>{{notification.message}}</h2>
     </a>
     <a ng-repeat="notification in notifications | orderBy: '-date'" ng-show="notification.state=='viewed'" class="item item-icon-left item-text-wrap" href="#/app/{{notification.link}}">
@@ -18,7 +18,7 @@
         <div class="o_text_purple600">{{notification.date | date:"dd/MM"}}</div>
         <div class="o_text_purple600">{{notification.date | date:"HH:mm:ss"}}</div>
       </div>
-      <i ng-show="notification.state=='viewed'" class="icon ion-android-notifications-none"></i>
+      <i ng-show="notification.state=='viewed'" class="icon {{notification.icon}}"></i>
       <h2>{{notification.message}}</h2>
     </a>
   </ion-content>
