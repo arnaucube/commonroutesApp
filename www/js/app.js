@@ -33,6 +33,7 @@ angular.module('starter', [
     'app.editUser',
     'app.notifications',
     'app.settings',
+    'app.password',
     'app.help'
   ])
 
@@ -215,6 +216,15 @@ angular.module('starter', [
           'menuContent': {
             templateUrl: 'templates/settings.html',
             controller: 'SettingsCtrl'
+          }
+        }
+      })
+      .state('app.password', {
+        url: '/password',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/password.html',
+            controller: 'PasswordCtrl'
           }
         }
       })
