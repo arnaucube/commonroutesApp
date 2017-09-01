@@ -42,7 +42,10 @@
       <ion-list>
         <a class="item item-icon-left item-avatar o_bSidenav" menu-close ng-href="#/app/users/{{storageuser._id}}">
         <img src="{{storageuser.avatar}}" />
-        <h2>{{storageuser.username}}</h2>
+        <h2>
+            {{storageuser.username}}
+            <i ng-show="storageuser.validated" class="ion-checkmark-circled ct_blue300"></i>
+        </h2>
         <p>{{storageuser.description}}</p>
       </a>
         <a class="item item-icon-left o_bSidenav" menu-close ng-href="#/app/main">

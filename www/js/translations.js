@@ -82,7 +82,7 @@ var translations = {
         "load_more": "load more",
         "view_likes": "view likes",
         "Edit_profile": "Edit profile",
-        "Travels_publicated": "Travels publicated",
+        "Travels_published": "Travels published",
         "Travels_joining": "Travels joining"
     },
    "catalan": {

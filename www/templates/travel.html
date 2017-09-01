@@ -10,6 +10,7 @@
             <a class="button" ng-href="#/app/users/{{travel.user._id}}">
                 <img class="o_userImgCircularMini" ng-src="{{travel.user.avatar}}"></img>
                 {{travel.user.username}}
+                <i ng-show="travel.user.validated" class="ion-checkmark-circled ct_blue300"></i>
             </a>
             <p class="text-right">
               <a ng-click="deleteTravel()" class="button button-small o_bRed"
