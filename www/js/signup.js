@@ -52,40 +52,6 @@ angular.module('app.signup', ['pascalprecht.translate'])
       if (obj.email == undefined) {
         return (false);
       }
-      /*if(obj.avatar==undefined)
-      {
-        return(false);
-    }*/
       return (true);
-    };
-    $scope.avatars = [
-      "turtle",
-      "cat",
-      "toucan",
-      "racoon",
-      "tiger",
-      "squirrel",
-      "sheep",
-      "penguin",
-      "panda",
-      "owl",
-      "pelican",
-      "whale",
-      "snake",
-      "mouse",
-      "giraffe",
-      "macaw",
-      "lion",
-      "llama",
-      "kangaroo",
-      "hen",
-      "frog",
-      "clown-fish",
-      "chameleon",
-      "octopus"
-    ];
-    $scope.avatarSelect = function(avat) {
-      $scope.signupData.avatar = avat;
-      //alert($scope.signupData.avatar);
     };
   });

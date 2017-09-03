@@ -22,11 +22,14 @@
           </label>
           <label class="item item-input">
             <span class="input-label">{{'Telegram' | translate}}</span>
-            <input type="text" ng-model="signupData.telegram">
+            @<input type="text" ng-model="signupData.telegram">
           </label>
           <label class="item item-input">
             <span class="input-label">{{'Description' | translate}}*</span>
             <input type="text" ng-model="signupData.description">
+          </label>
+          <label class="item item-text-wrap ctext_red400">
+              <b>Telegram</b> nickname and <b>phone</b> will be public for other users.
           </label>
         <div>
             <a class="button o_purple100" ng-href="#/app/login">{{'Cancel' | translate}}</a>

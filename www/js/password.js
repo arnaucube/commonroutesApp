@@ -2,13 +2,13 @@ angular.module('app.password', ['pascalprecht.translate'])
 
   .controller('PasswordCtrl', function($scope, $stateParams, $translate,
       $http, $ionicLoading) {
-      $scope.newPass = {};
+      $scope.newPassword = {};
       $scope.changePassword = function() {
-          console.log($scope.newPass);
+          console.log($scope.newPassword);
         $http({
             url: urlapi + 'changePassword',
             method: "PUT",
-            data: $scope.newPass
+            data: $scope.newPassword
           })
           .then(function(data) {
               console.log(data);
