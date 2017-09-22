@@ -1,4 +1,7 @@
 {
   "name": "app",
-  "app_id": "0f46f512"
+  "app_id": "0f46f512",
+  "integrations": {},
+  "type": "ionic1",
+  "watchPatterns": []
 }
