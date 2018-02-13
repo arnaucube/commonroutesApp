@@ -8,7 +8,8 @@
 
 //var urlapi = "http://localhost:3000/api/";
 //var urlapi = "http://192.168.1.36:3000/api/";
-var urlapi = "http://37.59.123.45:3000/api/";
+//var urlapi = "http://37.59.123.45:3000/api/";
+var urlapi = "http://routes.fair.coop:3000/api/";
 
 angular.module('starter', [
     'ionic',

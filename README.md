@@ -6,3 +6,11 @@
 - admin web: https://github.com/arnaucode/commonroutesAdminWeb
 
 ![commonroutes](https://raw.githubusercontent.com/arnaucode/commonroutesApp/master/commonroutes.png "commonroutes")
+
+
+## Build
+
+Add cordova camera plugin
+```
+cordova plugin add cordova-plugin-camera --save
+```

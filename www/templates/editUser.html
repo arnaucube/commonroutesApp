@@ -16,6 +16,10 @@
             @<input ng-model="user.telegram" class="o_transparentInput"
             placeholder="{{'Telegram' | translate}}">
         </p>
+        <p>
+            <input ng-model="user.localNode" class="o_transparentInput"
+            placeholder="{{'LocalNode' | translate}}">
+        </p>
 
         <p ng-show="storageuser._id==user._id">
             <a class="button o_purple300" ng-click="update()">

@@ -5,9 +5,9 @@ PATH=$PATH:$ANDROID_HOME/platform-tools
 
 ** cal estar amb sudo **
 #current path:
-export ANDROID_HOME=home/nau/sourceProgramsToInstall/android-sdk-linux/
-export PATH=$PATH:$ANDROID_HOME:/home/nau/sourceProgramsToInstall/android-sdk-linux/tools
-export PATH=$PATH:$ANDROID_HOME/home/nau/sourceProgramsToInstall/android-sdk-linux/platform-tools
+export ANDROID_HOME=/home/asus/Android/Sdk/
+export PATH=$PATH:$ANDROID_HOME:/home/asus/Android/Sdk/tools
+export PATH=$PATH:$ANDROID_HOME/home/asus/Android/Sdk/platform-tools
 
 
 #run android sdk manager tools:
@@ -17,3 +17,5 @@ cd /home/nau/Android/Sdk/tools
 
 ionic serve
 ionic build android
+ionic run android //obsolete
+ionic cordova run android

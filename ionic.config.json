@@ -1,7 +1,9 @@
 {
   "name": "app",
   "app_id": "0f46f512",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic1",
   "watchPatterns": []
 }
