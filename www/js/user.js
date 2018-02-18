@@ -187,4 +187,9 @@ angular.module('app.user', ['pascalprecht.translate'])
       console.log("show image");
       $scope.openModal();
     };
+
+    $scope.openTelegram = function(telegramuser) {
+      window.open('http://telegram.me/' + telegramuser, '_system', 'location=yes');
+      return false;
+    };
   });

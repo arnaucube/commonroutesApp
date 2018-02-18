@@ -27,7 +27,7 @@
     </div>
     <div class="">
       <div class="row">
-        <a class="tab-item" ng-show="user.telegram" ng-href="http://telegram.me/{{user.telegram}}">
+        <a class="tab-item" ng-show="user.telegram" ng-click="openTelegram(user.telegram)">
               <i class="icon ion-paper-airplane"></i>
               @{{user.telegram}}
           </a>
@@ -50,9 +50,10 @@
       </div>
     </div>
     <div class="item">
-        <p>
-            {{user.faircoinString}}
-        </p>
+      FairCoin Address:
+        <textarea ng-model="user.faircoinString" rows="1" style="width: 100%;"
+          onclick="this.focus();this.select()" readonly="readonly"
+        ></textarea>
       <img src="{{user.faircoin}}" style="width: 100%;" />
     </div>
     <!--<div class="item item-body">
