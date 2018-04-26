@@ -285,4 +285,8 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
       //console.log("i: -1");
       return -1;
     };
+    $scope.openTelegram = function(telegramuser) {
+      window.open('http://telegram.me/' + telegramuser, '_system', 'location=yes');
+      return false;
+    };
   });

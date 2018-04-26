@@ -45,7 +45,7 @@
         <i class="icon ion-ios-box"></i> {{'package' | translate}}
     </div>
     <a class="item item-icon-left" ng-show="travel.user.telegram"
-    ng-href="http://telegram.me/{{travel.user.telegram}}">
+     ng-click="openTelegram(user.telegram)">
         <i class="icon ion-paper-airplane"></i> @{{travel.user.telegram}}
     </a>
     <div class="item item-icon-left" ng-show="travel.user.phone">
