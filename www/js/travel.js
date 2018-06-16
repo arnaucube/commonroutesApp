@@ -289,4 +289,11 @@ angular.module('app.travel', ['pascalprecht.translate', 'ui-leaflet'])
       window.open('http://telegram.me/' + telegramuser, '_system', 'location=yes');
       return false;
     };
+    $scope.copyTravelLink = function(link) {
+      $cordovaClipboard.copy("Text To Copy").then(function() {
+          // success
+      }, function() {
+          // error
+      });
+    };
   });

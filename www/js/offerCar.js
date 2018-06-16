@@ -47,7 +47,7 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
         $scope.markers=[];
         console.log($scope.newtravel.from.name);
         console.log($scope.newtravel.to.name);
-        $http.get('http://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.from.name + '&format=json&limit=1')
+        $http.get('https://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.from.name + '&format=json&limit=1')
         .then(function(data) {
             console.log(data);
             if(data.data[0])
@@ -61,7 +61,7 @@ angular.module('app.offerCar', ['pascalprecht.translate', 'ui-leaflet'])
                     message: data.data[0].display_name
                 });
             }
-            $http.get('http://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.to.name + '&format=json&limit=1')
+            $http.get('https://nominatim.openstreetmap.org/search?q=' + $scope.newtravel.to.name + '&format=json&limit=1')
             .then(function(data) {
                 if(data.data[0])
                 {
