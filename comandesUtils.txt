@@ -9,6 +9,10 @@ export ANDROID_HOME=/home/asus/Android/Sdk/
 export PATH=$PATH:$ANDROID_HOME:/home/asus/Android/Sdk/tools
 export PATH=$PATH:$ANDROID_HOME/home/asus/Android/Sdk/platform-tools
 
+export ANDROID_HOME=/home/xiaomi/Android/Sdk/
+export PATH=$PATH:$ANDROID_HOME:/home/xiaomi/Android/Sdk/tools
+export PATH=$PATH:$ANDROID_HOME/home/xiaomi/Android/Sdk/platform-tools
+
 
 #run android sdk manager tools:
 cd /home/nau/Android/Sdk/tools

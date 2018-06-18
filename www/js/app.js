@@ -23,6 +23,7 @@ angular.module('starter', [
     'app.search',
     'app.travels',
     'app.travel',
+    'app.editTravel',
     'app.newTravel',
     'app.offerCar',
     'app.askForCar',
@@ -120,7 +121,15 @@ angular.module('starter', [
           }
         }
       })
-
+      .state('app.editTravel', {
+        url: '/editTravel/:travelid',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/editTravel.html',
+            controller: 'EditTravelCtrl'
+          }
+        }
+      })
       .state('app.newTravel', {
         url: '/newTravel',
         views: {

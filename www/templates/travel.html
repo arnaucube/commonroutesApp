@@ -13,8 +13,12 @@
                 <i ng-show="travel.user.validated" class="ion-checkmark-circled ct_blue300"></i>
             </a>
             <p class="text-right">
-              <a target="_blank" ng-href="http://routes.fair.coop/app/#!/travel/{{travel._id}}" class="button button-small o_grey300">
+              <a target="_blank" ng-click="openTravelLink(travel._id)" class="button button-small o_grey300">
                   <i class="icon ion-share" style="margin-left:-14px;"></i>
+              </a>
+              <a ng-href="#/app/editTravel/{{travel._id}}" class="button button-small o_grey600"
+              ng-show="storageuser._id==travel.user._id">
+                  <i class="icon ion-edit" style="margin-left:-14px;"></i>
               </a>
               <a ng-click="deleteTravel()" class="button button-small o_bRed"
               ng-show="storageuser._id==travel.user._id">
